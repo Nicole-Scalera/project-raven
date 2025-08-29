@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/SC_Level1.unity
+    path: Assets/Scenes/SceneSwitching/SC_Level1.unity
     guid: 52bf0ce66faf6d243aecbd310383e457
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/Scenes/SceneSwitching/MainMenu.unity
     guid: acedd97cf2f2e744a9ffa31f7076012c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

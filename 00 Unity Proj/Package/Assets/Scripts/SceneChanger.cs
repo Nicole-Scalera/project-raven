@@ -56,6 +56,8 @@ public class SceneChanger : MonoSingleton<SceneChanger>
     // Notify the GameManager of the new "current" scene name
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        // GameManager always prints whenever a
+        // new scene is loaded, included runtime.
         gameManager.UpdateCurrentScene(scene.name);
     }
     

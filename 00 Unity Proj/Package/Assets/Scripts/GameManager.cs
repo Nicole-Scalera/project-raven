@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : PersistentMonoSingleton<GameManager>
 {
-    //private Player player; // Player.cs
     private SceneChanger sceneChanger; // SceneChanger.cs
     private string currentScene; // Current Scene Name
                 // ^^^ The currentScene variable is called anytime

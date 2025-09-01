@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using UnityEngine;
 
@@ -16,7 +18,7 @@ using UnityEngine;
 public class BeltBehavior : MonoBehaviour
 {
 
-    public GameObject box;
+    public List<GameObject> boxes = new List<GameObject>();
 
     public Node[] pathNodes;
 
@@ -52,30 +54,48 @@ public class BeltBehavior : MonoBehaviour
     void FixedUpdate()
     {
 
-        //boxSpeed is assigned to the time between frame updates and moveSpeed
-        boxSpeed = Time.deltaTime * moveSpeed;
-
-        //if the box position is not at the current goal node position the box moves closer towards the goal node position
-        //if it is the current goal node position the currentNode variable increments and CheckNode() gets called to update
-        //the next goal node position
-
-        if(box.transform.position != currentPosition)
+        foreach(GameObject box in boxes)
         {
 
-            box.transform.position = Vector3.MoveTowards(box.transform.position, currentPosition, boxSpeed);
+            //boxSpeed is assigned to the time between frame updates and moveSpeed
+            boxSpeed = Time.deltaTime * moveSpeed;
 
-        }
-        else 
-        {
-            if(currentNode <  pathNodes.Length - 1)
+            //if the box position is not at the current goal node position the box moves closer towards the goal node position
+            //if it is the current goal node position the currentNode variable increments and CheckNode() gets called to update
+            //the next goal node position
+
+            if (box.transform.position != currentPosition)
             {
-                
-                currentNode++;
-                CheckNode();
+
+                box.transform.position = Vector3.MoveTowards(box.transform.position, currentPosition, boxSpeed);
 
             }
-        
+            else
+            {
+                if (currentNode < pathNodes.Length - 1)
+                {
+
+                    currentNode++;
+                    CheckNode();
+
+                }
+
+            }
+
         }
 
     }
+
+
+    //Takes in a gameobject and adds it to the boxes array
+    // TODO: Check for tag to confirm its a box
+    public void AddBox(GameObject newBox)
+    {
+
+        boxes.Add(newBox);
+
+        Debug.Log("New Box Added: " + newBox.name);
+
+    }
+
 }

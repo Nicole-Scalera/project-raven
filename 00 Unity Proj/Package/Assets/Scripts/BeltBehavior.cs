@@ -98,4 +98,12 @@ public class BeltBehavior : MonoBehaviour
 
     }
 
+    //Takes in a box gameobject and removes it from the list
+    public void RemoveBox(GameObject newBox)
+    {
+
+        boxes.Remove(newBox);
+
+    }
+
 }

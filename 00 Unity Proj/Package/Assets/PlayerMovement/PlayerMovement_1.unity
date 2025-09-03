@@ -256,7 +256,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: This is the PlayerMovement_1 scene. We will use the Unity Input Manager
-    to have a moving block that represents the Player.
+    to have a moving block that represents the Player. Use WASD to manipulate the
+    position of the Player.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -406,6 +407,8 @@ GameObject:
   - component: {fileID: 1318206113}
   - component: {fileID: 1318206112}
   - component: {fileID: 1318206116}
+  - component: {fileID: 1318206117}
+  - component: {fileID: 1318206118}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -529,6 +532,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1318206117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318206111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2827ae93220ac3044b7f83af0e45c91a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnparentOnAwake: 1
+  moveSpeed: 5
+--- !u!114 &1318206118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318206111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e454996be93ccde48949638a20d6766b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1417947354
 GameObject:
   m_ObjectHideFlags: 0

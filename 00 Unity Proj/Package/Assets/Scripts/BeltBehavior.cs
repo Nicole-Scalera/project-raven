@@ -22,7 +22,7 @@ public class BeltBehavior : MonoBehaviour
 
     public Node[] pathNodes;
 
-    public float moveSpeed = 10f;
+    public float moveSpeed = 1f;
 
     static Vector3 currentPosition;
 

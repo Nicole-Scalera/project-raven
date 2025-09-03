@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3538ffbfc51eda74791241f5b683bd20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPosition: {x: 20, y: 5.5, z: 0}
   boxPrefabs:
   - {fileID: 8631447002184300228, guid: 18af6202860cd1245a86ece72c2a1f02, type: 3}
   timer: 0

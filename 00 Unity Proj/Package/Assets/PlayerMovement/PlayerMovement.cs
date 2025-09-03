@@ -42,13 +42,13 @@ public class PlayerMovement : MonoBehaviour
     private void GetPlayerInfo()
     {
         // Get the following information about the Player
-        playerRB = player.GetRigidbody(); // RigidBody2D
+        playerRB = player.GetRigidbody(); // RigidBody
         startPos = player.GetPlayerPosition(); // Starting Position
         moveSpeed = player.GetPlayerSpeed(); // Movement Speed
 
         // Debug this info
         Debug.Log($"PlayerMovement.cs > GetPlayerInfo(): Player's starting position is ({startPos.x}, {startPos.y})");
-        Debug.Log($"PlayerMovement.cs > GetPlayerInfo(): Player's horizontal speed is {moveSpeed}");
+        Debug.Log($"PlayerMovement.cs > GetPlayerInfo(): Player's movement speed is {moveSpeed}");
     }
 
     // Use Update() for non-physics-based updates, including input handling.

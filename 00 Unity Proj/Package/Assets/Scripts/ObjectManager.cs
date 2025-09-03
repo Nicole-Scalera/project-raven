@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityCommunity.UnitySingleton;
 
 /*
  * 
@@ -12,7 +13,7 @@ using UnityEngine.PlayerLoop;
  */
 
 
-public class ObstacleManager : MonoBehaviour
+public class ObjectManager : MonoBehaviour
 {
 
     private Vector3 spawnPosition = new Vector3(20.0f, 5.5f, 0.0f);

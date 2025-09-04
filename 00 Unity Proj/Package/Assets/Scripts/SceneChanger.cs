@@ -7,59 +7,61 @@ using UnityEngine.SceneManagement;
 // name in the Inspector, or create a line to manually assign
 // it through the code.
 
-public class SceneChanger : MonoSingleton<SceneChanger>
+namespace SceneSwitching_cf
 {
-    
-    // ===== Variables/Components =====
-    private GameManager gameManager; // Access GameManager.cs
-    private string sceneName; // Name of a scene
-    // ================================
-
-    protected override void Awake()
+    public class SceneChanger : MonoSingleton<SceneChanger>
     {
-        gameManager = GameManager.Instance; // Assign GameManager.cs
-    }
 
-    // Load a scene by name (set name in Inspector)
-    public void LoadScene(string sceneName)
-    {
-        this.sceneName = sceneName;
+        // ===== Variables/Components =====
+        private GameManager gameManager; // Access GameManager.cs
+        private string sceneName; // Name of a scene
+        // ================================
+
+        protected override void Awake()
+        {
+            gameManager = GameManager.Instance; // Assign GameManager.cs
+        }
+
+        // Load a scene by name (set name in Inspector)
+        public void LoadScene(string sceneName)
+        {
+            this.sceneName = sceneName;
+
+            // Tell the user what scene is being loaded
+            Debug.Log($"SceneChanger > Loading scene: {sceneName}...");
+
+            // Load a scene by its name
+            SceneManager.LoadScene(sceneName);
+
+            //  Confirm the scene was loaded
+            Debug.Log($"SceneChanger > Loaded successfully!");
+        }
+
+        // Get the current scene
+        public string GetCurrentSceneName()
+        {
+            // Grab the scene by its name
+            return SceneManager.GetActiveScene().name;
+        }
+
+        // Call sceneLoaded when a new scene is loaded
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        // Notify the GameManager of the new "current" scene name
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            // GameManager always prints whenever a
+            // new scene is loaded, included runtime.
+            gameManager.UpdateCurrentScene(scene.name);
+        }
         
-        // Tell the user what scene is being loaded
-        Debug.Log($"SceneChanger > Loading scene: {sceneName}...");
-        
-        // Load a scene by its name
-        SceneManager.LoadScene(sceneName);
-        
-        //  Confirm the scene was loaded
-        Debug.Log($"SceneChanger > Loaded successfully!");
     }
-    
-    // Get the current scene
-    public string GetCurrentSceneName()
-    {
-        // Grab the scene by its name
-        return SceneManager.GetActiveScene().name;
-    }
-    
-    // Call sceneLoaded when a new scene is loaded
-    private void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    // Notify the GameManager of the new "current" scene name
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // GameManager always prints whenever a
-        // new scene is loaded, included runtime.
-        gameManager.UpdateCurrentScene(scene.name);
-    }
-    
-    
 }

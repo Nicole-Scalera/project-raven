@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace BasicMovement_cf
+namespace BasicMovement1_cf
 {
     public class PlayerMovement : MonoBehaviour
     {

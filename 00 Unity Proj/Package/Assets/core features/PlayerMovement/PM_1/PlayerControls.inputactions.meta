@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 59331ae39342e45f69f5b2cb57d02246
+guid: 79ff24c3535802e4294965aabef278df
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: 
   wrapperClassName: 
-  wrapperCodeNamespace: 
+  wrapperCodeNamespace: BasicMovement1_cf

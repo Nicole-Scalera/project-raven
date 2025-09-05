@@ -4,7 +4,7 @@ using UnityCommunity.UnitySingleton;
 
 // This is the Player class. It encapsulates general data and info about
 // the Player game object, which is utilized throughout other scripts.
-namespace BasicMovement_cf {
+namespace BasicMovement1_cf {
     public class Player : PersistentMonoSingleton<Player>
     {
         

@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 namespace SceneSwitching_cf
 {
-    public abstract class SceneChanger2 : MonoSingleton<SceneChanger>, ISceneChanger, ICollidable 
+    public abstract class SceneChanger2 : MonoSingleton<SceneChanger>, ISceneChanger, ICollidable, IClickable
     {
 
         // ===== Variables/Components =====
@@ -31,7 +31,7 @@ namespace SceneSwitching_cf
             gameManager = GameManager.Instance;
         }
         
-        protected virtual void Start()
+        public virtual void Start()
         {
             // Initialize the scene changer Dictionary
             GetDictionary();
@@ -98,12 +98,12 @@ namespace SceneSwitching_cf
         }
         
         // Check for button clicks in the scene
-        void CheckForClicks()
+        public virtual void CheckForClicks()
         {
             // Handle logic in a derived class
         }
 
-        void TaskOnClick(string buttonName)
+        public virtual void TaskOnClick(string buttonName)
         {
             // Handle logic in a derived class
         }
@@ -146,15 +146,20 @@ namespace SceneSwitching_cf
         
     }
     
-    // This interface is used to handle UI events for scene changing
+    // This interface is used to handle all
+    // required SceneChanger methods
     public interface ISceneChanger
     {
         void Awake();
+        void Start();
+        void GetDictionary();
         void LoadScene(string sceneName);
         string GetCurrentSceneName();
         void OnEnable();
         void OnDisable();
         void OnSceneLoaded(Scene scene, LoadSceneMode mode);
+        void CheckForKey(GameObject other);
+        void GetDictionaryScene(GameObject otherObject);
     }
     
     // This interface is used to handle collision events
@@ -163,4 +168,10 @@ namespace SceneSwitching_cf
         void OnCollisionEnter(Collision other);
     }
 
+    // This interface is used to handle button click events
+    public interface IClickable
+    {
+        void CheckForClicks();
+        void TaskOnClick(string buttonName);
+    }
 }

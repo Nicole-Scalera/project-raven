@@ -18,9 +18,8 @@ namespace SceneSwitching_cf
         private GameManager gameManager; // Access GameManager.cs
         protected SceneAsset scene;  // The SceneAsset in the Editor
         protected string sceneName; // Name of a scene
-        private Rigidbody rb; // Rigidbody
-        protected string Button; // UI Buttons (assigned in Inspector)
-        protected GameObject otherObject; // Other object player collides with
+        private Rigidbody rb; // Rigidbody (for collisions)
+        protected GameObject otherObject; // Other object the player interacts with
         protected SC_CollisionRoster sceneDictionary; // Reference to the collision dictionary
         // ================================
 
@@ -41,7 +40,7 @@ namespace SceneSwitching_cf
         // Get the scene dictionary from SceneChangeDictionary.cs
         public virtual void GetDictionary()
         {
-            sceneDictionary = GetComponent<SC_CollisionRoster>();
+            // Override logic in child classes
         }
         // ==========================
 

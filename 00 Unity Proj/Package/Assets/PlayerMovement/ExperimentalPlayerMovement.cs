@@ -21,22 +21,27 @@ public class ExperimentalPlayerMovement : MonoBehaviour
     public int maxJumps = 1;
     public int jumpsRemaining;
 
+    [Header("GroundCheck")]
+    public Transform groundCheckPos;
+    public Vector3 groundCheckSize = new Vector3(0.5f, 0.05f,0.5f);
+    public LayerMask groundLayer;
+    public bool isGrounded;
+    public float groundCoord = 1.9f;
+
+    [Header("Gravity")]
+    public float baseGravity = 2f;
+    public float maxFallSpeed = 18f;
+    public float fallMultiplier = 1f;
+
 
     private void Update()
     {
 
 
         //Updates the players linearVelocity with new (inputted) values
-        rb.linearVelocity = new Vector3(xMovement * moveSpeed, jumpMovement * jumpPower, zMovement * moveSpeed);
+        rb.linearVelocity = new Vector3(xMovement * moveSpeed, rb.linearVelocity.y, zMovement * moveSpeed);
 
-        //part of the jump to ensure that the player doesn't jump forever
-        //not fully implemented yet
-        if (transform.position.y <= 1.9)
-        {
-
-            jumpsRemaining = maxJumps;
-
-        }
+        GroundCheck();
 
     }
 
@@ -51,25 +56,38 @@ public class ExperimentalPlayerMovement : MonoBehaviour
         xMovement = context.ReadValue<Vector3>().x;
         zMovement = context.ReadValue<Vector3>().z;
 
-        /*
-         * 
-         *   More incomplete jumping logic
-         *   
-         *   ISSUE: player can hold the jump button (space) to infinitely jump until releasing the button
-         * 
-         *   if(jumpsRemaining > 0)
-         *   {
-         *       if(context.performed)
-         *       {
-         *
-         *           jumpMovement = context.ReadValue<Vector3>().y;
-         *           jumpsRemaining--;
-         *
-         *       }
-         *   
-         *   }
-         */
+           if (isGrounded && jumpsRemaining > 0)
+            {
+                if(context.performed)
+                {
 
+                    Debug.Log("JUMP");
+
+                    rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpPower, rb.linearVelocity.z);
+                    jumpsRemaining--;
+         
+                }
+            
+            }   
+
+    }
+
+    private void GroundCheck()
+    {
+        //if the player's y position is less than or equal to the ground coord
+        if (groundCheckPos.position.y <= groundCoord)
+        {
+            //reset the jump amount and say the object is on the ground
+            isGrounded = true;
+            jumpsRemaining = maxJumps;
+
+        }
+        else
+        {
+
+            isGrounded = false;
+
+        }
     }
 
 }

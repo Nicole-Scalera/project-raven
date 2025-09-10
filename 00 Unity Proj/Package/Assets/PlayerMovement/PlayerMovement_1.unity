@@ -480,6 +480,18 @@ MonoBehaviour:
   zMovement: 0
   jumpPower: 5
   jumpMovement: 0
+  maxJumps: 1
+  jumpsRemaining: 0
+  groundCheckPos: {fileID: 1037914100}
+  groundCheckSize: {x: 0.5, y: 0.05, z: 0.5}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  isGrounded: 0
+  groundCoord: 1.9
+  baseGravity: 2
+  maxFallSpeed: 18
+  fallMultiplier: 1
 --- !u!54 &1037914096
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -874,7 +886,7 @@ GameObject:
   - component: {fileID: 1653006640}
   - component: {fileID: 1653006639}
   - component: {fileID: 1653006638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}

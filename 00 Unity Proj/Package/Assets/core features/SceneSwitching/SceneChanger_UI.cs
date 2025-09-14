@@ -13,16 +13,6 @@ using UnityEngine.SceneManagement;
 namespace SceneSwitching_cf {
     public class SceneChanger_UI : SceneChanger2, ISceneChanger, IClickable
     {
-        // ===== Variables/Components =====
-        protected SC_UIRoster sceneDictionary; // UI dictionary
-        // ================================
-        
-        // Get the scene dictionary from SceneChangeDictionary.cs
-        public virtual void GetDictionary()
-        {
-            sceneDictionary = GetComponent<SC_UIRoster>();
-        }
-        
         // =================== Event Methods ===================
         // Check for button clicks in the scene
         public virtual void CheckForClicks()

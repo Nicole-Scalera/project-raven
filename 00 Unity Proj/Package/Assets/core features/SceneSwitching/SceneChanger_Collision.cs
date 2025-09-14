@@ -12,20 +12,12 @@ using UnityEngine.SceneManagement;
 namespace SceneSwitching_cf {
     public class SceneChanger_Collision : SceneChanger2, ISceneChanger, ICollidable
     {
-        // ===== Variables/Components =====
-        protected SC_CollisionRoster sceneDictionary; // Collision dictionary
-        // ================================
-        
-        // Get the scene dictionary from SceneChangeDictionary.cs
-        public virtual void GetDictionary()
-        {
-            sceneDictionary = GetComponent<SC_CollisionRoster>();
-        }
-        
         // =================== Event Methods ===================
         // Checking for collisions in a 3D environment
-        public virtual void OnCollisionEnter(Collision other)
+        public override void OnCollisionEnter(Collision other)
         {
+            Debug.Log("OnCollisionEnter Triggered by " + other.gameObject.name);
+            
             // Set the otherObject to the UI/collided object
             otherObject = other.gameObject;
             

@@ -4,6 +4,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 
 // This is the SceneChanger class. When called, it will change
 // the current scene to a new one of a specific name. Set the
@@ -21,15 +23,20 @@ namespace SceneSwitching_cf
         protected string sceneName; // Name of a scene
         private Rigidbody rb; // Rigidbody (for collisions)
         protected GameObject otherObject; // Other object the player interacts with
-        protected SC_CollisionRoster sceneDictionary; // Reference to the collision dictionary
-        private UnityEvent sceneChangerEvent; // UnityEvent for interactions
         // ================================
+        
+        // ===== Scene Dictionary =====
+        // Create a new instance of a dictionary matching the type from DictionaryComponent.cs
+        protected Dictionary<GameObject, SceneAsset> sceneDictionary = new();
+        [SerializeField, Required] private DictionaryComponent dictionaryComponent; // Reference to DictionaryComponent.cs
+        // ============================
 
         // ===== Initialization =====
         public virtual void Awake()
         {
             // Assign GameManager.cs
             gameManager = GameManager.Instance;
+            dictionaryComponent = GetComponentInChildren<DictionaryComponent>();
         }
         
         public virtual void Start()
@@ -37,13 +44,16 @@ namespace SceneSwitching_cf
             // Initialize the scene changer Dictionary
             GetDictionary();
             CheckForClicks();
-            sceneChangerEvent?.Invoke();
         }
         
         // Get the scene dictionary from SceneChangeDictionary.cs
         public virtual void GetDictionary()
         {
-            // Override logic in child classes
+            if (dictionaryComponent != null)
+            {
+                // Grab the dictionary from the object
+                sceneDictionary = dictionaryComponent.SceneChangerDictionary;
+            }
         }
         // ==========================
 
@@ -92,11 +102,11 @@ namespace SceneSwitching_cf
         // Checking for collisions in a 3D environment
         public virtual void OnCollisionEnter(Collision other)
         {
-            // Set the otherObject to the UI/collided object
-            otherObject = other.gameObject;
-            
-            // Call CheckForKey to see if it is in the dictionary
-            CheckForKey(otherObject);
+            // // Set the otherObject to the UI/collided object
+            // otherObject = other.gameObject;
+            //
+            // // Call CheckForKey to see if it is in the dictionary
+            // CheckForKey(otherObject);
         }
         
         // Check for button clicks in the scene
@@ -119,6 +129,8 @@ namespace SceneSwitching_cf
             // with is specified in the scene changer dictionary
             if (sceneDictionary.ContainsKey(otherObject))
             {
+                Debug.Log($"SceneChanger > {otherObject} Key found in dictionary!");
+                
                 // Grab the scene associated with the object
                 GetDictionaryScene(otherObject);
                 
@@ -132,6 +144,7 @@ namespace SceneSwitching_cf
             else
             {
                 // Otherwise, throw out the value
+                Debug.Log($"SceneChanger > {otherObject} Key NOT found in dictionary!");
                 otherObject = null;
             }
         }

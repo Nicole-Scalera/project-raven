@@ -804,6 +804,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 156265fc8851e0041b1f347aee74b15e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dictionaryComponent: {fileID: 0}
 --- !u!114 &694441653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -816,6 +817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4f6798ffb14f2899732e0bc385b840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dictionaryComponent: {fileID: 0}
 --- !u!114 &694441654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,13 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5ff00a74ccb984498070d9930a7944c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_stringStringDictionary:
-    m_keys: []
-    m_values: []
-  m_sceneUIRoster:
-    m_keys: []
-    m_values: []
-  m_sceneCollisionRoster:
+  m_sceneChangeRoster:
     m_keys: []
     m_values: []
 --- !u!1 &1239082552
@@ -972,7 +968,8 @@ GameObject:
   - component: {fileID: 1318206112}
   - component: {fileID: 1318206116}
   - component: {fileID: 1318206118}
-  - component: {fileID: 1318206117}
+  - component: {fileID: 1318206119}
+  - component: {fileID: 1318206120}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1096,29 +1093,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1318206117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318206111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5ff00a74ccb984498070d9930a7944c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_stringStringDictionary:
-    m_keys: []
-    m_values: []
-  m_sceneUIRoster:
-    m_keys: []
-    m_values: []
-  m_sceneCollisionRoster:
-    m_keys:
-    - {fileID: 1520462531}
-    m_values:
-    - {fileID: 102900000, guid: acedd97cf2f2e744a9ffa31f7076012c, type: 3}
 --- !u!114 &1318206118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,6 +1108,88 @@ MonoBehaviour:
   door1Button: {fileID: 1239082554}
   door2Button: {fileID: 1688234449}
   groundButton: {fileID: 298195979}
+--- !u!114 &1318206119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318206111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa4f6798ffb14f2899732e0bc385b840, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dictionaryComponent: {fileID: 1318206120}
+--- !u!114 &1318206120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318206111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7adf0d48fb0b5c4d9b67447b93ba3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1520462531}
+    - {fileID: 102900000, guid: acedd97cf2f2e744a9ffa31f7076012c, type: 3}
+    - {fileID: 645039529}
+    - {fileID: 102900000, guid: 52bf0ce66faf6d243aecbd310383e457, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SceneChangerDictionary
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.GameObject, UnityEngine.CoreModule],[UnityEditor.SceneAsset,
+        UnityEditor.CoreModule]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
 --- !u!1 &1417947354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1225,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &1417947356
 MonoBehaviour:
   m_ObjectHideFlags: 0

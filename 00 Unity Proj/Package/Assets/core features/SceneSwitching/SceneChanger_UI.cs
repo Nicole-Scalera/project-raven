@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityCommunity.UnitySingleton;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 // This is the SceneChanger_UI class, which inherits from SceneChanger2.cs.

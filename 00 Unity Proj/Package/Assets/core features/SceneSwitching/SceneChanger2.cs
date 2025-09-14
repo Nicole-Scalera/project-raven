@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityCommunity.UnitySingleton;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 // This is the SceneChanger class. When called, it will change
@@ -21,6 +22,7 @@ namespace SceneSwitching_cf
         private Rigidbody rb; // Rigidbody (for collisions)
         protected GameObject otherObject; // Other object the player interacts with
         protected SC_CollisionRoster sceneDictionary; // Reference to the collision dictionary
+        private UnityEvent sceneChangerEvent; // UnityEvent for interactions
         // ================================
 
         // ===== Initialization =====
@@ -35,6 +37,7 @@ namespace SceneSwitching_cf
             // Initialize the scene changer Dictionary
             GetDictionary();
             CheckForClicks();
+            sceneChangerEvent?.Invoke();
         }
         
         // Get the scene dictionary from SceneChangeDictionary.cs

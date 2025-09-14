@@ -34,17 +34,9 @@ namespace SceneSwitching_cf
         };
         // ============================
 
-        // ===== Script References =====
-        private SceneChanger sceneChanger; // SceneChanger.cs
-        // =============================
-
-
         private void Awake()
         {
             rb = gameObject.GetComponent<Rigidbody>(); //  Get the rigidbody component
-
-            // ===== References =====
-            sceneChanger = SceneChanger.Instance; // Access SceneChanger.cs
         }
 
         private void Start()
@@ -101,40 +93,6 @@ namespace SceneSwitching_cf
             // Enable gravity so the player can fall
             rb.useGravity = true;
         }
-
-        // // In a 3D scene, we have attached this script to the Player.
-        // private void OnCollisionEnter(Collision other)
-        // {
-        //     // When the player's collider comes in contact with another
-        //     // object's collider, check the tag of that object.
-        //     switch (other.gameObject.tag)
-        //     {
-        //         // In this scenario, I have set the tags of the two brown cubes
-        //         // as "Door1" and "Door2" to transport them to different scenes
-        //         // You can move the red cube above either object to test it.
-        //         // At runtime, the red cube will hit one of the cubes and load
-        //         // up a different scene.
-        //
-        //         // If they hit an object tagged Door, check the name of that object.
-        //         case "Door":
-        //             switch (other.gameObject.name)
-        //             {
-        //                 case "Door1":
-        //                     sceneChanger.LoadScene("SC_Level1"); // Load SC_Level1.unity
-        //                     break;
-        //                 case "Door2":
-        //                     sceneChanger.LoadScene("MainMenu"); // Load MainMenu.unity
-        //                     break;
-        //             }
-        //
-        //             break;
-        //
-        //         // If they hit an object tagged Ground, print a message.
-        //         case "Ground":
-        //             Debug.Log("Player has hit the ground.");
-        //             break;
-        //     }
-        // }
-
+        
     }
 }

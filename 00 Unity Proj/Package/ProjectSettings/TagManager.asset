@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Door
   - Ground
+  - SceneChangeButton
   layers:
   - Default
   - TransparentFX

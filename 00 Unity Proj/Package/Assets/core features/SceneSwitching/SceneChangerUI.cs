@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
+using Sirenix.Utilities;
 using UnityCommunity.UnitySingleton;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 // This is the SceneChanger_UI class, which inherits from SceneChanger2.cs.
 // It is designed to handle scene changes triggered by UI interactions,
@@ -13,16 +16,30 @@ using UnityEngine.SceneManagement;
 namespace SceneSwitching_cf {
     public class SceneChangerUI : SceneChanger2, ISceneChanger, IClickable
     {
+        
         // =================== Event Methods ===================
         // Check for button clicks in the scene
-        public virtual void CheckForClicks()
+        public override void CheckForClicks()
         {
-            // Handle logic in a derived class
+            // Add listeners to all buttons in the scene
+            foreach (Transform child in transform)
+            {
+                if (child.TryGetComponent<Button>(out Button button) && child.tag == "SceneChangeButton")
+                {
+                    button.onClick.AddListener(() => TaskOnClick(button.gameObject));
+                }
+            }
         }
 
-        public virtual void TaskOnClick(string buttonName)
+        public override void TaskOnClick(GameObject other)
         {
-            // Handle logic in a derived class
+            Debug.Log("TaskOnClick Triggered by " + other.gameObject.name);
+            
+            // Set the otherObject to the UI/collided object
+            otherObject = other.gameObject;
+            
+            // Call CheckForKey to see if it is in the dictionary
+            CheckForKey(otherObject);
         }
         // =====================================================
     }

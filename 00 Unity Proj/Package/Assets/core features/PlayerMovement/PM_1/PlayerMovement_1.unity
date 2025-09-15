@@ -346,7 +346,6 @@ GameObject:
   m_Component:
   - component: {fileID: 694441649}
   - component: {fileID: 694441650}
-  - component: {fileID: 694441651}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -807,7 +806,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &1417947356
 MonoBehaviour:
   m_ObjectHideFlags: 0

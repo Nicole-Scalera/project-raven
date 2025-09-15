@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 // scene changes.
 
 namespace SceneSwitching_cf {
-    public class SceneChanger_UI : SceneChanger2, ISceneChanger, IClickable
+    public class SceneChangerUI : SceneChanger2, ISceneChanger, IClickable
     {
         // =================== Event Methods ===================
         // Check for button clicks in the scene

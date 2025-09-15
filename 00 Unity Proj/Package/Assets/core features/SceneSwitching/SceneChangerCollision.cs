@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 // UI-based scene changes.
 
 namespace SceneSwitching_cf {
-    public class SceneChanger_Collision : SceneChanger2, ISceneChanger, ICollidable
+    public class SceneChangerCollision : SceneChanger2, ISceneChanger, ICollidable
     {
         // =================== Event Methods ===================
         // Checking for collisions in a 3D environment

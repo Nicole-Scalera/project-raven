@@ -115,7 +115,7 @@ namespace SceneSwitching_cf
             // Handle logic in a derived class
         }
 
-        public virtual void TaskOnClick(string buttonName)
+        public virtual void TaskOnClick(GameObject other)
         {
             // Handle logic in a derived class
         }
@@ -187,6 +187,6 @@ namespace SceneSwitching_cf
     public interface IClickable
     {
         void CheckForClicks();
-        void TaskOnClick(string buttonName);
+        void TaskOnClick(GameObject other);
     }
 }

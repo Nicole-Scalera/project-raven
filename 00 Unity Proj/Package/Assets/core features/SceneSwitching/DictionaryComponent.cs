@@ -1,8 +1,15 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.Enumeration;
 using Sirenix.Serialization;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+
+// This component will serialize dictionaries in the Inspector whilst ensuring that they
+// still inherit from MonoBehaviour. The logic is then passed into the attached Scene Changer
+// file, whether that be for UI or Collision-based scene changes.
 
 namespace SceneSwitching_cf
 {
@@ -10,34 +17,18 @@ namespace SceneSwitching_cf
 #if UNITY_EDITOR // Editor namespaces can only be used in the editor.
     using Sirenix.OdinInspector.Editor.Examples;
 #endif
-
-    [InfoBox(
-        "This component will serialize dictionaries in the Inspector whilst ensuring that they still inherit from MonoBehaviour.")]
+    
     public class DictionaryComponent : SerializedMonoBehaviour
     {
-        [InfoBox(
-            "In order to serialize dictionaries, all we need to do is to inherit our class from SerializedMonoBehaviour.")]
-        [DictionaryDrawerSettings(KeyLabel = "Custom Key Name", ValueLabel = "Custom Value Label")]
+        [DetailedInfoBox("How to Use?",
+        "This Dictionary Component is split into two parts: key & value. The key box should be filled with" +
+        "the GameObject that the player will interact with (collision or UI). The value box should be filled with the" +
+        "SceneAsset that you want to switch to. Remember to click Add! These will be passed into the corresponding" +
+        "scene changer script that is also attached to the object.")]
+        [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "SceneAsset")]
         public Dictionary<GameObject, SceneAsset> SceneChangerDictionary = new Dictionary<GameObject, SceneAsset>();
-
-        // private static readonly GameObject[] _gameObjects = new GameObject[3]
-        // {
-        //     new GameObject("GameObject"),
-        //     new GameObject("AnotherGameObject"),
-        //     new GameObject("ThirdGameObject")
-        // };
-
-#if UNITY_EDITOR // Editor-related code must be excluded from builds
-        [OnInspectorInit]
-        private void CreateData()
-        {
-            // SceneChangerDictionary = new Dictionary<GameObject, SceneAsset>()
-            // {
-            //     { new GameObject("GameObject"), new SceneAsset("Scene") }
-            // };
-
-        }
-#endif
-
     }
+    
+
+
 }

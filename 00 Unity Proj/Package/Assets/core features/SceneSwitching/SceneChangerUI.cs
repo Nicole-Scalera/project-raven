@@ -8,13 +8,13 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-// This is the SceneChanger_UI class, which inherits from SceneChanger2.cs.
+// This is the SceneChanger_UI class, which inherits from SceneChanger.cs.
 // It is designed to handle scene changes triggered by UI interactions,
 // such as button clicks. See SceneChanger_Collision.cs for collision-based
 // scene changes.
 
 namespace SceneSwitching_cf {
-    public class SceneChangerUI : SceneChanger2, ISceneChanger, IClickable
+    public class SceneChangerUI : SceneChanger, ISceneChanger, IClickable
     {
         
         // =================== Event Methods ===================

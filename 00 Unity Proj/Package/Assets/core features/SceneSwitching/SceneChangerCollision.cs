@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 // This is the SceneChanger_Collision class, which inherits from
-// SceneChanger2.cs. It is designed to handle scene changes triggered
+// SceneChanger.cs. It is designed to handle scene changes triggered
 // by collision-based interactions. See SceneChanger_UI.cs for
 // UI-based scene changes.
 
 namespace SceneSwitching_cf {
-    public class SceneChangerCollision : SceneChanger2, ISceneChanger, ICollidable
+    public class SceneChangerCollision : SceneChanger, ISceneChanger, ICollidable
     {
         // =================== Event Methods ===================
         // Checking for collisions in a 3D environment

@@ -1,22 +1,25 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using SceneSwitching_cf;
 
-public class DestructionZone : MonoBehaviour
+namespace ConveyorBelt_cf
 {
-
-    public GameObject path;
-
-    //When an collider hits the destruction zone it removes the gameobjct
-    //from the boxes array and then destroys the object
-    private void OnCollisionEnter(Collision collision)
+    public class DestructionZone : MonoBehaviour
     {
-        
-        Debug.Log("Entered: " +  collision.gameObject.name);
 
-        path.GetComponent<BeltBehavior>().RemoveBox(collision.gameObject);
+        public GameObject path;
 
-        Destroy(collision.gameObject);
-        
+        //When an collider hits the destruction zone it removes the gameobjct
+        //from the boxes array and then destroys the object
+        private void OnCollisionEnter(Collision collision)
+        {
+
+            Debug.Log("Entered: " + collision.gameObject.name);
+
+            path.GetComponent<BeltBehavior>().RemoveBox(collision.gameObject);
+
+            Destroy(collision.gameObject);
+
+        }
     }
-
 }

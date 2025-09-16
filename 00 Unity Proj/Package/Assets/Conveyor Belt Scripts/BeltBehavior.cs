@@ -15,68 +15,72 @@ using UnityEngine;
  * 
  */
 
-public class BeltBehavior : MonoBehaviour
+namespace ConveyorBelt_cf
 {
-
-    public List<GameObject> boxes = new List<GameObject>();
-
-    public Node[] pathNodes;
-
-    public float moveSpeed = 1f;
-
-    static Vector3 currentPosition;
-
-    private int currentNode;
-
-    private float boxSpeed;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class BeltBehavior : MonoBehaviour
     {
 
-        //Fills the array with the current node children of the path
-        pathNodes = GetComponentsInChildren<Node>();
+        public List<GameObject> boxes = new List<GameObject>();
 
-        CheckNode();
+        public Node[] pathNodes;
 
-    }
+        public float moveSpeed = 1f;
 
-    void CheckNode()
-    {
+        static Vector3 currentPosition;
 
-        //reset speed temporarily to 0 and assign new node position to current position
-        boxSpeed = 0;
-        currentPosition = pathNodes[currentNode].transform.position;
+        private int currentNode;
 
-    }
+        private float boxSpeed;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-
-        foreach(GameObject box in boxes)
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
         {
 
-            //boxSpeed is assigned to the time between frame updates and moveSpeed
-            boxSpeed = Time.deltaTime * moveSpeed;
+            //Fills the array with the current node children of the path
+            pathNodes = GetComponentsInChildren<Node>();
 
-            //if the box position is not at the current goal node position the box moves closer towards the goal node position
-            //if it is the current goal node position the currentNode variable increments and CheckNode() gets called to update
-            //the next goal node position
+            CheckNode();
 
-            if (box.transform.position != currentPosition)
+        }
+
+        void CheckNode()
+        {
+
+            //reset speed temporarily to 0 and assign new node position to current position
+            boxSpeed = 0;
+            currentPosition = pathNodes[currentNode].transform.position;
+
+        }
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+
+            foreach (GameObject box in boxes)
             {
 
-                box.transform.position = Vector3.MoveTowards(box.transform.position, currentPosition, boxSpeed);
+                //boxSpeed is assigned to the time between frame updates and moveSpeed
+                boxSpeed = Time.deltaTime * moveSpeed;
 
-            }
-            else
-            {
-                if (currentNode < pathNodes.Length - 1)
+                //if the box position is not at the current goal node position the box moves closer towards the goal node position
+                //if it is the current goal node position the currentNode variable increments and CheckNode() gets called to update
+                //the next goal node position
+
+                if (box.transform.position != currentPosition)
                 {
 
-                    currentNode++;
-                    CheckNode();
+                    box.transform.position = Vector3.MoveTowards(box.transform.position, currentPosition, boxSpeed);
+
+                }
+                else
+                {
+                    if (currentNode < pathNodes.Length - 1)
+                    {
+
+                        currentNode++;
+                        CheckNode();
+
+                    }
 
                 }
 
@@ -84,25 +88,25 @@ public class BeltBehavior : MonoBehaviour
 
         }
 
-    }
 
+        //Takes in a gameobject and adds it to the boxes array
+        // TODO: Check for tag to confirm its a box
+        public void AddBox(GameObject newBox)
+        {
 
-    //Takes in a gameobject and adds it to the boxes array
-    // TODO: Check for tag to confirm its a box
-    public void AddBox(GameObject newBox)
-    {
+            boxes.Add(newBox);
 
-        boxes.Add(newBox);
+            Debug.Log("New Box Added: " + newBox.name);
 
-        Debug.Log("New Box Added: " + newBox.name);
+        }
 
-    }
+        //Takes in a box gameobject and removes it from the list
+        public void RemoveBox(GameObject newBox)
+        {
 
-    //Takes in a box gameobject and removes it from the list
-    public void RemoveBox(GameObject newBox)
-    {
+            boxes.Remove(newBox);
 
-        boxes.Remove(newBox);
+        }
 
     }
 

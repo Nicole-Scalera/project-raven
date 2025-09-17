@@ -101,6 +101,15 @@ namespace BasicMovement2_cf
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce2a550c-a609-41ac-92e0-d6c8537b90f7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -180,6 +189,17 @@ namespace BasicMovement2_cf
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b27e028-e7b1-4e0e-820e-016a8039eff5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -189,6 +209,7 @@ namespace BasicMovement2_cf
             // PlayerMove
             m_PlayerMove = asset.FindActionMap("PlayerMove", throwIfNotFound: true);
             m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
+            m_PlayerMove_Interact = m_PlayerMove.FindAction("Interact", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
@@ -270,6 +291,7 @@ namespace BasicMovement2_cf
         private readonly InputActionMap m_PlayerMove;
         private List<IPlayerMoveActions> m_PlayerMoveActionsCallbackInterfaces = new List<IPlayerMoveActions>();
         private readonly InputAction m_PlayerMove_Move;
+        private readonly InputAction m_PlayerMove_Interact;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerMove".
         /// </summary>
@@ -285,6 +307,10 @@ namespace BasicMovement2_cf
             /// Provides access to the underlying input action "PlayerMove/Move".
             /// </summary>
             public InputAction @Move => m_Wrapper.m_PlayerMove_Move;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMove/Interact".
+            /// </summary>
+            public InputAction @Interact => m_Wrapper.m_PlayerMove_Interact;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -314,6 +340,9 @@ namespace BasicMovement2_cf
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
 
             /// <summary>
@@ -328,6 +357,9 @@ namespace BasicMovement2_cf
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
             }
 
             /// <summary>
@@ -375,6 +407,13 @@ namespace BasicMovement2_cf
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMove(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }

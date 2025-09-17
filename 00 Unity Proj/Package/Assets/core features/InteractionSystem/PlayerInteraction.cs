@@ -16,6 +16,18 @@ public class PlayerInteraction : MonoBehaviour
     public float distance1;
     public float distance2;
 
+    public void FixedUpdate()
+    {
+        
+        if(clues.Count != 0)
+        {
+
+            clues = DistanceSort(clues);
+
+        }
+
+    }
+
     public void PlayerInteract(InputAction.CallbackContext context)
     {
 
@@ -43,8 +55,6 @@ public class PlayerInteraction : MonoBehaviour
 
             clues.Add(other.gameObject);
 
-            clues = DistanceSort(clues);
-
         }
 
         foreach (var clue in clues)
@@ -65,7 +75,6 @@ public class PlayerInteraction : MonoBehaviour
         {
 
             clues.Remove(other.gameObject);
-            clues = DistanceSort(clues);
 
         }
 

@@ -9,7 +9,7 @@ public class InteractableClue : MonoBehaviour
     public string InteractedWith()
     {
 
-        interactedWith = true;
+        interactedWith = true; 
         return clueName;
 
     }

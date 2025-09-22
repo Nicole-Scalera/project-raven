@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -12,6 +13,18 @@ public class PlayerInteraction : MonoBehaviour
     //     ===== Clues List ======
 
     public List<GameObject> clues = new List<GameObject>();
+
+    //========================================================
+
+    //     ==== Active Box ====
+
+    public GameObject activeBox;
+
+    //========================================================
+
+    //     ==== Interactable List ====
+
+    public List<GameObject> interactableObjects = new List<GameObject>();
 
     //========================================================
 
@@ -48,18 +61,25 @@ public class PlayerInteraction : MonoBehaviour
 
         Debug.Log("Interacting");
 
-        if (clues.Count > 0)
+        DistanceSort(interactableObjects);
+
+        if (interactableObjects[0].GetComponent<InteractableClue>() != null)
         {
 
-            if (!clues[0].GetComponent<InteractableClue>().interactedWith)
-            {
+            interactableObjects[0].GetComponent<InteractableClue>().Interaction();
 
-                Debug.Log(clues[0].GetComponent<InteractableClue>().InteractedWith());
-
-            }
-            
         }
-    
+        else if (interactableObjects[0].GetComponent<InteractableBox>() != null)
+        {
+
+            activeBox = interactableObjects[0];
+
+            activeBox.GetComponent<InteractableBox>().Interaction();
+
+            activeBox.GetComponent<Rigidbody>().useGravity = !activeBox.GetComponent<InteractableBox>().interactedWith;
+
+        }
+
     }
 
     /*
@@ -78,6 +98,16 @@ public class PlayerInteraction : MonoBehaviour
         {
 
             clues.Add(other.gameObject);
+
+            interactableObjects.Add(other.gameObject);
+
+        }
+        else if (other.gameObject.GetComponent<InteractableBox>() != null)
+        {
+
+            activeBox = other.gameObject;
+
+            interactableObjects.Add(other.gameObject);
 
         }
 
@@ -99,7 +129,14 @@ public class PlayerInteraction : MonoBehaviour
         {
 
             clues.Remove(other.gameObject);
+            interactableObjects.Remove(other.gameObject);
 
+        }
+        else if (other.gameObject.GetComponent<InteractableBox>() != null)
+        {
+
+            activeBox = null;
+            interactableObjects.Remove(other.gameObject);
         }
 
     }
@@ -131,10 +168,25 @@ public class PlayerInteraction : MonoBehaviour
 
             float distance = (playerTransform.position - list[i].transform.position).sqrMagnitude;
 
-            if (list[i].GetComponent<InteractableClue>().interactedWith)
+            if (list[i].GetComponent<InteractableClue>() != null)
+            {
+                if (list[i].GetComponent<InteractableClue>().interactedWith)
+                {
+
+                    sortedList.Add(list[i]);
+
+                }
+
+            }
+            else if (list[i].GetComponent<InteractableBox>() != null)
             {
 
-                sortedList.Add(list[i]);
+                if (list[i].GetComponent<InteractableBox>().interactedWith)
+                {
+
+                    sortedList.Insert(0, list[i]);
+
+                }
 
             }
             else if (distance < lastDistance)
@@ -145,14 +197,12 @@ public class PlayerInteraction : MonoBehaviour
                 lastDistance = distance;
 
             }
-            else 
-            { 
-            
-                sortedList.Add(list[i]);
-            
-            }
+            else
+            {
 
-                
+                sortedList.Add(list[i]);
+
+            }
 
         }
 

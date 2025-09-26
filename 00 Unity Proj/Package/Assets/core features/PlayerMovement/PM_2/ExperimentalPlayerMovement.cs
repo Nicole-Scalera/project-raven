@@ -10,7 +10,7 @@ namespace BasicMovement2_cf
 
         // ========== Components ==========
         [Header("Components")]
-        public Rigidbody rb; // Rigidbody
+        private Rigidbody rb; // Rigidbody
         // ================================
 
         // ========== Basic Movement ==========
@@ -41,6 +41,14 @@ namespace BasicMovement2_cf
         public float maxFallSpeed = 18f;
         public float fallMultiplier = 1f;
         // =============================
+        
+        private void Start()
+        {
+            if (rb == null)
+            {
+                rb = GetComponent<Rigidbody>();
+            }
+        }
         
         private void Update()
         {

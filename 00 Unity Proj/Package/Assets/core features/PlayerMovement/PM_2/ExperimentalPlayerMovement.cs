@@ -76,8 +76,6 @@ namespace BasicMovement2_cf
                 if (context.performed && context.ReadValue<Vector3>().y != 0)
                 {
 
-                    Debug.Log("JUMP");
-
                     rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpPower, rb.linearVelocity.z);
                     jumpsRemaining--;
 

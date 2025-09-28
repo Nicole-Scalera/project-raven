@@ -29,13 +29,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.collab-proxy": {
-      "version": "2.9.3",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
     "com.unity.collections": {
       "version": "2.5.7",
       "depth": 0,
@@ -228,7 +221,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "9416bf62bb893a1d416ff3c5ef83275164373f11"
+      "hash": "9184522a79adfc68c7da90fc03cd4cc66a3ece4a"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",

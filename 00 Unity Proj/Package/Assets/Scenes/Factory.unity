@@ -1162,6 +1162,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 5.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8207108900114894757, guid: 5681d7964bd3afb478a1f1be2895d64b, type: 3}
+      propertyPath: boxPrefabs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207108900114894757, guid: 5681d7964bd3afb478a1f1be2895d64b, type: 3}
+      propertyPath: 'boxPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: 3e83d196a57ee944e9f52d87b434d1ec, type: 3}
+    - target: {fileID: 8207108900114894757, guid: 5681d7964bd3afb478a1f1be2895d64b, type: 3}
+      propertyPath: 'boxPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 919132149155446097, guid: cebfe3c3b591a214083a660da7c9579f, type: 3}
     - target: {fileID: 9017113397761941008, guid: 5681d7964bd3afb478a1f1be2895d64b, type: 3}
       propertyPath: m_Name
       value: Conveyor Belt

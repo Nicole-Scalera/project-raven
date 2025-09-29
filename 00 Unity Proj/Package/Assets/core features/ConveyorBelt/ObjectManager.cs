@@ -49,7 +49,16 @@ namespace ConveyorBelt_cf
 
                 //TODO: figure out a way to add a tag to the instantiate
 
-                GameObject newBox = Instantiate(boxPrefabs[0], spawnPosition, Quaternion.identity);
+                GameObject newBox = Instantiate(boxPrefabs[Random.Range(0,boxPrefabs.Length-1)], spawnPosition, Quaternion.identity);
+
+                newBox.transform.localScale = new Vector3(100, 100, 100);
+
+                newBox.AddComponent<Rigidbody>();
+                newBox.GetComponent<Rigidbody>().useGravity = true;
+
+                newBox.AddComponent<BoxCollider>();
+
+                newBox.AddComponent<InteractableBox>();
 
                 path.GetComponent<BeltBehavior>().AddBox(newBox);
 

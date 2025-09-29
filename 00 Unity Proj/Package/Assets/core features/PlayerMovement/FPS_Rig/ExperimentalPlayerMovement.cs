@@ -71,6 +71,8 @@ namespace FPS_Rig_cf
         {
             // Updates linearVelocity with new (inputted) values
             rb.linearVelocity = new Vector3(xMovement * moveSpeed, rb.linearVelocity.y, zMovement * moveSpeed);
+            rb.transform.rotation = Quaternion.Euler(rotationX * lookDirection.x, rotationY * lookDirection.y, 0);
+            camera.transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
 
             // Adjust the camera angle
             // transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
@@ -88,7 +90,6 @@ namespace FPS_Rig_cf
             // Prints the input action and its details
             // Debug.Log(context.action.ToString());
             camera.transform.position = new Vector3(transform.position.x, player.transform.position.y + 3.17f, transform.position.z);
-            camera.transform.localEulerAngles = new Vector3(-rotationY, 0, 0);
 
             // Reads the X (left/right) and Z (forward/back) variables from the
             // Vector3 & assigns them to the corresponding movement variables

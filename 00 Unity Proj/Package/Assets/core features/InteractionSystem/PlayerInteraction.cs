@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using NUnit.Framework;
+using Sirenix.Utilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -61,23 +62,26 @@ public class PlayerInteraction : MonoBehaviour
 
         Debug.Log("Interacting");
 
-        DistanceSort(interactableObjects);
-
-        if (interactableObjects[0].GetComponent<InteractableClue>() != null)
+        if (!interactableObjects.IsNullOrEmpty())
         {
+            DistanceSort(interactableObjects);
 
-            interactableObjects[0].GetComponent<InteractableClue>().Interaction();
+            if (interactableObjects[0].GetComponent<InteractableClue>() != null)
+            {
 
-        }
-        else if (interactableObjects[0].GetComponent<InteractableBox>() != null)
-        {
+                interactableObjects[0].GetComponent<InteractableClue>().Interaction();
 
-            activeBox = interactableObjects[0];
+            }
+            else if (interactableObjects[0].GetComponent<InteractableBox>() != null)
+            {
 
-            activeBox.GetComponent<InteractableBox>().Interaction();
+                activeBox = interactableObjects[0];
 
-            activeBox.GetComponent<Rigidbody>().useGravity = !activeBox.GetComponent<InteractableBox>().interactedWith;
+                activeBox.GetComponent<InteractableBox>().Interaction();
 
+                activeBox.GetComponent<Rigidbody>().useGravity = !activeBox.GetComponent<InteractableBox>().interactedWith;
+
+            }
         }
 
     }

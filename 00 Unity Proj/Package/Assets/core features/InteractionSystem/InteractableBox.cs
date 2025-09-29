@@ -1,3 +1,4 @@
+using ConveyorBelt_cf;
 using UnityEngine;
 
 public class InteractableBox : MonoBehaviour
@@ -9,11 +10,15 @@ public class InteractableBox : MonoBehaviour
 
     public GameObject player;
 
+    public GameObject path;
+
 
     private void Start()
     {
     
-        sortNum = Random.Range(1,2);
+        sortNum = Random.Range(1,5);
+        player = GameObject.FindGameObjectWithTag("Player");
+        path = GameObject.FindGameObjectWithTag("Path");
 
     }
 
@@ -36,6 +41,7 @@ public class InteractableBox : MonoBehaviour
 
         //Debug.Log(interactedWith);
         interactedWith = !interactedWith;
+        path.gameObject.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
 
     }
 

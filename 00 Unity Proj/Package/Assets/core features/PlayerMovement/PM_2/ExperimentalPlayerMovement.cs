@@ -68,8 +68,9 @@ namespace BasicMovement2_cf
 
             // Reads the X (left/right) and Z (forward/back) variables from the
             // Vector3 & assigns them to the corresponding movement variables
-            xMovement = context.ReadValue<Vector3>().x;
-            zMovement = context.ReadValue<Vector3>().z;
+            // Multiplied by -1 to invert the direction (temporary solution)
+            xMovement = (context.ReadValue<Vector3>().x) * -1;
+            zMovement = (context.ReadValue<Vector3>().z) * -1;
 
             if (isGrounded && jumpsRemaining > 0)
             {

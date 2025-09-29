@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityCommunity.UnitySingleton;
+using UnityEngine.UIElements;
 
 /*
  * 
@@ -17,7 +18,7 @@ namespace ConveyorBelt_cf
     public class ObjectManager : MonoBehaviour
     {
 
-        private Vector3 spawnPosition = new Vector3(20.0f, 5.5f, 0.0f);
+        private Vector3 spawnPosition;
 
         [Header("Prefabs")] public GameObject[] boxPrefabs;
 
@@ -25,6 +26,13 @@ namespace ConveyorBelt_cf
         public float maxTime = 5;
 
         [Header("Pathing")] public GameObject path;
+
+        private void Awake()
+        {
+            
+            spawnPosition = transform.position;
+
+        }
 
         private void Update()
         {

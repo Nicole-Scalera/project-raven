@@ -19,31 +19,24 @@ namespace FPS_Rig_cf
 
         // ========== Components ==========
         [Header("Components")]
-        public Rigidbody rb; // Rigidbody
-        [SerializeField] public PlayerControls playerControls;
-#if ENABLE_INPUT_SYSTEM
-        private PlayerInput _playerInput;
-#endif
         private Player player; // Player.cs
-        public GameObject camera; // Main Camera
-        //private StarterAssetsInputs _input;
-        private GameObject mainCamera;
-        public Transform orientation;
-        public CapsuleCollider playerCapsule; // Capsule Collider
+        private PlayerControls playerControls; // PlayerControls.cs
+        private CapsuleCollider playerCapsule; // Capsule Collider
+        private PlayerInputProcessor inputProcessor; // PlayerInputProcessor.cs
+        private PlayerInput playerInput; // PlayerInput component
+        public CharacterController characterController; // CharacterController component
         // ================================
 
         // ========== Basic Movement ==========
         [Header("Move Variables")]
-        public float moveSpeed = 5.0f;
+        private float playerSpeed; // The current speed of the Player
+        private float SpeedChangeRate = 10.0f; // Acceleration rate
+        public float moveSpeed = 5.0f; // Normal walking speed
+        public float sprintSpeed = 7.0f; // Sprinting speed
         public Vector3 movement; //stores the movement input
         public float xMovement; //left and right
         public float zMovement; //forward and back
         public float yMovement;
-
-        [Header("Orientation Variables")]
-        public Vector2 lookDirection;
-        private float rotationX;
-        private float rotationY;
         // ====================================
 
         // ========== Jumping ==========
@@ -107,38 +100,41 @@ namespace FPS_Rig_cf
             get
             {
                 #if ENABLE_INPUT_SYSTEM
-                    return _playerInput.currentControlScheme == "KeyboardMouse";
+                    return playerInput.currentControlScheme == "KeyboardMouse";
                 #else
 				    return false;
                 #endif
             }
         }
         // =================================
-        
+
         private void Awake()
         {
             // ===== Player =====
             player = Player.Instance; // Access Player.cs
             playerControls = Player.Controls; // Access movement controls
-            _playerInput = GetComponent<PlayerInput>(); // Access PlayerInput component
-            playerCapsule = GetComponent<CapsuleCollider>();
         }
         
+
         private void Start()
         {
+            GetPlayerInfo(); // Get the Player's info
+            
+            // Get the PlayerInput component
             #if ENABLE_INPUT_SYSTEM
-                _playerInput = GetComponent<PlayerInput>();
+                playerInput = GetComponent<PlayerInput>();
             #else
 			    Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
             #endif
-            
-            if (rb == null)
-            {
-                rb = GetComponent<Rigidbody>();
-            }
-
-            // Get the rotation of the 
-            orientation = playerCapsule.transform;
+        }
+        
+        private void GetPlayerInfo()
+        {
+            // Get the following information about the Player
+            playerInput = player.GetPlayerInput(); // PlayerInput Component
+            playerCapsule = player.GetPlayerCollider(); // Capsule Collider
+            characterController = GetComponent<CharacterController>(); // CharacterController component
+            inputProcessor = GetComponent<PlayerInputProcessor>(); // PlayerInputProcessor.cs
         }
         
         private void FixedUpdate()
@@ -160,64 +156,70 @@ namespace FPS_Rig_cf
         public void PlayerMove()
         {
             // Read movement input
-            movement = playerControls.PlayerMove.Move.ReadValue<Vector3>();
-            xMovement = playerControls.PlayerMove.Move.ReadValue<Vector3>().x;
-            zMovement = playerControls.PlayerMove.Move.ReadValue<Vector3>().z;
-            jumpMovement = playerControls.PlayerMove.Move.ReadValue<Vector3>().y;
+            movement = playerControls.Player.Move.ReadValue<Vector3>();
+            xMovement = playerControls.Player.Move.ReadValue<Vector3>().x;
+            zMovement = playerControls.Player.Move.ReadValue<Vector3>().z;
+            jumpMovement = playerControls.Player.Move.ReadValue<Vector3>().y;
             yMovement = jumpMovement;
             
-            //Don't multiply mouse input by Time.deltaTime
-            float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+            // set target speed based on move speed, sprint speed and if sprint is pressed
+            float targetSpeed = inputProcessor.sprint ? sprintSpeed : moveSpeed;
 
-            // Read look input (vertical)
-            _cinemachineTargetPitch += playerControls.PlayerMove.Look.ReadValue<Vector2>().y * RotationSpeed * deltaTimeMultiplier;
-            // Read look input (horizontal)
-            _rotationVelocity = playerControls.PlayerMove.Look.ReadValue<Vector2>().x * RotationSpeed * deltaTimeMultiplier;
-            
-            //moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-            
-            // clamp our pitch rotation
-            _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+            // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
-            // Update Cinemachine camera target pitch
-            CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+            // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+            // if there is no input, set the target speed to 0
+            if (playerControls.Player.Move.ReadValue<Vector3>() == Vector3.zero) targetSpeed = 0.0f;
 
-            // rotate the player left and right
-            transform.Rotate(Vector3.up * _rotationVelocity);
-            
-            // // normalise input direction
-            // Vector3 inputDirection = new Vector3(xMovement, 0.0f, yMovement).normalized;
-            //
-            // rb.MovePosition(rb.position + moveDirection * moveSpeed * Time.fixedDeltaTime);
-            
-            //_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-            //rb.Move(inputDirection.normalized * (moveSpeed * Time.deltaTime)3 + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-            //rb.MovePosition(transform.position + inputDirection.normalized * (moveSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-            
-            // Prints the input action and its details
-            // Debug.Log(context.action.ToString());
-            // camera.transform.position = new Vector3(transform.position.x, player.transform.position.y + 3.17f, transform.position.z);
+            // a reference to the players current horizontal velocity
+            float currentHorizontalSpeed = new Vector3(characterController.velocity.x, 0.0f, characterController.velocity.z).magnitude;
 
-            // Reads the X (left/right) and Z (forward/back) variables from the
-            // Vector3 & assigns them to the corresponding movement variables
+            float speedOffset = 0.1f;
+            float inputMagnitude = inputProcessor.analogMovement ? inputProcessor.move.magnitude : 1f;
 
+            // accelerate or decelerate to target speed
+            if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
+            {
+                // creates curved result rather than a linear one giving a more organic speed change
+                // note T in Lerp is clamped, so we don't need to clamp our speed
+                playerSpeed = Mathf.Lerp(currentHorizontalSpeed, targetSpeed * inputMagnitude, Time.deltaTime * SpeedChangeRate);
+
+                // round speed to 3 decimal places
+                playerSpeed = Mathf.Round(playerSpeed * 1000f) / 1000f;
+            }
+            else
+            {
+                playerSpeed = targetSpeed;
+            }
+
+            // normalise input direction
+            Vector3 inputDirection = new Vector3(inputProcessor.move.x, 0.0f, inputProcessor.move.y).normalized;
+
+            // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+            // if there is a move input rotate player when the player is moving
+            if (inputProcessor.move != Vector3.zero)
+            {
+                // move
+                inputDirection = transform.right * inputProcessor.move.x + transform.forward * inputProcessor.move.y;
+            }
+
+            // move the player
+            characterController.Move(inputDirection.normalized * (playerSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
             
-            // rotationX = playerControls.PlayerMove.Look.ReadValue<Vector2>().x;
-            // rotationY = playerControls.PlayerMove.Look.ReadValue<Vector2>().y;
         }
         
         // Handles the rotation of the camera
         private void CameraRotation()
         {
             // if there is an input
-            if (playerControls.PlayerMove.Look.ReadValue<Vector2>().sqrMagnitude >= threshold)
+            if (playerControls.Player.Look.ReadValue<Vector2>().sqrMagnitude >= threshold)
             {
                 //Don't multiply mouse input by Time.deltaTime
                 float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 				
                 //_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
-                _cinemachineTargetPitch += playerControls.PlayerMove.Look.ReadValue<Vector2>().y * RotationSpeed * deltaTimeMultiplier;
-                _rotationVelocity = playerControls.PlayerMove.Look.ReadValue<Vector2>().x * RotationSpeed * deltaTimeMultiplier;
+                _cinemachineTargetPitch += playerControls.Player.Look.ReadValue<Vector2>().y * RotationSpeed * deltaTimeMultiplier;
+                _rotationVelocity = playerControls.Player.Look.ReadValue<Vector2>().x * RotationSpeed * deltaTimeMultiplier;
 
                 // clamp our pitch rotation
                 _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
@@ -243,7 +245,7 @@ namespace FPS_Rig_cf
             {
                 if (jumpMovement != 0)
                 {
-                    rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpPower, rb.linearVelocity.z);
+                    // Apply jump velocity
                     //camera.transform.position = new Vector3(transform.position.x, player.transform.position.y + 3.17f, transform.position.z);
                     jumpsRemaining--;
                 }

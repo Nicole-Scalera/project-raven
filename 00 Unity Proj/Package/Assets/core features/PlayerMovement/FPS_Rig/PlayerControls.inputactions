@@ -3,7 +3,7 @@
     "name": "PlayerControls",
     "maps": [
         {
-            "name": "PlayerMove",
+            "name": "Player",
             "id": "c8ec507e-0067-41a7-b613-ea69d5cf5f27",
             "actions": [
                 {
@@ -28,6 +28,15 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "ce2a550c-a609-41ac-92e0-d6c8537b90f7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Sprint",
+                    "type": "PassThrough",
+                    "id": "0c9fecc7-914c-4046-be85-e18bcb816901",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -131,6 +140,28 @@
                     "processors": "InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)",
                     "groups": "Gamepad",
                     "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9973cf6-a5cc-477e-a503-16345d1a8e06",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "46dcc558-7f22-4c55-b0c7-d05a1ae3e95d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Sprint",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

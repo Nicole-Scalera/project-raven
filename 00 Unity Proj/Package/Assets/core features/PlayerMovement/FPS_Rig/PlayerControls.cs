@@ -91,7 +91,7 @@ namespace FPS_Rig_cf
     ""name"": ""PlayerControls"",
     ""maps"": [
         {
-            ""name"": ""PlayerMove"",
+            ""name"": ""Player"",
             ""id"": ""c8ec507e-0067-41a7-b613-ea69d5cf5f27"",
             ""actions"": [
                 {
@@ -116,6 +116,15 @@ namespace FPS_Rig_cf
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""ce2a550c-a609-41ac-92e0-d6c8537b90f7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Sprint"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""0c9fecc7-914c-4046-be85-e18bcb816901"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -224,6 +233,28 @@ namespace FPS_Rig_cf
                 },
                 {
                     ""name"": """",
+                    ""id"": ""f9973cf6-a5cc-477e-a503-16345d1a8e06"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46dcc558-7f22-4c55-b0c7-d05a1ae3e95d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Sprint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4b27e028-e7b1-4e0e-820e-016a8039eff5"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -238,16 +269,17 @@ namespace FPS_Rig_cf
     ],
     ""controlSchemes"": []
 }");
-            // PlayerMove
-            m_PlayerMove = asset.FindActionMap("PlayerMove", throwIfNotFound: true);
-            m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
-            m_PlayerMove_Look = m_PlayerMove.FindAction("Look", throwIfNotFound: true);
-            m_PlayerMove_Interact = m_PlayerMove.FindAction("Interact", throwIfNotFound: true);
+            // Player
+            m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+            m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+            m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+            m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+            m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
         {
-            UnityEngine.Debug.Assert(!m_PlayerMove.enabled, "This will cause a leak and performance issues, PlayerControls.PlayerMove.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerControls.Player.Disable() has not been called.");
         }
 
         /// <summary>
@@ -320,39 +352,44 @@ namespace FPS_Rig_cf
             return asset.FindBinding(bindingMask, out action);
         }
 
-        // PlayerMove
-        private readonly InputActionMap m_PlayerMove;
-        private List<IPlayerMoveActions> m_PlayerMoveActionsCallbackInterfaces = new List<IPlayerMoveActions>();
-        private readonly InputAction m_PlayerMove_Move;
-        private readonly InputAction m_PlayerMove_Look;
-        private readonly InputAction m_PlayerMove_Interact;
+        // Player
+        private readonly InputActionMap m_Player;
+        private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
+        private readonly InputAction m_Player_Move;
+        private readonly InputAction m_Player_Look;
+        private readonly InputAction m_Player_Interact;
+        private readonly InputAction m_Player_Sprint;
         /// <summary>
-        /// Provides access to input actions defined in input action map "PlayerMove".
+        /// Provides access to input actions defined in input action map "Player".
         /// </summary>
-        public struct PlayerMoveActions
+        public struct PlayerActions
         {
             private @PlayerControls m_Wrapper;
 
             /// <summary>
             /// Construct a new instance of the input action map wrapper class.
             /// </summary>
-            public PlayerMoveActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            public PlayerActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
             /// <summary>
-            /// Provides access to the underlying input action "PlayerMove/Move".
+            /// Provides access to the underlying input action "Player/Move".
             /// </summary>
-            public InputAction @Move => m_Wrapper.m_PlayerMove_Move;
+            public InputAction @Move => m_Wrapper.m_Player_Move;
             /// <summary>
-            /// Provides access to the underlying input action "PlayerMove/Look".
+            /// Provides access to the underlying input action "Player/Look".
             /// </summary>
-            public InputAction @Look => m_Wrapper.m_PlayerMove_Look;
+            public InputAction @Look => m_Wrapper.m_Player_Look;
             /// <summary>
-            /// Provides access to the underlying input action "PlayerMove/Interact".
+            /// Provides access to the underlying input action "Player/Interact".
             /// </summary>
-            public InputAction @Interact => m_Wrapper.m_PlayerMove_Interact;
+            public InputAction @Interact => m_Wrapper.m_Player_Interact;
+            /// <summary>
+            /// Provides access to the underlying input action "Player/Sprint".
+            /// </summary>
+            public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
-            public InputActionMap Get() { return m_Wrapper.m_PlayerMove; }
+            public InputActionMap Get() { return m_Wrapper.m_Player; }
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
             public void Enable() { Get().Enable(); }
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -360,9 +397,9 @@ namespace FPS_Rig_cf
             /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
             public bool enabled => Get().enabled;
             /// <summary>
-            /// Implicitly converts an <see ref="PlayerMoveActions" /> to an <see ref="InputActionMap" /> instance.
+            /// Implicitly converts an <see ref="PlayerActions" /> to an <see ref="InputActionMap" /> instance.
             /// </summary>
-            public static implicit operator InputActionMap(PlayerMoveActions set) { return set.Get(); }
+            public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
             /// <summary>
             /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
             /// </summary>
@@ -370,11 +407,11 @@ namespace FPS_Rig_cf
             /// <remarks>
             /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
             /// </remarks>
-            /// <seealso cref="PlayerMoveActions" />
-            public void AddCallbacks(IPlayerMoveActions instance)
+            /// <seealso cref="PlayerActions" />
+            public void AddCallbacks(IPlayerActions instance)
             {
-                if (instance == null || m_Wrapper.m_PlayerMoveActionsCallbackInterfaces.Contains(instance)) return;
-                m_Wrapper.m_PlayerMoveActionsCallbackInterfaces.Add(instance);
+                if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
@@ -384,6 +421,9 @@ namespace FPS_Rig_cf
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Sprint.started += instance.OnSprint;
+                @Sprint.performed += instance.OnSprint;
+                @Sprint.canceled += instance.OnSprint;
             }
 
             /// <summary>
@@ -392,8 +432,8 @@ namespace FPS_Rig_cf
             /// <remarks>
             /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
             /// </remarks>
-            /// <seealso cref="PlayerMoveActions" />
-            private void UnregisterCallbacks(IPlayerMoveActions instance)
+            /// <seealso cref="PlayerActions" />
+            private void UnregisterCallbacks(IPlayerActions instance)
             {
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
@@ -404,15 +444,18 @@ namespace FPS_Rig_cf
                 @Interact.started -= instance.OnInteract;
                 @Interact.performed -= instance.OnInteract;
                 @Interact.canceled -= instance.OnInteract;
+                @Sprint.started -= instance.OnSprint;
+                @Sprint.performed -= instance.OnSprint;
+                @Sprint.canceled -= instance.OnSprint;
             }
 
             /// <summary>
-            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerMoveActions.UnregisterCallbacks(IPlayerMoveActions)" />.
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />.
             /// </summary>
-            /// <seealso cref="PlayerMoveActions.UnregisterCallbacks(IPlayerMoveActions)" />
-            public void RemoveCallbacks(IPlayerMoveActions instance)
+            /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
+            public void RemoveCallbacks(IPlayerActions instance)
             {
-                if (m_Wrapper.m_PlayerMoveActionsCallbackInterfaces.Remove(instance))
+                if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
                     UnregisterCallbacks(instance);
             }
 
@@ -422,27 +465,27 @@ namespace FPS_Rig_cf
             /// <remarks>
             /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
             /// </remarks>
-            /// <seealso cref="PlayerMoveActions.AddCallbacks(IPlayerMoveActions)" />
-            /// <seealso cref="PlayerMoveActions.RemoveCallbacks(IPlayerMoveActions)" />
-            /// <seealso cref="PlayerMoveActions.UnregisterCallbacks(IPlayerMoveActions)" />
-            public void SetCallbacks(IPlayerMoveActions instance)
+            /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
+            /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
+            /// <seealso cref="PlayerActions.UnregisterCallbacks(IPlayerActions)" />
+            public void SetCallbacks(IPlayerActions instance)
             {
-                foreach (var item in m_Wrapper.m_PlayerMoveActionsCallbackInterfaces)
+                foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
                     UnregisterCallbacks(item);
-                m_Wrapper.m_PlayerMoveActionsCallbackInterfaces.Clear();
+                m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
                 AddCallbacks(instance);
             }
         }
         /// <summary>
-        /// Provides a new <see cref="PlayerMoveActions" /> instance referencing this action map.
+        /// Provides a new <see cref="PlayerActions" /> instance referencing this action map.
         /// </summary>
-        public PlayerMoveActions @PlayerMove => new PlayerMoveActions(this);
+        public PlayerActions @Player => new PlayerActions(this);
         /// <summary>
-        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerMove" which allows adding and removing callbacks.
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
         /// </summary>
-        /// <seealso cref="PlayerMoveActions.AddCallbacks(IPlayerMoveActions)" />
-        /// <seealso cref="PlayerMoveActions.RemoveCallbacks(IPlayerMoveActions)" />
-        public interface IPlayerMoveActions
+        /// <seealso cref="PlayerActions.AddCallbacks(IPlayerActions)" />
+        /// <seealso cref="PlayerActions.RemoveCallbacks(IPlayerActions)" />
+        public interface IPlayerActions
         {
             /// <summary>
             /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -465,6 +508,13 @@ namespace FPS_Rig_cf
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnInteract(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Sprint" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnSprint(InputAction.CallbackContext context);
         }
     }
 }

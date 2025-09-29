@@ -2,8 +2,14 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.InputSystem.Users;
+using UnityEngine.InputSystem.Utilities;
+using UnityEngine.InputSystem.OnScreen;
 
-
+#if UNITY_EDITOR
+using UnityEngine.InputSystem.Editor;
+#endif
 
 namespace FPS_Rig_cf
 {
@@ -14,8 +20,14 @@ namespace FPS_Rig_cf
         [Header("Components")]
         public Rigidbody rb; // Rigidbody
         [SerializeField] public PlayerControls playerControls;
+#if ENABLE_INPUT_SYSTEM
+        private PlayerInput _playerInput;
+#endif
         private Player player; // Player.cs
         public GameObject camera; // Main Camera
+        //private StarterAssetsInputs _input;
+        private GameObject _mainCamera;
+
         // ================================
 
         // ========== Basic Movement ==========
@@ -60,6 +72,29 @@ namespace FPS_Rig_cf
         public float TopClamp = 90.0f;
         [Tooltip("How far in degrees can you move the camera down")]
         public float BottomClamp = -90.0f;
+        [Tooltip("Rotation speed of the character")]
+        public float RotationSpeed = 1.0f;
+        private float _rotationVelocity;
+        
+        private const float threshold = 0.01f;
+        
+        // cinemachine
+        private float _cinemachineTargetPitch;
+        
+        // This is to check if the current control scheme is "KeyboardMouse"
+        // which means the user is using a mouse We make this check to ensure
+        // we don't multiply mouse input by Time.deltaTime.
+        private bool IsCurrentDeviceMouse
+        {
+            get
+            {
+                #if ENABLE_INPUT_SYSTEM
+                    return _playerInput.currentControlScheme == "KeyboardMouse";
+                #else
+				    return false;
+                #endif
+            }
+        }
         // =================================
         
         private void Awake()
@@ -67,10 +102,17 @@ namespace FPS_Rig_cf
             // ===== Player =====
             player = Player.Instance; // Access Player.cs
             playerControls = Player.Controls; // Access movement controls
+            _playerInput = GetComponent<PlayerInput>(); // Access PlayerInput component
         }
         
         private void Start()
         {
+            #if ENABLE_INPUT_SYSTEM
+                _playerInput = GetComponent<PlayerInput>();
+            #else
+			    Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
+            #endif
+            
             if (rb == null)
             {
                 rb = GetComponent<Rigidbody>();
@@ -81,8 +123,8 @@ namespace FPS_Rig_cf
         {
             // Updates linearVelocity with new (inputted) values
             rb.linearVelocity = new Vector3(xMovement * moveSpeed, rb.linearVelocity.y, zMovement * moveSpeed);
-            rb.transform.rotation = Quaternion.Euler(rotationX * lookDirection.x, rotationY * lookDirection.y, 0);
-            camera.transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
+            // rb.transform.rotation = Quaternion.Euler(rotationX * lookDirection.x, rotationY * lookDirection.y, 0);
+            // camera.transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
 
             // Adjust the camera angle
             // transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
@@ -92,6 +134,11 @@ namespace FPS_Rig_cf
             
             // Check for movement
             PlayerMove();
+        }
+        
+        private void LateUpdate()
+        {
+            CameraRotation();
         }
 
         // Controls movement and jumping system
@@ -119,6 +166,37 @@ namespace FPS_Rig_cf
                     jumpsRemaining--;
                 }
             }
+        }
+        
+        // Handles the rotation of the camera
+        private void CameraRotation()
+        {
+            // if there is an input
+            if (playerControls.PlayerMove.Look.ReadValue<Vector2>().sqrMagnitude >= threshold)
+            {
+                //Don't multiply mouse input by Time.deltaTime
+                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+				
+                //_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
+                _cinemachineTargetPitch += playerControls.PlayerMove.Look.ReadValue<Vector2>().y * RotationSpeed * deltaTimeMultiplier;
+                _rotationVelocity = playerControls.PlayerMove.Look.ReadValue<Vector2>().x * RotationSpeed * deltaTimeMultiplier;
+
+                // clamp our pitch rotation
+                _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
+
+                // Update Cinemachine camera target pitch
+                CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+
+                // rotate the player left and right
+                transform.Rotate(Vector3.up * _rotationVelocity);
+            }
+        }
+        
+        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
+        {
+            if (lfAngle < -360f) lfAngle += 360f;
+            if (lfAngle > 360f) lfAngle -= 360f;
+            return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
 
         // Checks if the player is on the ground

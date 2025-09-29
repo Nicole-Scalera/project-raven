@@ -740,7 +740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a2dfd3f7074f8459170a05206f3642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1037914096}
   moveSpeed: 10
   xMovement: 0
   zMovement: 0
@@ -1409,10 +1408,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactedWith: 0
-  distanceX: 0
-  distanceY: 0
-  distanceZ: 0
+  sortNum: 0
   player: {fileID: 1037914093}
+  path: {fileID: 0}
 --- !u!1 &1915245943
 GameObject:
   m_ObjectHideFlags: 0

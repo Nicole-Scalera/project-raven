@@ -409,9 +409,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 757765590}
+  camera: {fileID: 1726016661}
   moveSpeed: 10
   xMovement: 0
   zMovement: 0
+  lookDirection: {x: 0, y: 0}
   jumpPower: 5
   jumpMovement: 0
   maxJumps: 1

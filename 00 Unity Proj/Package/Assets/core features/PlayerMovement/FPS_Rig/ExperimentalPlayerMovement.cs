@@ -52,6 +52,16 @@ namespace FPS_Rig_cf
         public float fallMultiplier = 1f;
         // =============================
         
+        // ========== Cinemachine ==========
+        [Header("Cinemachine")]
+        [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
+        public GameObject CinemachineCameraTarget;
+        [Tooltip("How far in degrees can you move the camera up")]
+        public float TopClamp = 90.0f;
+        [Tooltip("How far in degrees can you move the camera down")]
+        public float BottomClamp = -90.0f;
+        // =================================
+        
         private void Awake()
         {
             // ===== Player =====

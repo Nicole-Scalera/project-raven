@@ -102,6 +102,24 @@ namespace FPS_Rig_cf
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""49071bba-83ed-497e-81d6-631c14080b55"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce2a550c-a609-41ac-92e0-d6c8537b90f7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -181,6 +199,39 @@ namespace FPS_Rig_cf
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d0dca42-a2dd-495e-9351-1e8c8c0fd923"",
+                    ""path"": ""<Pointer>/delta"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2(invertX=false),ScaleVector2(x=0.05,y=0.05)"",
+                    ""groups"": ""KeyboardMouse"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b23959c-4738-436e-8ebf-d63f78a5cbf2"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": ""InvertVector2(invertX=false),StickDeadzone,ScaleVector2(x=300,y=300)"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b27e028-e7b1-4e0e-820e-016a8039eff5"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -190,6 +241,8 @@ namespace FPS_Rig_cf
             // PlayerMove
             m_PlayerMove = asset.FindActionMap("PlayerMove", throwIfNotFound: true);
             m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
+            m_PlayerMove_Look = m_PlayerMove.FindAction("Look", throwIfNotFound: true);
+            m_PlayerMove_Interact = m_PlayerMove.FindAction("Interact", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
@@ -271,6 +324,8 @@ namespace FPS_Rig_cf
         private readonly InputActionMap m_PlayerMove;
         private List<IPlayerMoveActions> m_PlayerMoveActionsCallbackInterfaces = new List<IPlayerMoveActions>();
         private readonly InputAction m_PlayerMove_Move;
+        private readonly InputAction m_PlayerMove_Look;
+        private readonly InputAction m_PlayerMove_Interact;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerMove".
         /// </summary>
@@ -286,6 +341,14 @@ namespace FPS_Rig_cf
             /// Provides access to the underlying input action "PlayerMove/Move".
             /// </summary>
             public InputAction @Move => m_Wrapper.m_PlayerMove_Move;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMove/Look".
+            /// </summary>
+            public InputAction @Look => m_Wrapper.m_PlayerMove_Look;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMove/Interact".
+            /// </summary>
+            public InputAction @Interact => m_Wrapper.m_PlayerMove_Interact;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -315,6 +378,12 @@ namespace FPS_Rig_cf
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
 
             /// <summary>
@@ -329,6 +398,12 @@ namespace FPS_Rig_cf
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+                @Look.started -= instance.OnLook;
+                @Look.performed -= instance.OnLook;
+                @Look.canceled -= instance.OnLook;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
             }
 
             /// <summary>
@@ -376,6 +451,20 @@ namespace FPS_Rig_cf
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMove(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Look" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnLook(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }

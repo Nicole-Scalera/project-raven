@@ -1,16 +1,20 @@
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+
 namespace FPS_Rig_cf
 {
-
     public class ExperimentalPlayerMovement : MonoBehaviour
     {
 
         // ========== Components ==========
         [Header("Components")]
         public Rigidbody rb; // Rigidbody
+        [SerializeField] public PlayerControls playerControls;
+        private Player player; // Player.cs
         // ================================
 
         // ========== Basic Movement ==========
@@ -42,41 +46,53 @@ namespace FPS_Rig_cf
         public float fallMultiplier = 1f;
         // =============================
         
-        private void Update()
+        private void Awake()
+        {
+            // ===== Player =====
+            player = Player.Instance; // Access Player.cs
+            playerControls = Player.Controls; // Access movement controls
+        }
+        
+        private void Start()
+        {
+            if (rb == null)
+            {
+                rb = GetComponent<Rigidbody>();
+            }
+        }
+        
+        private void FixedUpdate()
         {
             // Updates linearVelocity with new (inputted) values
             rb.linearVelocity = new Vector3(xMovement * moveSpeed, rb.linearVelocity.y, zMovement * moveSpeed);
-
+            
             // Check if the player is on the ground
             GroundCheck();
+            
+            // Check for movement
+            PlayerMove();
         }
 
         // Controls movement and jumping system
-        public void PlayerMove(InputAction.CallbackContext context)
+        public void PlayerMove()
         {
-
             // Prints the input action and its details
-            Debug.Log(context.action.ToString());
+            // Debug.Log(context.action.ToString());
 
             // Reads the X (left/right) and Z (forward/back) variables from the
             // Vector3 & assigns them to the corresponding movement variables
-            xMovement = context.ReadValue<Vector3>().x;
-            zMovement = context.ReadValue<Vector3>().z;
+            xMovement = playerControls.PlayerMove.Move.ReadValue<Vector3>().x;
+            zMovement = playerControls.PlayerMove.Move.ReadValue<Vector3>().z;
+            jumpMovement = playerControls.PlayerMove.Move.ReadValue<Vector3>().y;
 
             if (isGrounded && jumpsRemaining > 0)
             {
-                if (context.performed && context.ReadValue<Vector3>().y != 0)
+                if (jumpMovement != 0)
                 {
-
-                    Debug.Log("JUMP");
-
                     rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpPower, rb.linearVelocity.z);
                     jumpsRemaining--;
-
                 }
-
             }
-
         }
 
         // Checks if the player is on the ground

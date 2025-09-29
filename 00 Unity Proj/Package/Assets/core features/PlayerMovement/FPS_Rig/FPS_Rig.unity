@@ -271,7 +271,6 @@ GameObject:
   - component: {fileID: 757765586}
   - component: {fileID: 757765590}
   - component: {fileID: 757765591}
-  - component: {fileID: 757765592}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -427,52 +426,6 @@ MonoBehaviour:
   baseGravity: 2
   maxFallSpeed: 18
   fallMultiplier: 1
---- !u!114 &757765592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757765585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: f338a1d4786dc624cabda9e2fa918c93, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 757765591}
-        m_TargetAssemblyTypeName: FPS_Rig_cf.ExperimentalPlayerMovement, Assembly-CSharp
-        m_MethodName: PlayerMove
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a0d805c8-c4e9-46e1-8008-81cc6c0f2b16
-    m_ActionName: 'PlayerMove/Move[/Keyboard/space,/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]'
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerMove
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &1037914093
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1037914094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +489,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a0d805c8-c4e9-46e1-8008-81cc6c0f2b16
     m_ActionName: 'PlayerMove/Move[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce2a550c-a609-41ac-92e0-d6c8537b90f7
+    m_ActionName: 'PlayerMove/Interact[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMove

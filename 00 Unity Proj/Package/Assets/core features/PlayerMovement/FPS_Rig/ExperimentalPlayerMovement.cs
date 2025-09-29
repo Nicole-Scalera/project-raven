@@ -33,46 +33,39 @@ namespace FPS_Rig_cf
         private float SpeedChangeRate = 10.0f; // Acceleration rate
         public float moveSpeed = 5.0f; // Normal walking speed
         public float sprintSpeed = 7.0f; // Sprinting speed
-        public Vector3 movement; //stores the movement input
-        public float xMovement; //left and right
-        public float zMovement; //forward and back
-        public float yMovement;
         // ====================================
 
         // ========== Jumping ==========
-        //variables to control the players jump
-        //not fully implemented yet
         [Header("Jump")]
-        public float jumpPower = 5f;
         private float _verticalVelocity;
-        public float jumpMovement;
-        public int maxJumps = 1;
-        public int jumpsRemaining;
         public bool jumpActive; // Am I currently jumping?
         public float JumpHeight = 1.2f; // The height the player can jump
         private float _terminalVelocity = 53.0f;
         
-        // timeout deltatime
+        // Jump and Fall Timeouts
         private float _jumpTimeoutDelta;
         private float _fallTimeoutDelta;
 
         [Header("GroundCheck")]
-        public Transform groundCheckPos;
-        public Vector3 groundCheckSize = new Vector3(0.5f, 0.05f, 0.5f);
         public LayerMask groundLayer;
-        public bool isGrounded;
-        public float groundCoord = 1.9f;
+        public bool isGrounded; // Is the Player on the ground?
 
         [Header("Gravity")]
-        public float baseGravity = 2f;
-        public float maxFallSpeed = 18f;
-        public float fallMultiplier = 1f;
+        public float Gravity = -15.0f;
         
         [Space(10)]
         [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
         public float JumpTimeout = 0.1f;
         [Tooltip("Time required to pass before entering the fall state. Useful for walking down stairs")]
         public float FallTimeout = 0.15f;
+        
+        [Header("Player Grounded")]
+        [Tooltip("Useful for rough ground")]
+        public float GroundedOffset = -0.14f;
+        [Tooltip("The radius of the grounded check. Should match the radius of the CharacterController")]
+        public float GroundedRadius = 0.5f;
+        [Tooltip("What layers the character uses as ground")]
+        public LayerMask GroundLayers;
         // =============================
         
         // ========== Cinemachine ==========
@@ -86,10 +79,8 @@ namespace FPS_Rig_cf
         [Tooltip("Rotation speed of the character")]
         public float RotationSpeed = 20.0f;
         private float _rotationVelocity;
-        
+        [Tooltip("Look sensitivity and limitations")]
         private const float threshold = 0.01f;
-        
-        // cinemachine
         private float _cinemachineTargetPitch;
         
         // This is to check if the current control scheme is "KeyboardMouse"
@@ -122,7 +113,7 @@ namespace FPS_Rig_cf
             
             // Get the PlayerInput component
             #if ENABLE_INPUT_SYSTEM
-                playerInput = GetComponent<PlayerInput>();
+                // playerInput = GetComponent<PlayerInput>();
             #else
 			    Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
             #endif
@@ -137,31 +128,24 @@ namespace FPS_Rig_cf
             inputProcessor = GetComponent<PlayerInputProcessor>(); // PlayerInputProcessor.cs
         }
         
+        // ========== Update Methods ==========
         private void FixedUpdate()
         {
-            // Updates linearVelocity with new (inputted) values
-            //rb.linearVelocity = new Vector3(xMovement * moveSpeed, rb.linearVelocity.y, zMovement * moveSpeed);
-            
+            PlayerJump(); // Check for jumping
+            GroundedCheck();
             PlayerMove(); // Check for movement
-            GroundCheck(); // Check if the player is on the ground
-            PlayerJump();
         }
         
         private void LateUpdate()
         {
             CameraRotation();
         }
+        // ====================================
 
+        // ========== Player Movement ==========
         // Controls movement and jumping system
         public void PlayerMove()
         {
-            // Read movement input
-            movement = playerControls.Player.Move.ReadValue<Vector3>();
-            xMovement = playerControls.Player.Move.ReadValue<Vector3>().x;
-            zMovement = playerControls.Player.Move.ReadValue<Vector3>().z;
-            jumpMovement = playerControls.Player.Move.ReadValue<Vector3>().y;
-            yMovement = jumpMovement;
-            
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = inputProcessor.sprint ? sprintSpeed : moveSpeed;
 
@@ -169,7 +153,7 @@ namespace FPS_Rig_cf
 
             // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is no input, set the target speed to 0
-            if (playerControls.Player.Move.ReadValue<Vector3>() == Vector3.zero) targetSpeed = 0.0f;
+            if (inputProcessor.move == Vector2.zero) targetSpeed = 0.0f;
 
             // a reference to the players current horizontal velocity
             float currentHorizontalSpeed = new Vector3(characterController.velocity.x, 0.0f, characterController.velocity.z).magnitude;
@@ -197,7 +181,7 @@ namespace FPS_Rig_cf
 
             // note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
             // if there is a move input rotate player when the player is moving
-            if (inputProcessor.move != Vector3.zero)
+            if (inputProcessor.move != Vector2.zero)
             {
                 // move
                 inputDirection = transform.right * inputProcessor.move.x + transform.forward * inputProcessor.move.y;
@@ -205,9 +189,10 @@ namespace FPS_Rig_cf
 
             // move the player
             characterController.Move(inputDirection.normalized * (playerSpeed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
-            
         }
+        // =====================================
         
+        // ========== Camera Rotation ==========
         // Handles the rotation of the camera
         private void CameraRotation()
         {
@@ -238,35 +223,65 @@ namespace FPS_Rig_cf
             if (lfAngle > 360f) lfAngle -= 360f;
             return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
+        // =====================================
 
+        // ========== Player Jumping ==========
         private void PlayerJump()
         {
-            if (isGrounded && jumpsRemaining > 0)
+            if (isGrounded)
             {
-                if (jumpMovement != 0)
+                // reset the fall timeout timer
+                _fallTimeoutDelta = FallTimeout;
+
+                // stop our velocity dropping infinitely when grounded
+                if (_verticalVelocity < 0.0f)
                 {
-                    // Apply jump velocity
-                    //camera.transform.position = new Vector3(transform.position.x, player.transform.position.y + 3.17f, transform.position.z);
-                    jumpsRemaining--;
+                    _verticalVelocity = -2f;
                 }
+
+                // Jump
+                if (inputProcessor.jump && _jumpTimeoutDelta <= 0.0f)
+                {
+                    // the square root of H * -2 * G = how much velocity needed to reach desired height
+                    _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+                }
+
+                // jump timeout
+                if (_jumpTimeoutDelta >= 0.0f)
+                {
+                    _jumpTimeoutDelta -= Time.deltaTime;
+                }
+            }
+            else
+            {
+                // reset the jump timeout timer
+                _jumpTimeoutDelta = JumpTimeout;
+
+                // fall timeout
+                if (_fallTimeoutDelta >= 0.0f)
+                {
+                    _fallTimeoutDelta -= Time.deltaTime;
+                }
+
+                // if we are not grounded, do not jump
+                inputProcessor.jump = false;
+            }
+
+            // apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
+            if (_verticalVelocity < _terminalVelocity)
+            {
+                _verticalVelocity += Gravity * Time.deltaTime;
             }
         }
         
         // Checks if the player is on the ground
-        private void GroundCheck()
+        private void GroundedCheck()
         {
-            // If the Player's Y-position is less than or
-            // equal to the ground coordinate
-            if (groundCheckPos.position.y <= groundCoord)
-            {
-                isGrounded = true; // Player is on the ground
-                jumpsRemaining = maxJumps; // Reset the jumps
-            }
-            else
-            {
-                _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * baseGravity);
-                isGrounded = false; // Player is not on the ground
-            }
+            // set sphere position, with offset
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+            isGrounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
         }
+        // ====================================
+        
     }
 }

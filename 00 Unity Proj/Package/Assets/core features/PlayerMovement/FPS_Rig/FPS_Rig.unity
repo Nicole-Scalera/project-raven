@@ -518,35 +518,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b5fb2c2778dbe498755171d995119b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1726016661}
-  orientation: {fileID: 757765589}
-  playerCapsule: {fileID: 757765586}
-  SpeedChangeRate: 10
+  characterController: {fileID: 757765594}
   moveSpeed: 5
   sprintSpeed: 7
-  movement: {x: 0, y: 0, z: 0}
-  xMovement: 0
-  zMovement: 0
-  yMovement: 0
-  lookDirection: {x: 0, y: 0}
-  jumpPower: 5
-  jumpMovement: 0
-  maxJumps: 1
-  jumpsRemaining: 0
   jumpActive: 0
   JumpHeight: 1.2
-  groundCheckPos: {fileID: 757765589}
-  groundCheckSize: {x: 0.5, y: 0.05, z: 0.5}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   isGrounded: 0
-  groundCoord: 1.9
-  baseGravity: 2
-  maxFallSpeed: 18
-  fallMultiplier: 1
+  Gravity: -15
   JumpTimeout: 0.1
   FallTimeout: 0.15
+  GroundedOffset: -0.14
+  GroundedRadius: 0.5
+  GroundLayers:
+    serializedVersion: 2
+    m_Bits: 64
   CinemachineCameraTarget: {fileID: 1721169385}
   TopClamp: 90
   BottomClamp: -90
@@ -563,7 +551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: f52270c75762d0d4bb71c61fca8e0feb, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: e55e6d1930ada7847b287f3c6f0cb7fd, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -618,7 +606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abcee647b10c4932ab15eff2901a84df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {x: 0, y: 0, z: 0}
+  move: {x: 0, y: 0}
   look: {x: 0, y: 0}
   jump: 0
   sprint: 0
@@ -956,7 +944,7 @@ GameObject:
   - component: {fileID: 1653006640}
   - component: {fileID: 1653006639}
   - component: {fileID: 1653006638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}

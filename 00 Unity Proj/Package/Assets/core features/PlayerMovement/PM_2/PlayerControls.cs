@@ -111,6 +111,15 @@ namespace BasicMovement2_cf
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CameraRotation"",
+                    ""type"": ""Button"",
+                    ""id"": ""bfa17974-6ab4-45b1-8f9d-f892f4475ce5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -201,6 +210,17 @@ namespace BasicMovement2_cf
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a28674f5-5fa9-4e71-9d12-8fbc70b0ab47"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -211,6 +231,7 @@ namespace BasicMovement2_cf
             m_PlayerMove = asset.FindActionMap("PlayerMove", throwIfNotFound: true);
             m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
             m_PlayerMove_Interact = m_PlayerMove.FindAction("Interact", throwIfNotFound: true);
+            m_PlayerMove_CameraRotation = m_PlayerMove.FindAction("CameraRotation", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
@@ -293,6 +314,7 @@ namespace BasicMovement2_cf
         private List<IPlayerMoveActions> m_PlayerMoveActionsCallbackInterfaces = new List<IPlayerMoveActions>();
         private readonly InputAction m_PlayerMove_Move;
         private readonly InputAction m_PlayerMove_Interact;
+        private readonly InputAction m_PlayerMove_CameraRotation;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerMove".
         /// </summary>
@@ -312,6 +334,10 @@ namespace BasicMovement2_cf
             /// Provides access to the underlying input action "PlayerMove/Interact".
             /// </summary>
             public InputAction @Interact => m_Wrapper.m_PlayerMove_Interact;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMove/CameraRotation".
+            /// </summary>
+            public InputAction @CameraRotation => m_Wrapper.m_PlayerMove_CameraRotation;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -344,6 +370,9 @@ namespace BasicMovement2_cf
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @CameraRotation.started += instance.OnCameraRotation;
+                @CameraRotation.performed += instance.OnCameraRotation;
+                @CameraRotation.canceled += instance.OnCameraRotation;
             }
 
             /// <summary>
@@ -361,6 +390,9 @@ namespace BasicMovement2_cf
                 @Interact.started -= instance.OnInteract;
                 @Interact.performed -= instance.OnInteract;
                 @Interact.canceled -= instance.OnInteract;
+                @CameraRotation.started -= instance.OnCameraRotation;
+                @CameraRotation.performed -= instance.OnCameraRotation;
+                @CameraRotation.canceled -= instance.OnCameraRotation;
             }
 
             /// <summary>
@@ -415,6 +447,13 @@ namespace BasicMovement2_cf
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnInteract(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "CameraRotation" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnCameraRotation(InputAction.CallbackContext context);
         }
     }
 }

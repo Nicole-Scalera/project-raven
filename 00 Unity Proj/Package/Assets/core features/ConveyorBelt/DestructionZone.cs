@@ -16,9 +16,14 @@ namespace ConveyorBelt_cf
 
             Debug.Log("Entered: " + collision.gameObject.name);
 
-            path.GetComponent<BeltBehavior>().RemoveBox(collision.gameObject);
+            if (collision.gameObject.GetComponent<InteractableBox>() != null)
+            {
 
-            Destroy(collision.gameObject);
+                path.GetComponent<BeltBehavior>().RemoveBox(collision.gameObject);
+
+                Destroy(collision.gameObject);
+
+            }
 
         }
     }

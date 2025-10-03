@@ -50,10 +50,14 @@ namespace BasicMovement2_cf
             }
         }
         
-        private void Update()
+        private void FixedUpdate()
         {
             // Updates linearVelocity with new (inputted) values
-            rb.linearVelocity = new Vector3(xMovement * moveSpeed, rb.linearVelocity.y, zMovement * moveSpeed);
+            //rb.linearVelocity = new Vector3(xMovement * moveSpeed, rb.linearVelocity.y, zMovement * moveSpeed);
+
+            Vector3 localMoveDirection = transform.right * xMovement + transform.forward * zMovement;
+
+             transform.position += localMoveDirection * moveSpeed * Time.deltaTime;
 
             // Check if the player is on the ground
             GroundCheck();
@@ -63,11 +67,9 @@ namespace BasicMovement2_cf
         public void PlayerMove(InputAction.CallbackContext context)
         {
 
-            // Prints the input action and its details
-            Debug.Log(context.action.ToString());
-
             // Reads the X (left/right) and Z (forward/back) variables from the
             // Vector3 & assigns them to the corresponding movement variables
+            
             xMovement = context.ReadValue<Vector3>().x;
             zMovement = context.ReadValue<Vector3>().z;
 

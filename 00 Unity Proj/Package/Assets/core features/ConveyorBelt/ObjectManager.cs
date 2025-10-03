@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityCommunity.UnitySingleton;
+using UnityEngine.UIElements;
 
 /*
  * 
@@ -17,7 +18,7 @@ namespace ConveyorBelt_cf
     public class ObjectManager : MonoBehaviour
     {
 
-        private Vector3 spawnPosition = new Vector3(20.0f, 5.5f, 0.0f);
+        private Vector3 spawnPosition;
 
         [Header("Prefabs")] public GameObject[] boxPrefabs;
 
@@ -25,6 +26,13 @@ namespace ConveyorBelt_cf
         public float maxTime = 5;
 
         [Header("Pathing")] public GameObject path;
+
+        private void Awake()
+        {
+            
+            spawnPosition = transform.position;
+
+        }
 
         private void Update()
         {
@@ -41,7 +49,16 @@ namespace ConveyorBelt_cf
 
                 //TODO: figure out a way to add a tag to the instantiate
 
-                GameObject newBox = Instantiate(boxPrefabs[0], spawnPosition, Quaternion.identity);
+                GameObject newBox = Instantiate(boxPrefabs[Random.Range(0,boxPrefabs.Length-1)], spawnPosition, Quaternion.identity);
+
+                newBox.transform.localScale = new Vector3(100, 100, 100);
+
+                newBox.AddComponent<Rigidbody>();
+                newBox.GetComponent<Rigidbody>().useGravity = true;
+
+                newBox.AddComponent<BoxCollider>();
+
+                newBox.AddComponent<InteractableBox>();
 
                 path.GetComponent<BeltBehavior>().AddBox(newBox);
 

@@ -4,11 +4,11 @@
 <br />
 <div align="center">
 
-<h1 align="center">Bubble Game</h1>
+<h1 align="center">Package Game</h1>
 <h3 align="center">▸ Uploading to the Assets folder ◂</h3>
 
   <p align="center">
-    A guide for anyone contributing items to the <a href="https://github.com/Nicole-Scalera/Bubble/tree/main/01%20Assets">01 Assets</a> folder.<br />
+    A guide for anyone contributing items to the <a href="https://github.com/Nicole-Scalera/project-raven/tree/main/01%20Assets">01 Assets</a> folder.<br />
   </p>
 </div>
 
@@ -53,7 +53,7 @@ However, if you are unsure of anything at all (like even a teeny tiny itty bitty
 
 <h2>What Is the 01 Assets Folder?</h2>
 
-The [01 Assets](https://github.com/Nicole-Scalera/Bubble/tree/main/01%20Assets) folder is a directory located in the [root](https://github.com/Nicole-Scalera/Bubble) (the homepage) of the repository. It exists as a central point where team members can share files with each other.
+The [01 Assets](https://github.com/Nicole-Scalera/project-raven/tree/main/01%20Assets) folder is a directory located in the [root](https://github.com/Nicole-Scalera/project-raven) (the homepage) of the repository. It exists as a central point where team members can share files with each other.
 
 <img src="../00 Assets/uploading-to-assets/01-assets-folder-location.png" width="500"></img>
 
@@ -68,9 +68,9 @@ The [01 Assets](https://github.com/Nicole-Scalera/Bubble/tree/main/01%20Assets) 
 
 <h2>GitHub vs. Unity</h2>
 
-It's important to note that [01 Assets](https://github.com/Nicole-Scalera/Bubble/tree/main/01%20Assets) is different from the default Assets folder in Unity.
+It's important to note that [01 Assets](https://github.com/Nicole-Scalera/project-raven/tree/main/01%20Assets) is different from the default Assets folder in Unity.
 
-The default folder is located in [00 Unity Proj](https://github.com/Nicole-Scalera/Bubble/tree/main/00%20Unity%20Proj). Its purpose is to act like a toolbox for the project itself.
+The default folder is located in [00 Unity Proj](https://github.com/Nicole-Scalera/project-raven/tree/main/00%20Unity%20Proj). Its purpose is to act like a toolbox for the project itself.
 
 Similarly, 01 Assets operates as a toolbox folder, but it allows separate parties to upload assets without any <a href="#merge-conflicts">merge conflicts</a>.
 
@@ -130,9 +130,9 @@ Please follow the below steps to ensure the assets are shared correctly.
 
 <h3>1. Correct Folder</h3>
 
-The first step to uploading is making sure you are on the right folder. As mentioned above, you MUST be on the <a href="https://github.com/Nicole-Scalera/Bubble/tree/main/01%20Assets">01 Assets</a> folder in the ROOT of the repository.
+The first step to uploading is making sure you are on the right folder. As mentioned above, you MUST be on the <a href="https://github.com/Nicole-Scalera/project-raven/tree/main/01%20Assets">01 Assets</a> folder in the ROOT of the repository.
 
-That means you should be nowhere near [00 Unity Proj](https://github.com/Nicole-Scalera/Bubble/tree/main/00%20Unity%20Proj)!
+That means you should be nowhere near [00 Unity Proj](https://github.com/Nicole-Scalera/project-raven/tree/main/00%20Unity%20Proj)!
 
 <img src="../00 Assets/uploading-to-assets/01-assets-folder-location.png" width="500"></img>
 

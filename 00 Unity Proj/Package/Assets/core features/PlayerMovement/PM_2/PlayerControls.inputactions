@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "PlayerControls",
     "maps": [
         {
@@ -10,6 +11,24 @@
                     "type": "PassThrough",
                     "id": "a0d805c8-c4e9-46e1-8008-81cc6c0f2b16",
                     "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "ce2a550c-a609-41ac-92e0-d6c8537b90f7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "CameraRotation",
+                    "type": "Button",
+                    "id": "bfa17974-6ab4-45b1-8f9d-f892f4475ce5",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -92,6 +111,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "4b27e028-e7b1-4e0e-820e-016a8039eff5",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a28674f5-5fa9-4e71-9d12-8fbc70b0ab47",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraRotation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

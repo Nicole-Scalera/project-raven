@@ -10,7 +10,7 @@ using UnityEngine.Rendering;
 
 public class PlayerInteraction : MonoBehaviour
 {
-
+    
     //     ===== Clues List ======
 
     public List<GameObject> clues = new List<GameObject>();
@@ -36,24 +36,22 @@ public class PlayerInteraction : MonoBehaviour
     //========================================================
 
 
-    // if there are objects in the clues list the list constantly
+    // If there are objects in the clues list, the list constantly
     // sorts the GameObjects in the list by distance using DistanceSort()
     public void FixedUpdate()
     {
-        
         if(clues.Count != 0)
         {
-
+            // Call to sort the clues list by distance
             clues = DistanceSort(clues);
 
         }
-
     }
 
     /* 
      * When the player presses the interact button, it checks if there is
      * an object to interact with and if it has already been interacted with
-     * then if it it exists and not interacted with it runs the InteractedWith()
+     * then if it exists and not interacted with it runs the InteractedWith()
      * function of the object    
      */
 
@@ -64,35 +62,36 @@ public class PlayerInteraction : MonoBehaviour
 
         if (!interactableObjects.IsNullOrEmpty())
         {
-            DistanceSort(interactableObjects);
+            DistanceSort(interactableObjects); // Call to find the nearest object
 
+            // Checks for an InteractableClue
             if (interactableObjects[0].GetComponent<InteractableClue>() != null)
-            {
-
+            {  
+                // Run Interaction() from InteractableClue.cs
                 interactableObjects[0].GetComponent<InteractableClue>().Interaction();
 
             }
+            // Checks for an InteractableBox
             else if (interactableObjects[0].GetComponent<InteractableBox>() != null)
             {
-
+                // Set the activeBox to the nearest box
                 activeBox = interactableObjects[0];
 
+                // Run Interaction() from InteractableBox.cs
                 activeBox.GetComponent<InteractableBox>().Interaction();
 
+                // Disable gravity on that box if it's picked up
                 activeBox.GetComponent<Rigidbody>().useGravity = !activeBox.GetComponent<InteractableBox>().interactedWith;
 
             }
         }
-
     }
 
     /*
-     * 
-     * When a collider enteres the collider marked as a trigger
+     * When a collider enters the collider marked as a trigger,
      * it checks if the collider's GameObject has the script
-     * "InteractableClue" and if so adds the GameObject to the
-     * clues list
-     * 
+     * "InteractableClue," and if so, it adds the GameObject to
+     * the clues list defined earlier.
      */
 
     public void OnTriggerEnter(Collider other)
@@ -100,53 +99,39 @@ public class PlayerInteraction : MonoBehaviour
         
         if (other.gameObject.GetComponent<InteractableClue>() != null)
         {
-
-            clues.Add(other.gameObject);
-
-            interactableObjects.Add(other.gameObject);
-
+            clues.Add(other.gameObject); // Add to clues list
+            interactableObjects.Add(other.gameObject); // Add to interactable list
         }
         else if (other.gameObject.GetComponent<InteractableBox>() != null)
         {
-
-            activeBox = other.gameObject;
-
-            interactableObjects.Add(other.gameObject);
-
+            activeBox = other.gameObject; // Set the activeBox to the box entered
+            interactableObjects.Add(other.gameObject); // Add to interactable list
         }
 
     }
 
     /*
-     * 
      * When a collider exits the collider marked as a trigger
      * it checks if the collider's GameObject has the script
      * "InteractableClue" and if so removes the GameObject to the
      * clues list
-     * 
      */
 
     public void OnTriggerExit(Collider other)
     {
-
         if (other.gameObject.GetComponent<InteractableClue>() != null)
         {
-
-            clues.Remove(other.gameObject);
-            interactableObjects.Remove(other.gameObject);
-
+            clues.Remove(other.gameObject); // Remove from clues list
+            interactableObjects.Remove(other.gameObject); // Remove from interactable list
         }
         else if (other.gameObject.GetComponent<InteractableBox>() != null)
         {
-
-            activeBox = null;
-            interactableObjects.Remove(other.gameObject);
+            activeBox = null; // Clear the activeBox
+            interactableObjects.Remove(other.gameObject); // Remove from interactable list
         }
-
     }
 
     /*
-     * 
      * This is a custom sorting function that takes in a list of
      * GameObjects. It has variables for the sorted list and the
      * previous distance from the player. It then loops through
@@ -156,13 +141,13 @@ public class PlayerInteraction : MonoBehaviour
      * and then it checks if it is closer the previous distance, 
      * and if so it inserts it at the front of the list. If not 
      * it adds it to the back of the list. The function then
-     * returns the sorted list
-     * 
+     * returns the sorted list.
      */
 
     private List<GameObject> DistanceSort(List<GameObject> list)
     {
 
+        // Initializes a new list to store the sorted objects
         List<GameObject> sortedList = new List<GameObject>();
 
         float lastDistance  = float.MaxValue;
@@ -210,7 +195,7 @@ public class PlayerInteraction : MonoBehaviour
 
         }
 
-        return sortedList;
+        return sortedList; // Spits out the sorted list
 
     }
 

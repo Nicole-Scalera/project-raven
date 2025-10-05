@@ -26,7 +26,7 @@ namespace SceneSwitching_cf
         "SceneAsset that you want to switch to. Remember to click Add! These will be passed into the corresponding" +
         "scene changer script that is also attached to the object.")]
         [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "SceneAsset")]
-        public Dictionary<GameObject, SceneAsset> SceneChangerDictionary = new Dictionary<GameObject, SceneAsset>();
+        public Dictionary<GameObject, string> SceneChangerDictionary = new Dictionary<GameObject, string>();
     }
     
 

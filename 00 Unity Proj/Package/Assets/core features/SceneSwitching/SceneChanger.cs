@@ -19,7 +19,7 @@ namespace SceneSwitching_cf
 
         // ===== Variables/Components =====
         private GameManager gameManager; // Access GameManager.cs
-        protected SceneAsset scene;  // The SceneAsset in the Editor
+        //protected SceneAsset scene;  // The SceneAsset in the Editor
         protected string sceneName; // Name of a scene
         private Rigidbody rb; // Rigidbody (for collisions)
         protected GameObject otherObject; // Other object the player interacts with
@@ -27,7 +27,7 @@ namespace SceneSwitching_cf
         
         // ===== Scene Dictionary =====
         // Create a new instance of a dictionary matching the type from DictionaryComponent.cs
-        protected Dictionary<GameObject, SceneAsset> sceneDictionary = new();
+        protected Dictionary<GameObject, string> sceneDictionary = new();
         [SerializeField, Required] private DictionaryComponent dictionaryComponent; // Reference to DictionaryComponent.cs
         // ============================
 
@@ -135,7 +135,7 @@ namespace SceneSwitching_cf
                 GetDictionaryScene(otherObject);
                 
                 // Convert the sceneName to a string
-                sceneName = scene.name;
+                // sceneName = scene.name;
                 Debug.Log("sceneName: " + sceneName);
                 
                 // Load the scene by its name
@@ -154,7 +154,8 @@ namespace SceneSwitching_cf
         {
             Debug.Log($"SceneChanger > Getting scene dictionary: {sceneName}...");
             // Assign the scene from the dictionary
-            scene = sceneDictionary[otherObject];
+            // scene = sceneDictionary[otherObject];
+            sceneName = sceneDictionary[otherObject];
             Debug.Log($"SceneChanger > {sceneName} retrieved.");
         }
         // ======================================================

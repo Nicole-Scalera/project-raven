@@ -443,9 +443,7 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 465498121}
-    - {fileID: 102900000, guid: 52bf0ce66faf6d243aecbd310383e457, type: 3}
     - {fileID: 809362146}
-    - {fileID: 102900000, guid: ff7aed837d4700b418576e6c65becad4, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -453,8 +451,8 @@ MonoBehaviour:
     SerializationNodes:
     - Name: SceneChangerDictionary
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.GameObject, UnityEngine.CoreModule],[UnityEditor.SceneAsset,
-        UnityEditor.CoreModule]], mscorlib
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.GameObject, UnityEngine.CoreModule],[System.String,
+        mscorlib]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[UnityEngine.GameObject,
@@ -472,8 +470,8 @@ MonoBehaviour:
       Entry: 10
       Data: 0
     - Name: $v
-      Entry: 10
-      Data: 1
+      Entry: 1
+      Data: SC_Level1
     - Name: 
       Entry: 8
       Data: 
@@ -482,10 +480,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: $v
-      Entry: 10
-      Data: 3
+      Entry: 1
+      Data: SC_Level2
     - Name: 
       Entry: 8
       Data: 

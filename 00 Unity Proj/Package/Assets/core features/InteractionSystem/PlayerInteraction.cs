@@ -40,13 +40,22 @@ public class PlayerInteraction : MonoBehaviour
     // sorts the GameObjects in the list by distance using DistanceSort()
     public void FixedUpdate()
     {
-        if(clues.Count != 0)
+        if (clues.Count != 0)
         {
             // Call to sort the clues list by distance
             clues = DistanceSort(clues);
 
         }
     }
+
+    // Debug the clues list if needed
+    // public void Update()
+    // {
+    //     foreach (var clue in clues)
+    //     {
+    //         Debug.Log(clue);
+    //     }
+    // }
 
     /* 
      * When the player presses the interact button, it checks if there is
@@ -66,10 +75,9 @@ public class PlayerInteraction : MonoBehaviour
 
             // Checks for an InteractableClue
             if (interactableObjects[0].GetComponent<InteractableClue>() != null)
-            {  
+            {
                 // Run Interaction() from InteractableClue.cs
                 interactableObjects[0].GetComponent<InteractableClue>().Interaction();
-
             }
             // Checks for an InteractableBox
             else if (interactableObjects[0].GetComponent<InteractableBox>() != null)
@@ -96,11 +104,14 @@ public class PlayerInteraction : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        
+
         if (other.gameObject.GetComponent<InteractableClue>() != null)
         {
             clues.Add(other.gameObject); // Add to clues list
             interactableObjects.Add(other.gameObject); // Add to interactable list
+            
+            // Debug the clue that has just been added to the clues list
+            Debug.Log("Clue Name: " + clues[^1].GetComponent<InteractableClue>().clueName + " added to clues list.");
         }
         else if (other.gameObject.GetComponent<InteractableBox>() != null)
         {

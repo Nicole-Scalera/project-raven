@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4aaf9d49-a8b9-43b1-b0f9-593faccc7640" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UIController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UIController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/core features/InteractionSystem/InteractableClue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/InteractionSystem/InteractableClue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/core features/InteractionSystem/PlayerInteraction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/InteractionSystem/PlayerInteraction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.eflatun.scenereference/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.eflatun.scenereference/Settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/core features/PlayerMovement/PM_2/PlayerControls.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/PlayerMovement/PM_2/PlayerControls.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/core features/PlayerMovement/PM_2/PlayerControls.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/PlayerMovement/PM_2/PlayerControls.inputactions" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,11 +25,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2579e7234cb64ac89d53050629ee5bbe2ae00/c6/742749ab/CharacterController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/410f0a58989e4e8687409143ddce484e8e00/79/c998d8a7/Input.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/12/ff80934e/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/70/f260dea8/Time.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/86/65c628e7/Transform.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/a3/97cfaa9d/Cursor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/b6/24e4ae52/Vector3.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/bc/a306d9cd/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputActionReference.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unitycommunity.unitysingleton@9184522a79ad/Runtime/Scripts/MonoSingleton.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -48,7 +49,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "issue/44-day-cycle-global-save",
+    "git-widget-placeholder": "issue/59-scene-switcher-global-save",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",

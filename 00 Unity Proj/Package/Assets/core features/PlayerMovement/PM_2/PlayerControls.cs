@@ -223,6 +223,34 @@ namespace BasicMovement2_cf
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""GameControls"",
+            ""id"": ""67dda8cc-19ab-4ed9-84f8-d55c22accec5"",
+            ""actions"": [
+                {
+                    ""name"": ""TogglePause"",
+                    ""type"": ""Button"",
+                    ""id"": ""25babc23-6a6e-446f-a8b1-9be45dc4501f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""9624adbb-c51b-496b-89b6-8c2ad543064f"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TogglePause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -232,11 +260,15 @@ namespace BasicMovement2_cf
             m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
             m_PlayerMove_Interact = m_PlayerMove.FindAction("Interact", throwIfNotFound: true);
             m_PlayerMove_CameraRotation = m_PlayerMove.FindAction("CameraRotation", throwIfNotFound: true);
+            // GameControls
+            m_GameControls = asset.FindActionMap("GameControls", throwIfNotFound: true);
+            m_GameControls_TogglePause = m_GameControls.FindAction("TogglePause", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
         {
             UnityEngine.Debug.Assert(!m_PlayerMove.enabled, "This will cause a leak and performance issues, PlayerControls.PlayerMove.Disable() has not been called.");
+            UnityEngine.Debug.Assert(!m_GameControls.enabled, "This will cause a leak and performance issues, PlayerControls.GameControls.Disable() has not been called.");
         }
 
         /// <summary>
@@ -426,6 +458,102 @@ namespace BasicMovement2_cf
         /// Provides a new <see cref="PlayerMoveActions" /> instance referencing this action map.
         /// </summary>
         public PlayerMoveActions @PlayerMove => new PlayerMoveActions(this);
+
+        // GameControls
+        private readonly InputActionMap m_GameControls;
+        private List<IGameControlsActions> m_GameControlsActionsCallbackInterfaces = new List<IGameControlsActions>();
+        private readonly InputAction m_GameControls_TogglePause;
+        /// <summary>
+        /// Provides access to input actions defined in input action map "GameControls".
+        /// </summary>
+        public struct GameControlsActions
+        {
+            private @PlayerControls m_Wrapper;
+
+            /// <summary>
+            /// Construct a new instance of the input action map wrapper class.
+            /// </summary>
+            public GameControlsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+            /// <summary>
+            /// Provides access to the underlying input action "GameControls/TogglePause".
+            /// </summary>
+            public InputAction @TogglePause => m_Wrapper.m_GameControls_TogglePause;
+            /// <summary>
+            /// Provides access to the underlying input action map instance.
+            /// </summary>
+            public InputActionMap Get() { return m_Wrapper.m_GameControls; }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+            public void Enable() { Get().Enable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+            public void Disable() { Get().Disable(); }
+            /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+            public bool enabled => Get().enabled;
+            /// <summary>
+            /// Implicitly converts an <see ref="GameControlsActions" /> to an <see ref="InputActionMap" /> instance.
+            /// </summary>
+            public static implicit operator InputActionMap(GameControlsActions set) { return set.Get(); }
+            /// <summary>
+            /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <param name="instance">Callback instance.</param>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+            /// </remarks>
+            /// <seealso cref="GameControlsActions" />
+            public void AddCallbacks(IGameControlsActions instance)
+            {
+                if (instance == null || m_Wrapper.m_GameControlsActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_GameControlsActionsCallbackInterfaces.Add(instance);
+                @TogglePause.started += instance.OnTogglePause;
+                @TogglePause.performed += instance.OnTogglePause;
+                @TogglePause.canceled += instance.OnTogglePause;
+            }
+
+            /// <summary>
+            /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+            /// </summary>
+            /// <remarks>
+            /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+            /// </remarks>
+            /// <seealso cref="GameControlsActions" />
+            private void UnregisterCallbacks(IGameControlsActions instance)
+            {
+                @TogglePause.started -= instance.OnTogglePause;
+                @TogglePause.performed -= instance.OnTogglePause;
+                @TogglePause.canceled -= instance.OnTogglePause;
+            }
+
+            /// <summary>
+            /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="GameControlsActions.UnregisterCallbacks(IGameControlsActions)" />.
+            /// </summary>
+            /// <seealso cref="GameControlsActions.UnregisterCallbacks(IGameControlsActions)" />
+            public void RemoveCallbacks(IGameControlsActions instance)
+            {
+                if (m_Wrapper.m_GameControlsActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            /// <summary>
+            /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+            /// </summary>
+            /// <remarks>
+            /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+            /// </remarks>
+            /// <seealso cref="GameControlsActions.AddCallbacks(IGameControlsActions)" />
+            /// <seealso cref="GameControlsActions.RemoveCallbacks(IGameControlsActions)" />
+            /// <seealso cref="GameControlsActions.UnregisterCallbacks(IGameControlsActions)" />
+            public void SetCallbacks(IGameControlsActions instance)
+            {
+                foreach (var item in m_Wrapper.m_GameControlsActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_GameControlsActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        /// <summary>
+        /// Provides a new <see cref="GameControlsActions" /> instance referencing this action map.
+        /// </summary>
+        public GameControlsActions @GameControls => new GameControlsActions(this);
         /// <summary>
         /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerMove" which allows adding and removing callbacks.
         /// </summary>
@@ -454,6 +582,21 @@ namespace BasicMovement2_cf
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnCameraRotation(InputAction.CallbackContext context);
+        }
+        /// <summary>
+        /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "GameControls" which allows adding and removing callbacks.
+        /// </summary>
+        /// <seealso cref="GameControlsActions.AddCallbacks(IGameControlsActions)" />
+        /// <seealso cref="GameControlsActions.RemoveCallbacks(IGameControlsActions)" />
+        public interface IGameControlsActions
+        {
+            /// <summary>
+            /// Method invoked when associated input action "TogglePause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnTogglePause(InputAction.CallbackContext context);
         }
     }
 }

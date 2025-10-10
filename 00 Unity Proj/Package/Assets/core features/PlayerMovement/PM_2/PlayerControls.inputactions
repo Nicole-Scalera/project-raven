@@ -135,6 +135,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "GameControls",
+            "id": "67dda8cc-19ab-4ed9-84f8-d55c22accec5",
+            "actions": [
+                {
+                    "name": "TogglePause",
+                    "type": "Button",
+                    "id": "25babc23-6a6e-446f-a8b1-9be45dc4501f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "9624adbb-c51b-496b-89b6-8c2ad543064f",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TogglePause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

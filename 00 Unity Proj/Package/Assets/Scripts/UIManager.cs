@@ -6,27 +6,15 @@ using BasicMovement2_cf;
 
 public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
 {
-    
-    /// <summary>
-    /// The main UI object which used for the menu.
-    /// </summary>
-    public UIController pauseMenu;
-    public UIController gameplayUI;
-    
-    // /// <summary>
-    // /// A list of canvas objects which are used during gameplay (when the main ui is turned off)
-    // /// </summary>
-    // public Canvas[] gameplayUI;
+    public UIController pauseMenu; // Pause Menu UI Controller
+    public UIController gameplayUI; // Gameplay UI Controller
     
     // Booleans
-    private bool isPaused = false; // Boolean to check if game is paused
-    
-    private bool showMenuCanvas;
-    private bool showGameplayCanvas;
+    private bool isPaused = false; // Is the game paused?
+    private bool showMenuCanvas; // Toggles the pause menu
+    private bool showGameplayCanvas; // Toggles the gameplay UI
 
     private PlayerControls playerControls; // PlayerControls.cs
-    
-    private InputAction m_MenuAction;
     
     void Awake()
     {
@@ -48,7 +36,7 @@ public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
             Debug.Log("Game is paused.");
             isPaused = true;
             Time.timeScale = 0;
-            ToggleMainMenu(showMenuCanvas = true); // Enable the pause menu
+            TogglePauseMenu(showMenuCanvas = true); // Enable the pause menu
         }
 
         // If paused and the Escape is triggered
@@ -57,37 +45,29 @@ public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
             Debug.Log("Game is not paused.");
             isPaused = false;
             Time.timeScale = 1;
-            ToggleMainMenu(showMenuCanvas = false); // Disable the pause menu
+            TogglePauseMenu(showMenuCanvas = false); // Disable the pause menu
         }
     }
     // ===============================================
     
-
-    // ========== Pause & Resume ==========
-    // ====================================
-    
     // ========== Toggling Menu ==========
     void OnEnable()
     {
-        _ToggleMainMenu(showMenuCanvas);
+        _TogglePauseMenu(showMenuCanvas);
         Debug.Log("showMenuCanvas: " + showMenuCanvas);
         Debug.Log("isPaused: " + isPaused);
-        playerControls.Enable();
     }
     
-    /// <summary>
-    /// Turn the main menu on or off.
-    /// </summary>
-    /// <param name="show"></param>
-    public void ToggleMainMenu(bool show)
+    // Turn the pause menu on/off
+    public void TogglePauseMenu(bool show)
     {
-        _ToggleMainMenu(show);
+        _TogglePauseMenu(show);
     }
 
-    // Internal function to toggle the main menu
-    void _ToggleMainMenu(bool show)
+    // Internal function to toggle the pause menu
+    void _TogglePauseMenu(bool show)
     {
-        Debug.Log("Toggling main menu: " + show);
+        Debug.Log("Toggling pause menu: " + show);
         
         if (show == true)
         {

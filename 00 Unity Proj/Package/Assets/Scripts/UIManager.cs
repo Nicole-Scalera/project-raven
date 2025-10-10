@@ -11,17 +11,18 @@ public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
     /// The main UI object which used for the menu.
     /// </summary>
     public UIController pauseMenu;
+    public UIController gameplayUI;
     
-    /// <summary>
-    /// A list of canvas objects which are used during gameplay (when the main ui is turned off)
-    /// </summary>
-    public Canvas[] gamePlayCanvasii;
+    // /// <summary>
+    // /// A list of canvas objects which are used during gameplay (when the main ui is turned off)
+    // /// </summary>
+    // public Canvas[] gameplayUI;
     
     // Booleans
-    private bool canPause = true; // Boolean to check if game can be paused
     private bool isPaused = false; // Boolean to check if game is paused
     
-    bool showMenuCanvas = false;
+    private bool showMenuCanvas;
+    private bool showGameplayCanvas;
 
     private PlayerControls playerControls; // PlayerControls.cs
     
@@ -34,52 +35,43 @@ public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
         playerControls.GameControls.SetCallbacks(this); // Set this class as listener
         playerControls.GameControls.Enable();
         
-        // Hide UI elements
-        showMenuCanvas = false;
+        showMenuCanvas = false; // Hide UI elements
+        showGameplayCanvas = true; // Show gameplay UI
     }
     
     // ========== Check for Triggering Menu ==========
     public void OnTogglePause(InputAction.CallbackContext context)
     {
         // If NOT paused and the Escape is triggered
-        if (context.started && canPause)
+        if (context.performed && !isPaused)
         {
-            PauseGame(); // Pause the game
+            Debug.Log("Game is paused.");
+            isPaused = true;
+            Time.timeScale = 0;
+            ToggleMainMenu(showMenuCanvas = true); // Enable the pause menu
         }
 
         // If paused and the Escape is triggered
-        else if (context.started && isPaused)
+        else if (context.performed && isPaused)
         {
-            ResumeGame(); // Resume the game
+            Debug.Log("Game is not paused.");
+            isPaused = false;
+            Time.timeScale = 1;
+            ToggleMainMenu(showMenuCanvas = false); // Disable the pause menu
         }
     }
     // ===============================================
     
 
     // ========== Pause & Resume ==========
-    void PauseGame()
-    {
-        Debug.Log("Game is paused");
-        isPaused = true;
-        Time.timeScale = 0;
-        canPause = false;
-        ToggleMainMenu(showMenuCanvas = true); // Enable the pause menu
-    }
-
-    // Call to Resume the game
-    public void ResumeGame()
-    {
-        isPaused = false;
-        Time.timeScale = 1;
-        canPause = true;
-        ToggleMainMenu(showMenuCanvas = false); // Disable the pause menu
-    }
     // ====================================
     
     // ========== Toggling Menu ==========
     void OnEnable()
     {
         _ToggleMainMenu(showMenuCanvas);
+        Debug.Log("showMenuCanvas: " + showMenuCanvas);
+        Debug.Log("isPaused: " + isPaused);
         playerControls.Enable();
     }
     
@@ -89,27 +81,25 @@ public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
     /// <param name="show"></param>
     public void ToggleMainMenu(bool show)
     {
-        if (this.showMenuCanvas != show)
-        {
-            _ToggleMainMenu(show);
-        }
+        _ToggleMainMenu(show);
     }
 
     // Internal function to toggle the main menu
     void _ToggleMainMenu(bool show)
     {
-        if (show)
+        Debug.Log("Toggling main menu: " + show);
+        
+        if (show == true)
         {
-            Time.timeScale = 0;
-            pauseMenu.gameObject.SetActive(true);
-            foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(false);
+            pauseMenu.TogglePanel(pauseMenu.ArraySize(), true);
+            gameplayUI.TogglePanel(gameplayUI.ArraySize(), false);
         }
         else
         {
-            Time.timeScale = 1;
-            pauseMenu.gameObject.SetActive(false);
-            foreach (var i in gamePlayCanvasii) i.gameObject.SetActive(true);
+            pauseMenu.TogglePanel(pauseMenu.ArraySize(), false);
+            gameplayUI.TogglePanel(gameplayUI.ArraySize(), true);
         }
+
         this.showMenuCanvas = show;
     }
     // ===================================

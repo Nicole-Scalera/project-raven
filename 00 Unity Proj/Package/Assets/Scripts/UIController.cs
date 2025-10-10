@@ -5,21 +5,37 @@ using UnityEngine;
 public class UIController : MonoBehaviour
 {
     // Stores a series of UI objects
-    public GameObject[] panels;
+    [SerializeField] private GameObject[] panels;
 
-    // Toggles the visibility of the UI objects
-    public void SetActivePanel(int index)
+    // Toggles the active/inactive state of UI objects
+    public void TogglePanel(int index, bool active)
     {
         for (var i = 0; i < panels.Length; i++)
         {
-            var active = i == index;
             var g = panels[i];
-            if (g.activeSelf != active) g.SetActive(active);
+            
+            // If the current state of the object is not
+            // the same as the active parameter, update it
+            if (g.activeSelf != active)
+            {
+                g.SetActive(active);
+            }
         }
+    }
+    
+    // Returns how many UI objects are in the array
+    public int ArraySize()
+    {
+        return panels.Length;
     }
 
     void OnEnable()
     {
-        SetActivePanel(0);
+        TogglePanel(0, false);
     }
+    
+    // void OnDisable()
+    // {
+    //     SetActivePanel(-1);
+    // }
 }

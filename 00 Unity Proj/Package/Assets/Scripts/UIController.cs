@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// <remarks>
+/// Attach this script to UI Canvas objects to control the toggling of UI elements in the scene. Note that
+/// general UI logic is handled in UIManager.cs, but methods are called from here to toggle the actual
+/// visibility state of specific panels that are unique to each UI Canvas object.
+/// </remarks>
+/// </summary>
+
 public class UIController : MonoBehaviour
 {
     // Stores a series of UI objects
@@ -33,9 +42,4 @@ public class UIController : MonoBehaviour
     {
         TogglePanel(0, false);
     }
-    
-    // void OnDisable()
-    // {
-    //     SetActivePanel(-1);
-    // }
 }

@@ -198,7 +198,7 @@ MonoBehaviour:
       Data: 1
     - Name: $v
       Entry: 1
-      Data: SC_Level2
+      Data: GS_Apartment
     - Name: 
       Entry: 8
       Data: 
@@ -1307,7 +1307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Go to SC_Level2
+  m_text: Go to GS_Apartment
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2384,7 +2384,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 3919082}
   gameplayUI: {fileID: 1079899749}
-  playerMovementScript: {fileID: 2010575558}
 --- !u!1 &1386397125
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,7 +3025,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This is the Pause Menu
+  m_text: 'You are in GS_Factory.
+
+    This is the Pause Menu.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3053,8 +3054,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 131.7
-  m_fontSizeBase: 131.7
+  m_fontSize: 104.2
+  m_fontSizeBase: 104.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3437,6 +3438,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c261f1dc9255436b8ac52c78ed7021e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  _playerInput: {fileID: 0}
 --- !u!114 &2017511506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3464,7 +3467,7 @@ GameObject:
   - component: {fileID: 2114429933}
   - component: {fileID: 2114429932}
   m_Layer: 5
-  m_Name: SC_Level2Button
+  m_Name: GS_ApartmentButton
   m_TagString: SceneChangeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

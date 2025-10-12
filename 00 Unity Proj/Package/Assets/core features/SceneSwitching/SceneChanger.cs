@@ -95,6 +95,7 @@ namespace SceneSwitching_cf
             // GameManager always prints whenever a
             // new scene is loaded, included runtime.
             gameManager.UpdateCurrentScene(scene.name);
+            gameManager.VerifyTime();
         }
         // =======================================================
         

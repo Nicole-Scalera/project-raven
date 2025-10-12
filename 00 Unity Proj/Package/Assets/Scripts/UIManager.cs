@@ -42,9 +42,12 @@ public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
 
     void Start()
     {
-        // Debug Cursor Info
-        Debug.Log("Cursor Visibility: " + Cursor.visible);
-        Debug.Log("Cursor Lock State: " + Cursor.lockState);
+        // Debug Scene Info
+        Debug.Log(">>>> Scene Loaded: " + SceneManager.GetActiveScene().name);
+        Debug.Log(">>>> PlayerInput: " + playerInput.currentActionMap);
+        Debug.Log(">>>> Cursor Visibility: " + Cursor.visible);
+        Debug.Log(">>>> Cursor Lock State: " + Cursor.lockState);
+        Debug.Log(">>>> Time Scale: " + Time.timeScale);
     }
     
     // ========== Check for Triggering Menu ==========

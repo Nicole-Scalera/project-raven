@@ -35,5 +35,16 @@ namespace SceneSwitching_cf
             Debug.Log($"GameManager > Current scene is: " + currentScene);
         }
 
+        public void VerifyTime()
+        {
+            float timeScale = Time.timeScale;
+            
+            // Ensure the game is running at normal speed
+            if (timeScale != 1)
+            {
+                Time.timeScale = 1;
+            }
+        }
+
     }
 }

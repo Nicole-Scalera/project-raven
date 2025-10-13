@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4aaf9d49-a8b9-43b1-b0f9-593faccc7640" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Apartment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Apartment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/core features/SceneSwitching/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/SceneSwitching/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/core features/SceneSwitching/SceneChanger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/SceneSwitching/SceneChanger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +141,7 @@
       <workItem from="1760122602532" duration="5285000" />
       <workItem from="1760129220543" duration="411000" />
       <workItem from="1760202603136" duration="825000" />
-      <workItem from="1760292174786" duration="1338000" />
+      <workItem from="1760292174786" duration="2004000" />
     </task>
     <servers />
   </component>

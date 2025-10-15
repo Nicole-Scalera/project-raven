@@ -71,22 +71,13 @@ namespace SceneSwitching_cf
             Debug.Log($"SceneChanger > Loaded successfully!");
         }
         
-        // Return a string of the current scene
-        public string GetCurrentSceneName()
-        {
-            // Grab the scene by its name
-            return SceneManager.GetActiveScene().name;
-        }
-        
         // Call sceneLoaded when a new scene is loaded
         public virtual void OnEnable()
         {
-            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         public virtual void OnDisable()
         {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         // Notify the GameManager of the new "current" scene name
@@ -94,8 +85,8 @@ namespace SceneSwitching_cf
         {
             // GameManager always prints whenever a
             // new scene is loaded, included runtime.
-            gameManager.UpdateCurrentScene(scene.name);
-            gameManager.VerifyTime();
+            // gameManager.UpdateCurrentScene(scene.name);
+            // gameManager.VerifyTime();
         }
         // =======================================================
         
@@ -171,9 +162,8 @@ namespace SceneSwitching_cf
         void Start();
         void GetDictionary();
         void LoadScene(string sceneName);
-        string GetCurrentSceneName();
-        void OnEnable();
-        void OnDisable();
+        // void OnEnable();
+        // void OnDisable();
         void OnSceneLoaded(Scene scene, LoadSceneMode mode);
         void CheckForKey(GameObject other);
         void GetDictionaryScene(GameObject otherObject);

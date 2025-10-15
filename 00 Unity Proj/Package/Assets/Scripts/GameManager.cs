@@ -11,31 +11,51 @@ namespace SceneSwitching_cf
 {
     public class GameManager : PersistentMonoSingleton<GameManager>
     {
-        private SceneChanger sceneChanger; // SceneChanger.cs
-
         private string currentScene; // Current Scene Name
         // ^^^ The currentScene variable is called anytime
         // a scene is loaded (including runtime).
-
-        private void Awake()
+        
+        private void OnEnable()
         {
-            // ===== References =====
-            sceneChanger = SceneChanger.Instance; // Access SceneChanger.cs
-            // ^^^ Notice how SceneChanger is also using the
-            // UnitySingleton package, just like GameManager.
-
-            // Get the name of the current scene
-            currentScene = sceneChanger.GetCurrentSceneName();
+            // Subscribe GameManager methods to SceneManager events
+            SceneManager.sceneLoaded += GetCurrentScene;
+            SceneManager.sceneLoaded += VerifyTime;
+            SceneManager.activeSceneChanged += ChangedActiveScene;
+        }
+        
+        private void OnDisable()
+        {
+            // Unsubscribe methods from SceneManager events
+            SceneManager.sceneLoaded -= GetCurrentScene;
+            SceneManager.sceneLoaded -= VerifyTime;
+            SceneManager.activeSceneChanged -= ChangedActiveScene;
         }
 
         // Update the current scene name everytime a new scene is loaded
-        public void UpdateCurrentScene(string sceneName)
+        public void GetCurrentScene(Scene scene, LoadSceneMode mode)
         {
-            currentScene = sceneName;
-            Debug.Log($"GameManager > Current scene is: " + currentScene);
+            // Update and debug the current scene name
+            currentScene = SceneManager.GetActiveScene().name;
+            Debug.Log($"GameManager > GetCurrentScene > Current scene is: " + currentScene);
+        }
+        
+        // The scene has been changed from one to another
+        private void ChangedActiveScene(Scene current, Scene next)
+        {
+            string currentName = current.name; // Name of the current scene
+
+            if (currentName == null)
+            {
+                currentName = "Replaced";
+            }
+
+            // Debug the scene change
+            Debug.Log("GameManager > ChangedActiveScene > Scenes: " + currentName + ", " + next.name);
         }
 
-        public void VerifyTime()
+        // Ensure that the game is running at a normal speed and is
+        // not paused whenever a new scene is loaded
+        public void VerifyTime(Scene scene, LoadSceneMode mode)
         {
             float timeScale = Time.timeScale;
             
@@ -44,6 +64,10 @@ namespace SceneSwitching_cf
             {
                 Time.timeScale = 1;
             }
+            
+            // Debug the timescale
+            Debug.Log("GameManager > VerifyTime > Time is set to: " + Time.timeScale);
+            
         }
 
     }

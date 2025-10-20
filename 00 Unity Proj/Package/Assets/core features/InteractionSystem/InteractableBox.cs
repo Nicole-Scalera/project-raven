@@ -26,7 +26,7 @@ public class InteractableBox : MonoBehaviour
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
-        //sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
+        sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
 
     }
 

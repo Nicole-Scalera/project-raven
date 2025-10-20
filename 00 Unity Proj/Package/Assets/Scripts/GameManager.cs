@@ -1,5 +1,6 @@
 using UnityCommunity.UnitySingleton;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 // This is the GameManager class. It is used for various general purposes in
@@ -11,6 +12,7 @@ namespace SceneSwitching_cf
 {
     public class GameManager : PersistentMonoSingleton<GameManager>
     {
+        //public static event Action inputMapSwitched;
         private string currentScene; // Current Scene Name
         // ^^^ The currentScene variable is called anytime
         // a scene is loaded (including runtime).
@@ -69,6 +71,5 @@ namespace SceneSwitching_cf
             Debug.Log("GameManager > VerifyTime > Time is set to: " + Time.timeScale);
             
         }
-
     }
 }

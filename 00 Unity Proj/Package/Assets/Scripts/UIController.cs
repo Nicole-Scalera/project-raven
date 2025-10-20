@@ -22,7 +22,7 @@ public class UIController : MonoBehaviour
         for (var i = 0; i < panels.Length; i++)
         {
             var g = panels[i];
-            
+
             // If the current state of the object is not
             // the same as the active parameter, update it
             if (g.activeSelf != active)

@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using BasicMovement2_cf;
 
+// This is the UIManager script that currently manages the Pause Menu and Gameplay UI.
+// I plan on making it more dynamic in the future to encompass the switching of other
+// UI canvases, but right now it focuses on just pausing/playing.
+
 public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
 {
     // UI Controllers for individual UI canvases in the scene.

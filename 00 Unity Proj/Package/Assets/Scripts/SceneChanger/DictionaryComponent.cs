@@ -27,8 +27,9 @@ namespace SceneSwitching_cf
         "scene changer script that is also attached to the object.")]
         [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "SceneAsset")]
         public Dictionary<GameObject, string> SceneChangerDictionary = new Dictionary<GameObject, string>();
+        
+        [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "UIController")]
+        public Dictionary<GameObject, UIController> UICanvasControllerDictionary = new Dictionary<GameObject, UIController>();
     }
-    
-
 
 }

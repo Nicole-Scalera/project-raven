@@ -1747,19 +1747,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 299929541}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1852648787}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &299929541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3091,7 +3079,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   sceneChangeDictionary: 1
-  UICanvasDictionary: 1
+  UICanvasDictionary: 0
 --- !u!114 &660406341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5965,6 +5953,7 @@ MonoBehaviour:
   defaultCanvasController: {fileID: 660406342}
   buttons:
   - {fileID: 809362148}
+  - {fileID: 299929540}
   dictionaryComponent: {fileID: 1266001879}
 --- !u!114 &1266001879
 MonoBehaviour:
@@ -5984,6 +5973,8 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 809362146}
     - {fileID: 1822039426}
+    - {fileID: 299929538}
+    - {fileID: 660406342}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -6018,7 +6009,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -6032,13 +6023,25 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 10
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
   sceneChangeDictionary: 0
-  UICanvasDictionary: 0
+  UICanvasDictionary: 1
 --- !u!1 &1282181055
 GameObject:
   m_ObjectHideFlags: 0
@@ -7599,7 +7602,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   sceneChangeDictionary: 1
-  UICanvasDictionary: 1
+  UICanvasDictionary: 0
 --- !u!114 &1822039428
 MonoBehaviour:
   m_ObjectHideFlags: 0

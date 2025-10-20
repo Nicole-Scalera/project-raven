@@ -60,9 +60,7 @@ public class UIManagerSaving : MonoBehaviour
     // Check for button clicks in the scene
     private void CheckForClicks()
     {
-        // Add listeners to all Button components under this transform (safer than relying on tags)
-        // var buttons = GetComponentsInChildren<Button>(true);
-
+        // Add listeners to each button in the buttons array
         foreach (var button in buttons)
         {
             if (button == null || button.gameObject == null) continue;
@@ -78,11 +76,6 @@ public class UIManagerSaving : MonoBehaviour
         
         // Set the otherObject to the UI/collided object
         otherObject = other.gameObject;
-        
-        // Debug.Log("TaskOnClick Triggered by " + other.gameObject.name);
-        //     
-        // // Set the otherObject to the UI/collided object
-        // otherObject = other.gameObject;
         
         // Call CheckForKey to see if it is in the dictionary
         CheckForKey(otherObject);
@@ -109,50 +102,7 @@ public class UIManagerSaving : MonoBehaviour
 
             // Keep a reference to the last-interacted object and its controller
             otherObject = other;
-            // canvasController = foundController;
             return;
-        }
-
-        // Fallback matching: maybe the passed GameObject is a child (or parent) of the key used in the dictionary,
-        // or the names match. Try to find a reasonable candidate.
-        if (canvasControllerDictionary != null)
-        {
-            foreach (var kvp in canvasControllerDictionary)
-            {
-                var key = kvp.Key;
-                var controller = kvp.Value;
-                if (key == null) continue;
-
-                // 1) exact reference match (already tried, but keep for clarity)
-                if (ReferenceEquals(key, other))
-                {
-                    Debug.Log($"UIManagerSaving > Found dictionary key by reference for {other.name}.");
-                    _ToggleUICanvas(controller);
-                    otherObject = key;
-                    //canvasController = controller;
-                    return;
-                }
-
-                // 2) name match
-                if (string.Equals(key.name, other.name, StringComparison.OrdinalIgnoreCase))
-                {
-                    Debug.Log($"UIManagerSaving > Found dictionary key by name match: '{key.name}' for '{other.name}'.");
-                    _ToggleUICanvas(controller);
-                    otherObject = key;
-                    //canvasController = controller;
-                    return;
-                }
-
-                // 3) hierarchy match: other is child of key, or key is child of other
-                if (other.transform.IsChildOf(key.transform) || key.transform.IsChildOf(other.transform))
-                {
-                    Debug.Log($"UIManagerSaving > Found dictionary key by hierarchy match: '{key.name}' for '{other.name}'.");
-                    _ToggleUICanvas(controller);
-                    otherObject = key;
-                    //canvasController = controller;
-                    return;
-                }
-            }
         }
 
         // If we get here, we didn't find a match
@@ -166,19 +116,16 @@ public class UIManagerSaving : MonoBehaviour
         if (keyObject == null)
         {
             Debug.LogWarning("UIManagerSaving > GetDictionaryCanvasController called with null object");
-            //canvasController = null;
             return;
         }
 
         if (canvasControllerDictionary != null && canvasControllerDictionary.TryGetValue(keyObject, out UIController found))
         {
             Debug.Log($"UIManagerSaving > UIController '{found.gameObject?.name ?? found.name}' retrieved from dictionary for '{keyObject.name}'.");
-            //canvasController = found;
         }
         else
         {
             Debug.LogWarning($"UIManagerSaving > No UIController found in dictionary for {keyObject.name}.");
-            //canvasController = null;
         }
     }
     // ======================================================
@@ -252,9 +199,6 @@ public class UIManagerSaving : MonoBehaviour
                 Debug.LogError($"UIManagerSaving > Error showing requested controller '{canvas.gameObject?.name ?? canvas.name}': {ex}");
             }
         }
-
-        // Store the currently shown canvas reference
-        //canvasController = canvas;
     }
     // =======================================
 }

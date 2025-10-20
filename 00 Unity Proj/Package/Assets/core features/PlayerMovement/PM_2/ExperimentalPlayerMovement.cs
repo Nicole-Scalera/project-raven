@@ -82,9 +82,7 @@ namespace BasicMovement2_cf
                     jumpsRemaining--;
 
                 }
-
             }
-
         }
 
         // Checks if the player is on the ground

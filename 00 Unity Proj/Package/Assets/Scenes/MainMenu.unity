@@ -3090,6 +3090,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  sceneChangeDictionary: 1
+  UICanvasDictionary: 1
 --- !u!114 &660406341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3202,6 +3204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 694441649}
   - component: {fileID: 694441650}
+  - component: {fileID: 694441651}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3237,6 +3240,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnparentOnAwake: 1
+--- !u!114 &694441651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694441648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e8b2236a59c8d24ea4fc08bc57ac4fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 1
 --- !u!1 &747651572
 GameObject:
   m_ObjectHideFlags: 0
@@ -3970,7 +3986,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1700522793}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6021,6 +6037,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  sceneChangeDictionary: 0
+  UICanvasDictionary: 0
 --- !u!1 &1282181055
 GameObject:
   m_ObjectHideFlags: 0
@@ -7580,6 +7598,8 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+  sceneChangeDictionary: 1
+  UICanvasDictionary: 1
 --- !u!114 &1822039428
 MonoBehaviour:
   m_ObjectHideFlags: 0

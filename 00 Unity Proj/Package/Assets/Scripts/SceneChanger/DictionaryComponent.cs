@@ -20,14 +20,21 @@ namespace SceneSwitching_cf
     
     public class DictionaryComponent : SerializedMonoBehaviour
     {
+        public bool sceneChangeDictionary = true;
+        public bool UICanvasDictionary = true;
+
+        // Scene Changer Dictionary
+        [ShowIfGroup("sceneChangeDictionary")]
         [DetailedInfoBox("How to Use?",
-        "This Dictionary Component is split into two parts: key & value. The key box should be filled with" +
-        "the GameObject that the player will interact with (collision or UI). The value box should be filled with the" +
-        "SceneAsset that you want to switch to. Remember to click Add! These will be passed into the corresponding" +
-        "scene changer script that is also attached to the object.")]
+            "This Dictionary Component is split into two parts: key & value. The key box should be filled with" +
+            "the GameObject that the player will interact with (collision or UI). The value box should be filled with the" +
+            "SceneAsset that you want to switch to. Remember to click Add! These will be passed into the corresponding" +
+            "scene changer script that is also attached to the object.")]
         [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "SceneAsset")]
         public Dictionary<GameObject, string> SceneChangerDictionary = new Dictionary<GameObject, string>();
         
+        // UI Canvas Dictionary
+        [ShowIfGroup("UICanvasDictionary")]
         [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "UIController")]
         public Dictionary<GameObject, UIController> UICanvasControllerDictionary = new Dictionary<GameObject, UIController>();
     }

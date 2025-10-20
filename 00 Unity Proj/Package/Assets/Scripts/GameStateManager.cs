@@ -12,6 +12,10 @@ public class GameStateManager : MonoBehaviour
     [EnumToggleButtons, HideLabel]
     [InfoBox("Choose the default game state that this scene will load in.")]
     public GameState gameState;
+    // Note: This variable is not static because each instance of the component
+    // needs to maintain its own copy of the current game state for reference. Also,
+    // the Enum will clearly change when the static event is invoked, so watch out
+    // for the Inspector.
     
     // Static event to notify subscribers of game state changes
     public static event Action<GameState> gameStateChanged;

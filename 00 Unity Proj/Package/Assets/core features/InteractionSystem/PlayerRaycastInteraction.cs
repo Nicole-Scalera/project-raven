@@ -18,21 +18,9 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
     //========================================================
 
-    //     ==== Active Box ====
+    //     ==== Active Interactable Item ====
 
-    public GameObject activeBox;
-
-    //========================================================
-
-    //     ==== Interactable List ====
-
-    public List<GameObject> interactableObjects = new List<GameObject>();
-
-    //========================================================
-
-    //     ==== Player Reference Transform ====
-
-    public Transform playerTransform;
+    public GameObject activeInteractable;
 
     //========================================================
 
@@ -44,8 +32,16 @@ public class PlayerRaycastInteraction : MonoBehaviour
     public bool isHitting;
     public float rayLength = 5f;
 
-    // If there are objects in the clues list, the list constantly
-    // sorts the GameObjects in the list by distance using DistanceSort()
+    /*
+     * 
+     * - Grabs player mouse position then creates a ray starting at the current camera location
+     * - Emits the ray using Physics.Raycast and uses isHitting to track collision
+     * - If the ray is hitting the ray is emitted green and checks if the colliding
+     *   object is interactable and if so assigns it to the activeInteractable variable
+     *      - If its a clue an added check is performed to ensure the clue hasn't already been interactedWith
+     * - If it isnt hitting the ray is emitted red and assigns null to activeInteractable
+     * 
+     */
     public void FixedUpdate()
     {
         
@@ -63,13 +59,16 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
             Debug.DrawRay(origin, direction * rayLength, Color.green);
 
-            Debug.Log(raycastHit.collider.GetComponent<InteractableBox>() != null);
-
             if (raycastHit.collider.GetComponent<InteractableBox>() != null)
             {
 
-                raycastHit.collider.GetComponent<InteractableBox>().Interaction();
-                activeBox.GetComponent<Rigidbody>().useGravity = !activeBox.GetComponent<InteractableBox>().interactedWith;
+                activeInteractable = raycastHit.collider.gameObject;
+
+            }
+            else if (raycastHit.collider.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)
+            {
+
+                activeInteractable = raycastHit.collider.gameObject;
 
             }
 
@@ -78,8 +77,8 @@ public class PlayerRaycastInteraction : MonoBehaviour
         {
 
             Debug.DrawRay(origin, direction * rayLength, Color.red);
-            interactableObjects.Clear();
-            //Debug.Log("Cleared");
+
+            activeInteractable = null;
 
         }
 
@@ -94,38 +93,11 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
     public void PlayerInteract(InputAction.CallbackContext context)
     {
-
-        //Debug.Log("Interacting");
-
-        Debug.Log(!interactableObjects.IsNullOrEmpty());
-
-        if (activeBox != null)
+        if(activeInteractable != null)
         {
 
-            Debug.Log("In Objects");
+            activeInteractable.GetComponent<InteractableBox>().Interaction();
 
-            //DistanceSort(interactableObjects); // Call to find the nearest object
-
-            // Checks for an InteractableClue
-            if (interactableObjects[0].GetComponent<InteractableClue>() != null)
-            {  
-                // Run Interaction() from InteractableClue.cs
-                interactableObjects[0].GetComponent<InteractableClue>().Interaction();
-
-            }
-            // Checks for an InteractableBox
-            else if (interactableObjects[0].GetComponent<InteractableBox>() != null)
-            {
-                // Set the activeBox to the nearest box
-                activeBox = interactableObjects[0];
-
-                // Run Interaction() from InteractableBox.cs
-                activeBox.GetComponent<InteractableBox>().Interaction();
-
-                // Disable gravity on that box if it's picked up
-                activeBox.GetComponent<Rigidbody>().useGravity = !activeBox.GetComponent<InteractableBox>().interactedWith;
-
-            }
         }
     }
 

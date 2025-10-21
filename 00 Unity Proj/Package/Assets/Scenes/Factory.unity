@@ -1887,8 +1887,8 @@ MonoBehaviour:
     m_ActionName: 'PlayerMove/Move[/Keyboard/space,/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2010575560}
-        m_TargetAssemblyTypeName: PlayerInteraction, Assembly-CSharp
+      - m_Target: {fileID: 2010575562}
+        m_TargetAssemblyTypeName: PlayerRaycastInteraction, Assembly-CSharp
         m_MethodName: PlayerInteract
         m_Mode: 0
         m_Arguments:
@@ -2021,6 +2021,7 @@ MonoBehaviour:
   playerTransform: {fileID: 0}
   mousePos: {x: 0, y: 0, z: 0}
   isHitting: 0
+  rayLength: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

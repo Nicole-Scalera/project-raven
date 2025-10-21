@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -14,6 +15,7 @@ public class PlayerInteraction : MonoBehaviour
     //     ===== Clues List ======
 
     public List<GameObject> clues = new List<GameObject>();
+    public static event Action<InteractableClue> clueCollected;
 
     //========================================================
 
@@ -77,7 +79,9 @@ public class PlayerInteraction : MonoBehaviour
             if (interactableObjects[0].GetComponent<InteractableClue>() != null)
             {
                 // Run Interaction() from InteractableClue.cs
-                interactableObjects[0].GetComponent<InteractableClue>().Interaction();
+                // interactableObjects[0].GetComponent<InteractableClue>().Interaction();
+                // Notify all subscribers that a clue has been collected & pass in the clue data
+                clueCollected?.Invoke(interactableObjects[0].GetComponent<InteractableClue>());
             }
             // Checks for an InteractableBox
             else if (interactableObjects[0].GetComponent<InteractableBox>() != null)

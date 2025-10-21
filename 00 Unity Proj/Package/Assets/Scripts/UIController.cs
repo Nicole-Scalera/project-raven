@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 
 /// <remarks>
 /// Attach this script to UI Canvas objects to control the toggling of UI elements in the scene. Note that
 /// general UI logic is handled in UIManager.cs, but methods are called from here to toggle the actual

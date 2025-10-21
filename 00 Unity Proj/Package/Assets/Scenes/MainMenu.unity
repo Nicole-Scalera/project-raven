@@ -3079,7 +3079,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   sceneChangeDictionary: 1
-  UICanvasDictionary: 0
+  UICanvasDictionary: 1
 --- !u!114 &660406341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6005,8 +6005,12 @@ MonoBehaviour:
       Data: 2|System.Collections.Generic.Dictionary`2[[UnityEngine.GameObject, UnityEngine.CoreModule],[UIController,
         Assembly-CSharp]], mscorlib
     - Name: comparer
-      Entry: 9
-      Data: 1
+      Entry: 7
+      Data: 3|System.Collections.Generic.ObjectEqualityComparer`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 12
       Data: 2
@@ -7602,7 +7606,7 @@ MonoBehaviour:
       Entry: 8
       Data: 
   sceneChangeDictionary: 1
-  UICanvasDictionary: 0
+  UICanvasDictionary: 1
 --- !u!114 &1822039428
 MonoBehaviour:
   m_ObjectHideFlags: 0

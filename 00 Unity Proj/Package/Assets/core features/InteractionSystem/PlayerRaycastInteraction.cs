@@ -33,18 +33,18 @@ public class PlayerRaycastInteraction : MonoBehaviour
     public float rayLength = 5f;
 
     /*
-     * 
+     *
      * - Grabs player mouse position then creates a ray starting at the current camera location
      * - Emits the ray using Physics.Raycast and uses isHitting to track collision
      * - If the ray is hitting the ray is emitted green and checks if the colliding
      *   object is interactable and if so assigns it to the activeInteractable variable
      *      - If its a clue an added check is performed to ensure the clue hasn't already been interactedWith
      * - If it isnt hitting the ray is emitted red and assigns null to activeInteractable
-     * 
+     *
      */
     public void FixedUpdate()
     {
-        
+
         mousePos = Input.mousePosition;
 
         interactionRay = GetComponentInChildren<Camera>().ScreenPointToRay(mousePos);

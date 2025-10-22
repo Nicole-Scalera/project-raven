@@ -12,6 +12,7 @@ public class InteractableBox : MonoBehaviour
     public bool sorted = false;
 
     public GameObject player;
+    public Ray playerRay;
 
     public GameObject path;
 
@@ -22,7 +23,10 @@ public class InteractableBox : MonoBehaviour
     {
     
         sortNum = Random.Range(1,5);
+
         player = GameObject.FindGameObjectWithTag("Player");
+        //playerRay = player.GetComponent<PlayerRaycastInteraction>().interactionRay;
+        
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
@@ -35,15 +39,17 @@ public class InteractableBox : MonoBehaviour
 
         if (interactedWith)
         {
+            playerRay = player.GetComponent<PlayerRaycastInteraction>().interactionRay;
+            transform.position = playerRay.GetPoint(1.5f);
+            transform.rotation = player.transform.rotation;
 
-            //Debug.Log("Moving Box");
-            transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z);
 
         }
 
         if (sorted)
         {
 
+            transform.rotation = Quaternion.identity;
             GetComponent<Rigidbody>().isKinematic = true;
 
         }
@@ -54,16 +60,13 @@ public class InteractableBox : MonoBehaviour
     public void Interaction()
     {
 
-        //Debug.Log(interactedWith);
         interactedWith = !interactedWith;
 
         sortedBayUI.text = "Bay: " + sortNum.ToString();
 
         path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
 
-        transform.rotation = Quaternion.identity;
-        GetComponent<Rigidbody>().isKinematic = true;
-
+        GetComponent<Rigidbody>().useGravity = false;
 
     }
 

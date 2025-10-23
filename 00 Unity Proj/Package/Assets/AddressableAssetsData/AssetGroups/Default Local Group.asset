@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Default Local Group
   m_GUID: f8cc750ac309d654281a98d799e474dd
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: dd2ab6da36457e5438da12a29b6311e0
+    m_Address: Assets/Scripts/Data/CluesSpreadsheet1.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 37fcdb0b17b41014d9c6a352f84425a1, type: 2}
   m_SchemaSet:

@@ -2,9 +2,13 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-public class ClueSavingTest : MonoBehaviour
+// This class acts as a save manager to load and save important
+// data that should persist between play sessions.
+
+public class SaveManager : MonoBehaviour
 {
     [SerializeField] private AssetReferenceSpreadsheet clueSpreadsheet;
+    [SerializeField] private AssetReferenceSpreadsheet progressSpreadsheet;
 
     private void Start()
     {
@@ -33,21 +37,6 @@ public class ClueSavingTest : MonoBehaviour
             Debug.Log("Here is 1,1: " + sheet.GetCell<string>(1, 1));
             
             sheet.Save("myClueData.csv");
-            
-            
-            // // Save some values into the spreadsheet.
-            // sheet.SetCell(0,0, "hitpoints");
-            // sheet.SetCell(1,0, 12);
-            // sheet.SetCell(0,1, "position");
-            // sheet.SetCell(1,0, transform.position);
-            //
-            // // Save the file to a CSV.
-            // sheet.Save("myClueData.csv");
-            
-            // sheet.Load(clueData.ToString());
-            //sheet.Load(clueData);
-            // Debug.Log("Clue Spreadsheet Loaded: " + clueData.name);
-            // Debug.Log("Here is a debug of the sheet to a to a string: " + sheet.ToString());
         }
         else
         {

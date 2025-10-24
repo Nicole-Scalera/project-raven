@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: f8cc750ac309d654281a98d799e474dd
   m_SerializeEntries:
+  - m_GUID: 890764db7eae1634bb986d267764e674
+    m_Address: Assets/Scripts/Data/ProgressData.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dd2ab6da36457e5438da12a29b6311e0
     m_Address: Assets/Scripts/Data/CluesSpreadsheet1.csv
     m_ReadOnly: 0

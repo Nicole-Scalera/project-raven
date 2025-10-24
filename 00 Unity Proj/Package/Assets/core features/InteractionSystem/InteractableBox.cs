@@ -62,6 +62,7 @@ public class InteractableBox : MonoBehaviour
         path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
 
         transform.rotation = Quaternion.identity;
+        GetComponent<Rigidbody>().isKinematic = true;
 
 
     }

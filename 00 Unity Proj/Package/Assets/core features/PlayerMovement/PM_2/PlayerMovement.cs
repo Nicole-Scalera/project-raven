@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 namespace BasicMovement2_cf
 {
 
-    public class ExperimentalPlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     {
 
         // ========== Components ==========

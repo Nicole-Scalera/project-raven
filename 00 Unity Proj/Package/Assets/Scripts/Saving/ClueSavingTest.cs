@@ -11,6 +11,7 @@ public class ClueSavingTest : MonoBehaviour
         // Load the clueSpreadsheet asynchronously
         // and register a callback for when it's loaded
         clueSpreadsheet.LoadAssetAsync().Completed += OnClueSpreadsheetLoaded;
+        LoadSavedSpreadsheet();
     }
 
     // When clueSpreadsheet is loaded, load the data into an ES3Spreadsheet
@@ -52,5 +53,15 @@ public class ClueSavingTest : MonoBehaviour
         {
             Debug.LogError("Failed to load clue spreadsheet.");
         }
+    }
+    
+    public void LoadSavedSpreadsheet()
+    {
+        var sheet = new ES3Spreadsheet();
+        sheet.Load("myClueData.csv");
+        Debug.Log("Loaded saved spreadsheet:");
+        Debug.Log(sheet.ToString());
+        Debug.Log("LoadSavedSpreadsheet > This is the row count: " + sheet.RowCount);
+        Debug.Log("LoadSavedSpreadsheet > This is the column count: " + sheet.ColumnCount);
     }
 }

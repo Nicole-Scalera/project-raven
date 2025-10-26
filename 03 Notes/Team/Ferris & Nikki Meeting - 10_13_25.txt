@@ -1,0 +1,15 @@
+Ferris & Nikki Meeting - 10/13/25
+
+- Ferris is going to talk with the writing team about clues.
+- In terms of saving, Nikki should still work on the save system for carrying clues between scenes.
+- Once the writers are done with the clue list, there will be a set of different clues for different days.
+- Each day, there should be a way to check if the Player found a clue.
+	- If yes:
+		- Check it off somehow
+		- Ensure it appears back on the board in the apartment.
+- The only thing finding clues might impact is the dialogue, but it's fine for now.
+- If all of the clues are gathered, it MAY change the ending.
+	- Touch base on this later.
+- A little notification of a clue being found via a HUD might help.
+- The factory will be different pieces which is important for hit boxes, walls, and textures.
+- Dan may help Ferris add everything in correctly.

@@ -4,7 +4,60 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="" />
+    <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEditor/Sirenix.Serialization.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEditor/Sirenix.Serialization.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEditor/Sirenix.Serialization.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEditor/Sirenix.Serialization.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEditor/Sirenix.Utilities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEditor/Sirenix.Utilities.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEditor/Sirenix.Utilities.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEditor/Sirenix.Utilities.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEmitAndNoEditor/Sirenix.Serialization.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEmitAndNoEditor/Sirenix.Serialization.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEmitAndNoEditor/Sirenix.Serialization.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEmitAndNoEditor/Sirenix.Serialization.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEmitAndNoEditor/Sirenix.Utilities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEmitAndNoEditor/Sirenix.Utilities.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEmitAndNoEditor/Sirenix.Utilities.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/NoEmitAndNoEditor/Sirenix.Utilities.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Reflection.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Reflection.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Reflection.Editor.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Reflection.Editor.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/link.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Assemblies/link.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Bootstrap License.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Bootstrap License.txt.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/ConfigData.bytes.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/ConfigData.bytes.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden/ExtractSpriteShader.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden/ExtractSpriteShader.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden/GUIUtilShader.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden/GUIUtilShader.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden/LazyEditorIconShader.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden/LazyEditorIconShader.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden/SdfIconShader.shader.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/Hidden/SdfIconShader.shader.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/OdinPathLookup.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/OdinPathLookup.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/SdfIconAtlas.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Assets/Editor/SdfIconAtlas.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables.data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Addressables.data.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Entities.data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Entities.data.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization.data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Localization.data.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Mathematics.data.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Modules/Unity.Mathematics.data.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Readme.txt.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Readme.txt.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,10 +84,28 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "chore/69-project-reorganization"
+    "git-widget-placeholder": "chore/69-project-reorganization",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Package Build 1\Package.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\nikki\Desktop\Package Build 1" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
+      <option name="MIXED_MODE_DEBUG" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.50f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath &quot;C:\Users\nikki\project-raven\00 Unity Proj\Package&quot; -debugCodeOptimization" />
@@ -87,6 +158,9 @@
       <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
+    <configuration name="Attach to Device" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -98,8 +172,12 @@
       <updated>1761173642583</updated>
       <workItem from="1761173642792" duration="3706000" />
       <workItem from="1761240400563" duration="2241000" />
+      <workItem from="1761494605588" duration="433000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">

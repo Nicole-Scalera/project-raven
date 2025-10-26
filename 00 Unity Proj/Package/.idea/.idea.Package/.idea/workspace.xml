@@ -5,8 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animated Conveyor Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Animated Conveyor Belt.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animated Conveyor Belt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Animated Conveyor Belt.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Conveyor Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Conveyor Belt.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Conveyor Belt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Conveyor Belt.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Final Conveyor Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Final Conveyor Belt.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Final Conveyor Belt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Final Conveyor Belt.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Carboard with Logo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Carboard with Logo.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Carboard with Logo.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Carboard with Logo.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Cardboard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Cardboard.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Cardboard.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Cardboard.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/cardboard texture.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/cardboard texture.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/cardboard texture.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/cardboard texture.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/goat.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/goat.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/goat.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/goat.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckModel (1).fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Truck/TruckModel (1).fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckModel (1).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Truck/TruckModel (1).fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/animated conveyor belt component.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/animated conveyor belt component.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/animated conveyor belt component.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/animated conveyor belt component.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box 2 export.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box 2 export.fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box 2 export.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box 2 export.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box with logo (1).fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box with logo (1).fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box with logo (1).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box with logo (1).fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/conveyor belt (2).fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/conveyor belt (2).fbx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/conveyor belt (2).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/conveyor belt (2).fbx.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +151,7 @@
       <updated>1761173642583</updated>
       <workItem from="1761173642792" duration="3706000" />
       <workItem from="1761240400563" duration="2241000" />
-      <workItem from="1761494605588" duration="806000" />
+      <workItem from="1761494605588" duration="1637000" />
     </task>
     <servers />
   </component>

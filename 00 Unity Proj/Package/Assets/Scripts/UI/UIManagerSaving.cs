@@ -17,8 +17,8 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
     private GameObject otherObject; // Other object the player interacts with (Button)
     private PlayerInputGameState playerInputGameState; // PlayerInput and GameState tuple
     private GameStateManager.GameState currentState; // Current Game State
-    // Player References
     private PlayerControls playerControls; // PlayerControls.cs
+    private bool isPaused;
     // ================================
     
     // ===== UIController Dictionary =====
@@ -31,16 +31,6 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
     // ===== Initialization =====
     private void Awake()
     {
-        // Get the dictionary component from this GameObject or its children
-        dictionaryComponent = GetComponent<DictionaryComponent>();
-        if (dictionaryComponent == null)
-        {
-            dictionaryComponent = GetComponentInChildren<DictionaryComponent>();
-        }
-
-        // Ensure the dictionaries are populated early (input can fire as soon as Awake)
-        GetDictionary();
-        
         // Initialize PlayerControls
         playerControls = new PlayerControls();
         playerControls.GameControls.SetCallbacks(this); // Set this class as listener
@@ -49,17 +39,56 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
         currentState = GameStateManager.CurrentGameState;
     }
     
-    private void Start()
+    // Subscribe to events
+    private void OnEnable()
     {
-        CheckForClicks(); // Check for button clicks in the scene
+        GameStateManager.gameStateChanged += UpdateGameState;
+        SceneManager.sceneLoaded += SetSceneDefaults;
+    }
+    
+    private void OnDisable()
+    {
+        GameStateManager.gameStateChanged -= UpdateGameState;
+        SceneManager.sceneLoaded -= SetSceneDefaults;
+    }
+    
+    // Update the private reference of the current game state
+    private void UpdateGameState(GameStateManager.GameState state)
+    {
+        currentState = state;
+        isPaused = (state == GameStateManager.GameState.Paused);
+        Debug.Log("isPaused: " + isPaused);
+        Debug.Log("currentState: " + currentState);
+        Debug.Log("Is GameControls enabled: " + playerControls.GameControls.enabled);
+        EnsureGameControlsEnabled();
+    }
+    
+    private void EnsureGameControlsEnabled()
+    {
+        if (isPaused && !playerControls.GameControls.enabled)
+        {
+            playerControls.GameControls.Enable();
+        }
+    }
+    
+    // Set scene defaults when a new scene is loaded
+    private void SetSceneDefaults(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("UIManagerSaving > sceneLoaded was triggered in UIManagerSaving.cs");
         
-        // Set the default canvas on scene start
-        _ToggleCanvasUI(defaultCanvasController);
+        Debug.Log("Before calling GetDictionary(): " + PlayerInputCanvasControllerDictionary);
+        RepopulateDictionaries(); // Rebuild the dictionaries when a new scene is loaded
+        Debug.Log("After calling GetDictionary(): " + PlayerInputCanvasControllerDictionary);
+        _ToggleCanvasUI(defaultCanvasController); // Set the default canvas on scene load
+        
+        CheckForClicks(); // Check for button clicks in the scene
     }
 
     // Get the UI canvas dictionary from DictionaryComponent.cs
     private void GetDictionary()
     {
+        Debug.Log("UIManagerSaving > Getting the Dictionaries...");
+        
         if (dictionaryComponent != null)
         {
             // Grab the dictionaries from the object
@@ -71,21 +100,25 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
             Debug.LogWarning("UIManagerSaving > No DictionaryComponent found on this object or its children.");
         }
     }
-
-    private void OnEnable()
-    {
-        GameStateManager.gameStateChanged += UpdateGameState;
-    }
     
-    private void OnDisable()
+    // Repopulate the dictionaries (call this on scene load)
+    private void RepopulateDictionaries()
     {
-        GameStateManager.gameStateChanged -= UpdateGameState;
-    }
+        // Clear existing entries first
+        UICanvasControllerDictionary?.Clear();
+        PlayerInputCanvasControllerDictionary?.Clear();
 
-    // Update the private reference of the current game state
-    private void UpdateGameState(GameStateManager.GameState state)
-    {
-        currentState = state;
+        // Ensure we have a reference to the DictionaryComponent (scene may have changed)
+        if (dictionaryComponent == null)
+        {
+            dictionaryComponent = GetComponent<DictionaryComponent>() ?? GetComponentInChildren<DictionaryComponent>();
+        }
+
+        // Use the existing logic to populate the dictionaries
+        GetDictionary();
+
+        // Log counts for diagnostics
+        Debug.Log($"UIManagerSaving > Repopulated dictionaries: UICanvas={UICanvasControllerDictionary?.Count ?? 0}, PlayerInputCanvas={PlayerInputCanvasControllerDictionary?.Count ?? 0}");
     }
     // ==========================
     
@@ -126,23 +159,25 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
         var action = context.action;
         var actionName = action?.name;
         var actionMapName = context.action?.actionMap?.name;
-
+    
         Debug.Log("UIManagerSaving > TaskOnPlayerInput Triggered by action: " + actionName + " on map: " + actionMapName);
-
+    
         if (string.IsNullOrEmpty(actionMapName))
         {
             Debug.LogWarning("UIManagerSaving > OnTogglePause: actionMap name is null or empty. Aborting.");
             return;
         }
-
-        // Compute the current game state we're in
-        var current = GameStateManager.CurrentGameState;
-
+        
+        Debug.Log("UIManagerSaving > currentState is" + currentState);
+    
         // Create the key using the action map and the current game state
-        playerInputGameState = new PlayerInputGameState(actionMapName, current);
-
+        playerInputGameState = new PlayerInputGameState(actionMapName, currentState);
+    
         // Call CheckForKey to see if it is in the dictionary (using the target state)
         CheckForKeyPlayerInput(playerInputGameState);
+        
+        // If the game state is Playing, set to Paused, and vice versa
+        GameStateManager.SetGameState(currentState == GameStateManager.GameState.Playing ? GameStateManager.GameState.Paused : GameStateManager.GameState.Playing);
     }
     // ================================================
     
@@ -191,9 +226,6 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
 
             // Toggle the associated UI canvas (use the found controller) and pass actionMap + the (now current) game state
             _ToggleCanvasPlayerInput(foundController, other.actionMap, other.gameState);
-            
-            // If the game state is Playing, set to Paused, and vice versa
-            GameStateManager.SetGameState(other.gameState == GameStateManager.GameState.Playing ? GameStateManager.GameState.Paused : GameStateManager.GameState.Playing);
 
             // Keep a reference to the last-interacted object and its controller
             playerInputGameState = other;
@@ -220,9 +252,6 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
                     
                     _ToggleCanvasPlayerInput(controller, key.actionMap, key.gameState);
                     
-                    // If the game state is Playing, set to Paused, and vice versa
-                    GameStateManager.SetGameState(other.gameState == GameStateManager.GameState.Playing ? GameStateManager.GameState.Paused : GameStateManager.GameState.Playing);
-
                     playerInputGameState = other;
                     return;
                 }
@@ -305,7 +334,6 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
             }
         }
     }
-    
     
     // Internal function to toggle UI canvas with PlayerInputGameState
     void _ToggleCanvasPlayerInput(UIController canvas, string actionMap, GameStateManager.GameState gameState)

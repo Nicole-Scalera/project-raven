@@ -48,7 +48,7 @@ public class GameStateManager : MonoBehaviour
     // Static method to set the game state and notify subscribers
     public static void SetGameState(GameState newState)
     {
-        Debug.unityLogger.Log("GameStateManager> SetGameState " + newState.ToString());
+        Debug.unityLogger.Log("GameStateManager > SetGameState " + newState.ToString());
         
         // Update the static current state
         CurrentGameState = newState;

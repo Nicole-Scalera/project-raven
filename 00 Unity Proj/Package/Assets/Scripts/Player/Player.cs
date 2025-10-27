@@ -42,7 +42,7 @@ public class Player : MonoSingleton<Player>
     {
         if (_playerInput != null)
         {
-            inputMapSwitched += CurrentActionMap;
+            inputMapSwitched -= CurrentActionMap;
             GameStateManager.gameStateChanged -= SwitchActionMap;
             GameStateManager.gameStateChanged -= SwitchCursorFunctionality;
         }
@@ -62,18 +62,17 @@ public class Player : MonoSingleton<Player>
     // Switches cursor functionality based on game state
     private void SwitchCursorFunctionality(GameStateManager.GameState newState)
     {
-        
-        Debug.Log("Switch cursor functionality");
-        
         if (newState == GameStateManager.GameState.Playing)
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            Debug.Log("Player > Switched cursor functionality for Playing state.");
         }
         else if (newState == GameStateManager.GameState.Paused)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            Debug.Log("Player > Switched cursor functionality for Paused state.");
         }
     }
     

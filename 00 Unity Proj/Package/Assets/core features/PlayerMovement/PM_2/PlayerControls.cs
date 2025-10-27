@@ -120,6 +120,15 @@ namespace BasicMovement2_cf
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Use"",
+                    ""type"": ""Button"",
+                    ""id"": ""ad0a6bfa-5f33-4d3d-bf9c-11a1e3768265"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -221,6 +230,17 @@ namespace BasicMovement2_cf
                     ""action"": ""CameraRotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95a9713e-6632-446d-9112-56bfd3f15e11"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Use"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -232,6 +252,7 @@ namespace BasicMovement2_cf
             m_PlayerMove_Move = m_PlayerMove.FindAction("Move", throwIfNotFound: true);
             m_PlayerMove_Interact = m_PlayerMove.FindAction("Interact", throwIfNotFound: true);
             m_PlayerMove_CameraRotation = m_PlayerMove.FindAction("CameraRotation", throwIfNotFound: true);
+            m_PlayerMove_Use = m_PlayerMove.FindAction("Use", throwIfNotFound: true);
         }
 
         ~@PlayerControls()
@@ -315,6 +336,7 @@ namespace BasicMovement2_cf
         private readonly InputAction m_PlayerMove_Move;
         private readonly InputAction m_PlayerMove_Interact;
         private readonly InputAction m_PlayerMove_CameraRotation;
+        private readonly InputAction m_PlayerMove_Use;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerMove".
         /// </summary>
@@ -338,6 +360,10 @@ namespace BasicMovement2_cf
             /// Provides access to the underlying input action "PlayerMove/CameraRotation".
             /// </summary>
             public InputAction @CameraRotation => m_Wrapper.m_PlayerMove_CameraRotation;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerMove/Use".
+            /// </summary>
+            public InputAction @Use => m_Wrapper.m_PlayerMove_Use;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -373,6 +399,9 @@ namespace BasicMovement2_cf
                 @CameraRotation.started += instance.OnCameraRotation;
                 @CameraRotation.performed += instance.OnCameraRotation;
                 @CameraRotation.canceled += instance.OnCameraRotation;
+                @Use.started += instance.OnUse;
+                @Use.performed += instance.OnUse;
+                @Use.canceled += instance.OnUse;
             }
 
             /// <summary>
@@ -393,6 +422,9 @@ namespace BasicMovement2_cf
                 @CameraRotation.started -= instance.OnCameraRotation;
                 @CameraRotation.performed -= instance.OnCameraRotation;
                 @CameraRotation.canceled -= instance.OnCameraRotation;
+                @Use.started -= instance.OnUse;
+                @Use.performed -= instance.OnUse;
+                @Use.canceled -= instance.OnUse;
             }
 
             /// <summary>
@@ -454,6 +486,13 @@ namespace BasicMovement2_cf
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnCameraRotation(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Use" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnUse(InputAction.CallbackContext context);
         }
     }
 }

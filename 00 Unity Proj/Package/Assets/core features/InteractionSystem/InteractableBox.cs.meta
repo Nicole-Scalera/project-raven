@@ -1,2 +1,15 @@
 fileFormatVersion: 2
 guid: 84a2691b0404ea74fb0cdf58af897635
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - player: {instanceID: 0}
+  - path: {instanceID: 0}
+  - sortedBayUI: {instanceID: 0}
+  - beatenTexture: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

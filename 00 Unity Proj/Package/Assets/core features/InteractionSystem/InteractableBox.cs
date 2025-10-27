@@ -1,5 +1,8 @@
+using System.Runtime.CompilerServices;
 using ConveyorBelt_cf;
+using NUnit.Framework;
 using TMPro;
+using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
 
 public class InteractableBox : MonoBehaviour
@@ -18,6 +21,8 @@ public class InteractableBox : MonoBehaviour
 
     public TextMeshProUGUI sortedBayUI;
 
+    public Material beatenTexture;
+    private Material[] newMaterials;
 
     private void Start()
     {
@@ -25,12 +30,13 @@ public class InteractableBox : MonoBehaviour
         sortNum = Random.Range(1,5);
 
         player = GameObject.FindGameObjectWithTag("Player");
-        //playerRay = player.GetComponent<PlayerRaycastInteraction>().interactionRay;
         
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
         sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
+
+        beatenTexture = Resources.Load<Material>("phong1");
 
     }
 
@@ -59,14 +65,28 @@ public class InteractableBox : MonoBehaviour
 
     public void Interaction()
     {
+        if (!player.GetComponent<PlayerRaycastInteraction>().hasBat)
+        {
 
-        interactedWith = !interactedWith;
+            interactedWith = !interactedWith;
 
-        sortedBayUI.text = "Bay: " + sortNum.ToString();
+            sortedBayUI.text = "Bay: " + sortNum.ToString();
 
-        path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
+            path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
 
-        GetComponent<Rigidbody>().useGravity = false;
+            GetComponent<Rigidbody>().useGravity = !interactedWith;
+
+        }
+        else
+        {
+            newMaterials = GetComponent<MeshRenderer>().materials;
+
+            newMaterials[0] = beatenTexture;
+
+            GetComponent<MeshRenderer>().materials = newMaterials;
+
+        }
+        
 
     }
 

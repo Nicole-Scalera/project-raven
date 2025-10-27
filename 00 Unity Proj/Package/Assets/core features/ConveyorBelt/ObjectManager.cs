@@ -1,8 +1,4 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityCommunity.UnitySingleton;
-using UnityEngine.UIElements;
 
 /*
  * 
@@ -29,8 +25,15 @@ namespace ConveyorBelt_cf
 
         private void Awake()
         {
-            
+
             spawnPosition = transform.position;
+
+        }
+
+        private void Start()
+        {
+
+            Debug.Log(boxPrefabs.Length);
 
         }
 
@@ -49,14 +52,32 @@ namespace ConveyorBelt_cf
 
                 //TODO: figure out a way to add a tag to the instantiate
 
-                GameObject newBox = Instantiate(boxPrefabs[Random.Range(0,boxPrefabs.Length-1)], spawnPosition, Quaternion.identity);
+                GameObject newBox = Instantiate(boxPrefabs[Random.Range(0,boxPrefabs.Length)], spawnPosition, Quaternion.identity);
+                //GameObject newBox = Instantiate(boxPrefabs[2], spawnPosition, Quaternion.identity);
 
-                newBox.transform.localScale = new Vector3(100, 100, 100);
+                if (newBox.name.Contains("Standard Box"))
+                {
+
+                    newBox.transform.localScale = new(100f, 100f, 100f);
+
+                }
+                else if (newBox.name.Contains("Square Box"))
+                {
+
+                    newBox.transform.localScale = new(50f, 50f, 50f);
+
+                }
+                else if (newBox.name.Contains("Bloated Box"))
+                {
+
+                    newBox.transform.localScale = new(1.5f, 1.5f, 1.5f);                    
+
+                }
+
+                newBox.AddComponent<BoxCollider>();
 
                 newBox.AddComponent<Rigidbody>();
                 newBox.GetComponent<Rigidbody>().useGravity = true;
-
-                newBox.AddComponent<BoxCollider>();
 
                 newBox.AddComponent<InteractableBox>();
 

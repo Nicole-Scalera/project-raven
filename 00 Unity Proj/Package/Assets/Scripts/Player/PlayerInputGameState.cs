@@ -1,42 +1,42 @@
 using System.Collections.Generic;
-using System.Linq;
-using Sirenix.OdinInspector;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.InputSystem;
+using System;
 
 // I created this instead of using a Tuple<> to pass in more than one variable as a key
 // in a SerializedDictionary search, specifically in the DictionaryComponent.cs script.
 
 [System.Serializable]
-public class PlayerInputGameState
+public class PlayerInputGameState : IEquatable<PlayerInputGameState>
 {
-    public InputActionAsset playerInput; // Player Input reference
-    public InputActionMap inputMap;
+    public string actionMap; // Player Input reference
     public GameStateManager.GameState gameState; // Is the game Paused/Playing?
-    
-    [ValueDropdown("TreeViewOfInts", ExpandAllMenuItems = true)]
-    public List<InputActionMap> ActionMaps = new List<InputActionMap>();
-    
-    // playerInput.actionMaps.Select(m => m.name).ToList();
 
-    public PlayerInputGameState(InputActionMap map, GameStateManager.GameState state)
+    public PlayerInputGameState(string map, GameStateManager.GameState state)
     {
-        inputMap = map;
+        actionMap = map;
         gameState = state;
-        
-        // List<string> MapNames;
-        //
-        // ActionMaps = playerInput.actionMaps.Select(m => m.name).ToString();
-        //
-        // inputMap = map;
-        //
-        //
-        //   
-        // // playerInput = playerInput.actionMaps.Select(map => map.name).ToList();
-        //
-        // //playerInput = map;
-        // gameState = state;
     }
 
+    // Value equality so this object can be used as a Dictionary key reliably
+    public bool Equals(PlayerInputGameState other)
+    {
+        if (ReferenceEquals(this, other)) return true;
+        if (other is null) return false;
+        return string.Equals(actionMap, other.actionMap, StringComparison.Ordinal) && gameState == other.gameState;
+    }
+
+    public override bool Equals(object obj) => Equals(obj as PlayerInputGameState);
+
+    public override int GetHashCode()
+    {
+        unchecked
+        {
+            int hash = 17;
+            hash = hash * 23 + (actionMap != null ? actionMap.GetHashCode() : 0);
+            hash = hash * 23 + gameState.GetHashCode();
+            return hash;
+        }
+    }
+
+    public static bool operator ==(PlayerInputGameState left, PlayerInputGameState right) => EqualityComparer<PlayerInputGameState>.Default.Equals(left, right);
+    public static bool operator !=(PlayerInputGameState left, PlayerInputGameState right) => !(left == right);
 }

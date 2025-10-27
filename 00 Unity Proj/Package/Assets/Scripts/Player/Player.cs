@@ -62,6 +62,9 @@ public class Player : MonoSingleton<Player>
     // Switches cursor functionality based on game state
     private void SwitchCursorFunctionality(GameStateManager.GameState newState)
     {
+        
+        Debug.Log("Switch cursor functionality");
+        
         if (newState == GameStateManager.GameState.Playing)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -79,5 +82,4 @@ public class Player : MonoSingleton<Player>
     {
         Debug.Log("Player > CurrentActionMap > Current Action Map: " + _playerInput.currentActionMap.name);
     }
-    
 }

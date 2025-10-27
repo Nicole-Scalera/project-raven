@@ -31,26 +31,30 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
     // ===== Initialization =====
     private void Awake()
     {
-        // // Initialize PlayerControls
-        // playerControls = new PlayerControls();
-        // playerControls.GameControls.SetCallbacks(this); // Set this class as listener
-        // playerControls.GameControls.Enable();
-        
         // Get the dictionary component from this GameObject or its children
         dictionaryComponent = GetComponent<DictionaryComponent>();
         if (dictionaryComponent == null)
         {
             dictionaryComponent = GetComponentInChildren<DictionaryComponent>();
         }
+
+        // Ensure the dictionaries are populated early (input can fire as soon as Awake)
+        GetDictionary();
+        
+        // Initialize PlayerControls
+        playerControls = new PlayerControls();
+        playerControls.GameControls.SetCallbacks(this); // Set this class as listener
+        playerControls.GameControls.Enable();
+        
+        currentState = GameStateManager.CurrentGameState;
     }
     
     private void Start()
     {
-        GetDictionary(); // Initialize the UIController Dictionary
         CheckForClicks(); // Check for button clicks in the scene
         
         // Set the default canvas on scene start
-        _ToggleUICanvas(defaultCanvasController);
+        _ToggleCanvasUI(defaultCanvasController);
     }
 
     // Get the UI canvas dictionary from DictionaryComponent.cs
@@ -115,15 +119,29 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
     // Handle button click events
     public void OnTogglePause(InputAction.CallbackContext context)
     {
-        Debug.Log("UIManagerSaving > TaskOnPlayerInput Triggered by " + context.action);
+        if (!context.performed)
+            return;
         
-        // Get the current game state
-        currentState = GameStateManager.CurrentGameState;
-        
-        // Set the playerInputGameState to the PlayerInput and GameState
-        playerInputGameState = new PlayerInputGameState(context.action.actionMap, currentState);
-        
-        // Call CheckForKeyUI to see if it is in the dictionary
+        // Safely read action and action map names from the context to avoid NullReferenceException
+        var action = context.action;
+        var actionName = action?.name;
+        var actionMapName = context.action?.actionMap?.name;
+
+        Debug.Log("UIManagerSaving > TaskOnPlayerInput Triggered by action: " + actionName + " on map: " + actionMapName);
+
+        if (string.IsNullOrEmpty(actionMapName))
+        {
+            Debug.LogWarning("UIManagerSaving > OnTogglePause: actionMap name is null or empty. Aborting.");
+            return;
+        }
+
+        // Compute the current game state we're in
+        var current = GameStateManager.CurrentGameState;
+
+        // Create the key using the action map and the current game state
+        playerInputGameState = new PlayerInputGameState(actionMapName, current);
+
+        // Call CheckForKey to see if it is in the dictionary (using the target state)
         CheckForKeyPlayerInput(playerInputGameState);
     }
     // ================================================
@@ -144,7 +162,7 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
             Debug.Log($"UIManagerSaving > {other.name} Key found in dictionary! Toggling its UIController.");
 
             // Toggle the associated UI canvas (use the found controller)
-            _ToggleUICanvas(foundController);
+            _ToggleCanvasUI(foundController);
 
             // Keep a reference to the last-interacted object and its controller
             otherObject = other;
@@ -159,37 +177,67 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
     // Call this in TaskOnPlayerInput
     private void CheckForKeyPlayerInput(PlayerInputGameState other)
     {
-        if (other.playerInput == null)
+        // Null check
+        if (other.actionMap == null)
         {
-            Debug.LogWarning("UIManagerSaving > CheckForKeyPlayerInput called with null PlayerInput");
+            Debug.LogWarning("UIManagerSaving > CheckForKeyPlayerInput called with null actionMap name");
             return;
         }
 
-        // Try to get the associated UIController from the dictionary safely
+        // First try the fast dictionary lookup
         if (PlayerInputCanvasControllerDictionary != null && PlayerInputCanvasControllerDictionary.TryGetValue(other, out UIController foundController))
         {
-            Debug.Log($"UIManagerSaving > Key found in dictionary for {other.playerInput} and {other.gameState}! Toggling its UIController.");
+            Debug.Log($"UIManagerSaving > Key found in dictionary for {other.actionMap} and {other.gameState}! Toggling its UIController.");
 
+            // Toggle the associated UI canvas (use the found controller) and pass actionMap + the (now current) game state
+            _ToggleCanvasPlayerInput(foundController, other.actionMap, other.gameState);
+            
             // If the game state is Playing, set to Paused, and vice versa
             GameStateManager.SetGameState(other.gameState == GameStateManager.GameState.Playing ? GameStateManager.GameState.Paused : GameStateManager.GameState.Playing);
-            
-            // Toggle the associated UI canvas (use the found controller)
-            _ToggleUICanvas(foundController);
 
             // Keep a reference to the last-interacted object and its controller
             playerInputGameState = other;
             return;
         }
 
+        // If TryGetValue failed, attempt a safe manual lookup (handles possible hash/serialization mismatches)
+        if (PlayerInputCanvasControllerDictionary != null)
+        {
+            foreach (var kvp in PlayerInputCanvasControllerDictionary)
+            {
+                var key = kvp.Key;
+                if (key == null) continue;
+
+                bool mapMatches = string.Equals(key.actionMap, other.actionMap, StringComparison.Ordinal);
+                bool stateMatches = key.gameState == other.gameState;
+
+                Debug.Log($"UIManagerSaving > Manual check: key.actionMap='{key.actionMap}', key.gameState='{key.gameState}', mapMatches={mapMatches}, stateMatches={stateMatches}");
+
+                if (mapMatches && stateMatches)
+                {
+                    var controller = kvp.Value;
+                    Debug.Log($"UIManagerSaving > Manual lookup matched key for {other.actionMap} and {other.gameState}. Using controller '{controller?.gameObject?.name ?? controller?.name}'");
+                    
+                    _ToggleCanvasPlayerInput(controller, key.actionMap, key.gameState);
+                    
+                    // If the game state is Playing, set to Paused, and vice versa
+                    GameStateManager.SetGameState(other.gameState == GameStateManager.GameState.Playing ? GameStateManager.GameState.Paused : GameStateManager.GameState.Playing);
+
+                    playerInputGameState = other;
+                    return;
+                }
+            }
+        }
+
         // If we get here, we didn't find a match
-        Debug.Log($"UIManagerSaving > Key NOT found in dictionary for {other.playerInput} and {other.gameState}!");
+        Debug.Log($"UIManagerSaving > Key NOT found in dictionary for {other.actionMap} and {other.gameState}!");
         otherObject = null;
     }
     // ======================================================
 
     // ========== Toggling Canvases ==========
     // Internal function to toggle the UI canvases: show 'canvas' and hide all others
-    void _ToggleUICanvas(UIController canvas)
+    void _ToggleCanvasUI(UIController canvas)
     {
         if (canvas == null)
         {
@@ -247,7 +295,82 @@ public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsAction
         {
             try
             {
+                Debug.Log($"You requested {canvas} controller.");
                 Debug.Log($"UIManagerSaving > Requested controller not part of dictionary. Explicitly showing '{canvas.gameObject?.name ?? canvas.name}' using index {canvas.ArraySize()}");
+                canvas.TogglePanel(canvas.ArraySize(), true);
+            }
+            catch (Exception ex)
+            {
+                Debug.LogError($"UIManagerSaving > Error showing requested controller '{canvas.gameObject?.name ?? canvas.name}': {ex}");
+            }
+        }
+    }
+    
+    
+    // Internal function to toggle UI canvas with PlayerInputGameState
+    void _ToggleCanvasPlayerInput(UIController canvas, string actionMap, GameStateManager.GameState gameState)
+    {
+        if (canvas == null)
+        {
+            Debug.LogWarning("UIManagerSaving > _ToggleUICanvas called with null canvas. Hiding all player-input dictionary controllers.");
+
+            // If canvas is null, just hide all dictionary controllers (player input dictionary)
+            foreach (var kvp in PlayerInputCanvasControllerDictionary)
+            {
+                var c = kvp.Value;
+                if (c == null) continue;
+                try
+                {
+                    Debug.Log($"UIManagerSaving > Hiding controller '{c.gameObject?.name ?? c.name}' using index {c.ArraySize()}");
+                    c.TogglePanel(c.ArraySize(), false);
+                }
+                catch (Exception ex) { Debug.LogError($"UIManagerSaving > Error hiding controller '{c.gameObject?.name ?? c.name}': {ex}"); }
+            }
+            
+            return;
+        }
+
+        Debug.Log($"UIManagerSaving > Toggling UI Canvas (PlayerInput): '{canvas.gameObject?.name ?? canvas.name}' (show) and hiding other player-input dictionary controllers");
+        
+        bool shownTargetFromDictionary = false;
+
+        // Iterate the PlayerInput dictionary and compare the actionMap string + gameState to decide show/hide
+        foreach (var kvp in PlayerInputCanvasControllerDictionary)
+        {
+            var key = kvp.Key;
+            var c = kvp.Value;
+            if (c == null || key == null) continue;
+
+            bool keyMatches = string.Equals(key.actionMap, actionMap, StringComparison.Ordinal);
+            bool stateMatches = key.gameState == gameState;
+
+            if (keyMatches && stateMatches && ReferenceEquals(c, canvas))
+            {
+                shownTargetFromDictionary = true;
+                try
+                {
+                    Debug.Log($"UIManagerSaving > Showing controller '{c.gameObject?.name ?? c.name}' using index {c.ArraySize()}");
+                    c.TogglePanel(c.ArraySize(), true);
+                }
+                catch (Exception ex) { Debug.LogError($"UIManagerSaving > Error showing controller '{c.gameObject?.name ?? c.name}': {ex}"); }
+            }
+            else
+            {
+                try
+                {
+                    Debug.Log($"UIManagerSaving > Hiding controller '{c.gameObject?.name ?? c.name}' using index {c.ArraySize()}");
+                    c.TogglePanel(c.ArraySize(), false);
+                }
+                catch (Exception ex) { Debug.LogError($"UIManagerSaving > Error hiding controller '{c.gameObject?.name ?? c.name}': {ex}"); }
+            }
+        }
+
+        // If the requested canvas isn't part of the dictionary, explicitly show it (so defaults work)
+        if (!shownTargetFromDictionary)
+        {
+            try
+            {
+                Debug.Log($"UIManagerSaving > Requested controller not part of player-input dictionary. Explicitly showing '{canvas.gameObject?.name ?? canvas.name}' using index {canvas.ArraySize()}");
                 canvas.TogglePanel(canvas.ArraySize(), true);
             }
             catch (Exception ex)

@@ -1,0 +1,22 @@
+Oct 13 | In class meetings
+Attendees: Tori, France, Sami
+- Need to figure out how to import the interaction animation (ex. Furnace doors open on command) rather than just a continuous animation (ex. Conveyor belt)
+- Color palette: Dark, muted, (brown/grey/green), think Fear to Fathom
+- Sami said done w apartment by Oct 15 (will have a clue board template for clue implementation later on)
+- Maybe a wireframe/storyboard for interactions?
+
+Attendees: Ferris
+- Factory layout sometime next week (hopefully Oct 22 latest)
+- Has color coded assets (walls are red, floors are green, etc) for organizational clarity 
+- Each section of the factory is now modular and separated to make collision/hitbox setup and later adjustments easier
+- Also working on clues and will sync with Writers to make sure clues align with story progression
+
+Attendees: Colin
+- Creating a comprehensive art description list covering props, walls, floors, ceilings, environments, and interactive items for the artists
+- Will also contribute to the clue system, helping define visual cues and narrative consistency
+
+Attendees: Aidan
+- Rough outline/script for programmers
+  - Includes when/what triggers a scene switch
+  - Will work on more detailed one once first draft is handed to the programmers
+- Working on environmental descriptions

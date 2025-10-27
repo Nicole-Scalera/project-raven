@@ -9,6 +9,7 @@ TagManager:
   - SceneChangeButton
   - CinemachineTarget
   - Path
+  - UIControllerButton
   layers:
   - Default
   - TransparentFX

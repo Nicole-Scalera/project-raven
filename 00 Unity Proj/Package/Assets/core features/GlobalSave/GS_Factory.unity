@@ -2434,7 +2434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1311334088}
-  - component: {fileID: 1311334089}
+  - component: {fileID: 1311334091}
   - component: {fileID: 1311334090}
   m_Layer: 0
   m_Name: UIManager
@@ -2458,20 +2458,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1311334089
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1311334087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9b988e2e08edc44bdc96c1ebb0861c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 3919082}
-  gameplayUI: {fileID: 1079899749}
 --- !u!114 &1311334090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2488,9 +2474,7 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 2010575557}
     - {fileID: 3919082}
-    - {fileID: 1079899749}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -2545,7 +2529,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
       Data: 
@@ -2553,8 +2537,8 @@ MonoBehaviour:
       Entry: 7
       Data: PlayerInputGameState, Assembly-CSharp
     - Name: playerInput
-      Entry: 10
-      Data: 0
+      Entry: 6
+      Data: 
     - Name: gameState
       Entry: 3
       Data: 0
@@ -2563,28 +2547,7 @@ MonoBehaviour:
       Data: 
     - Name: $v
       Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 7
-      Data: PlayerInputGameState, Assembly-CSharp
-    - Name: playerInput
-      Entry: 10
       Data: 0
-    - Name: gameState
-      Entry: 3
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: $v
-      Entry: 10
-      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -2597,6 +2560,21 @@ MonoBehaviour:
   sceneChangeDictionary: 1
   UICanvasDictionary: 1
   PlayerCanvasDictionary: 1
+--- !u!114 &1311334091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311334087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64c193f9615e460e98f76f8bf9919d7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCanvasController: {fileID: 1079899749}
+  buttons: []
+  dictionaryComponent: {fileID: 1311334090}
 --- !u!1 &1394681676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,7 +3538,19 @@ MonoBehaviour:
     m_ActionId: bfa17974-6ab4-45b1-8f9d-f892f4475ce5
     m_ActionName: PlayerMove/CameraRotation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1311334091}
+        m_TargetAssemblyTypeName: UIManagerSaving, Assembly-CSharp
+        m_MethodName: OnTogglePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 25babc23-6a6e-446f-a8b1-9be45dc4501f
     m_ActionName: 'GameControls/TogglePause[/Keyboard/t]'
   - m_PersistentCalls:

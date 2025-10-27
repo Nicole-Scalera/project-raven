@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using System.Linq;
+using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,14 +9,34 @@ using UnityEngine.InputSystem;
 // in a SerializedDictionary search, specifically in the DictionaryComponent.cs script.
 
 [System.Serializable]
-public struct PlayerInputGameState
+public class PlayerInputGameState
 {
-    public PlayerInput playerInput; // Player Input reference
+    public InputActionAsset playerInput; // Player Input reference
+    public InputActionMap inputMap;
     public GameStateManager.GameState gameState; // Is the game Paused/Playing?
+    
+    [ValueDropdown("TreeViewOfInts", ExpandAllMenuItems = true)]
+    public List<InputActionMap> ActionMaps = new List<InputActionMap>();
+    
+    // playerInput.actionMaps.Select(m => m.name).ToList();
 
-    public PlayerInputGameState(PlayerInput input, GameStateManager.GameState state)
+    public PlayerInputGameState(InputActionMap map, GameStateManager.GameState state)
     {
-        playerInput = input;
+        inputMap = map;
         gameState = state;
+        
+        // List<string> MapNames;
+        //
+        // ActionMaps = playerInput.actionMaps.Select(m => m.name).ToString();
+        //
+        // inputMap = map;
+        //
+        //
+        //   
+        // // playerInput = playerInput.actionMaps.Select(map => map.name).ToList();
+        //
+        // //playerInput = map;
+        // gameState = state;
     }
+
 }

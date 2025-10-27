@@ -2,28 +2,40 @@ using System;
 using UnityEngine;
 using UnityEngine.UI; // required for Button
 using System.Collections.Generic;
+using BasicMovement2_cf;
 using SceneSwitching_cf;
 using Sirenix.OdinInspector;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class UIManagerSaving : MonoBehaviour
+public class UIManagerSaving : MonoBehaviour, PlayerControls.IGameControlsActions
 {
     // ===== Variables/Components =====
     //private UIController canvasController; // Specific Canvas controller
     [SerializeField] private UIController defaultCanvasController; // Default Canvas controller
     [SerializeField] private Button[] buttons;
     private GameObject otherObject; // Other object the player interacts with (Button)
+    private PlayerInputGameState playerInputGameState; // PlayerInput and GameState tuple
+    private GameStateManager.GameState currentState; // Current Game State
+    // Player References
+    private PlayerControls playerControls; // PlayerControls.cs
     // ================================
     
     // ===== UIController Dictionary =====
     // Create a new instance of a dictionary for a GameObject (button) and a UIController
-    private Dictionary<GameObject, UIController> canvasControllerDictionary = new();
+    private Dictionary<GameObject, UIController> UICanvasControllerDictionary = new();
+    private Dictionary<PlayerInputGameState, UIController> PlayerInputCanvasControllerDictionary = new();
     [SerializeField, Required] private DictionaryComponent dictionaryComponent; // Reference to DictionaryComponent.cs
     // ===================================
     
     // ===== Initialization =====
     private void Awake()
     {
+        // // Initialize PlayerControls
+        // playerControls = new PlayerControls();
+        // playerControls.GameControls.SetCallbacks(this); // Set this class as listener
+        // playerControls.GameControls.Enable();
+        
         // Get the dictionary component from this GameObject or its children
         dictionaryComponent = GetComponent<DictionaryComponent>();
         if (dictionaryComponent == null)
@@ -46,17 +58,34 @@ public class UIManagerSaving : MonoBehaviour
     {
         if (dictionaryComponent != null)
         {
-            // Grab the dictionary from the object
-            canvasControllerDictionary = dictionaryComponent.UICanvasControllerDictionary;
+            // Grab the dictionaries from the object
+            UICanvasControllerDictionary = dictionaryComponent.UICanvasControllerDictionary;
+            PlayerInputCanvasControllerDictionary = dictionaryComponent.PlayerInputCanvasControllerDictionary;
         }
         else
         {
             Debug.LogWarning("UIManagerSaving > No DictionaryComponent found on this object or its children.");
         }
     }
+
+    private void OnEnable()
+    {
+        GameStateManager.gameStateChanged += UpdateGameState;
+    }
+    
+    private void OnDisable()
+    {
+        GameStateManager.gameStateChanged -= UpdateGameState;
+    }
+
+    // Update the private reference of the current game state
+    private void UpdateGameState(GameStateManager.GameState state)
+    {
+        currentState = state;
+    }
     // ==========================
     
-    // =================== Event Methods ===================
+    // =================== UI Input ===================
     // Check for button clicks in the scene
     private void CheckForClicks()
     {
@@ -78,22 +107,39 @@ public class UIManagerSaving : MonoBehaviour
         otherObject = other.gameObject;
         
         // Call CheckForKey to see if it is in the dictionary
-        CheckForKey(otherObject);
+        CheckForKeyUI(otherObject);
     }
-    // =====================================================
+    // ================================================
+    
+    // =================== UI Input ===================
+    // Handle button click events
+    public void OnTogglePause(InputAction.CallbackContext context)
+    {
+        Debug.Log("UIManagerSaving > TaskOnPlayerInput Triggered by " + context.action);
+        
+        // Get the current game state
+        currentState = GameStateManager.CurrentGameState;
+        
+        // Set the playerInputGameState to the PlayerInput and GameState
+        playerInputGameState = new PlayerInputGameState(context.action.actionMap, currentState);
+        
+        // Call CheckForKeyUI to see if it is in the dictionary
+        CheckForKeyPlayerInput(playerInputGameState);
+    }
+    // ================================================
     
     // ================== Dictionary Logic ==================
-    // Call this in CheckForClicks
-    private void CheckForKey(GameObject other)
+    // Call this in TaskOnClick
+    private void CheckForKeyUI(GameObject other)
     {
         if (other == null)
         {
-            Debug.LogWarning("UIManagerSaving > CheckForKey called with null object");
+            Debug.LogWarning("UIManagerSaving > CheckForKeyUI called with null object");
             return;
         }
 
         // Try to get the associated UIController from the dictionary safely
-        if (canvasControllerDictionary != null && canvasControllerDictionary.TryGetValue(other, out UIController foundController))
+        if (UICanvasControllerDictionary != null && UICanvasControllerDictionary.TryGetValue(other, out UIController foundController))
         {
             Debug.Log($"UIManagerSaving > {other.name} Key found in dictionary! Toggling its UIController.");
 
@@ -110,23 +156,34 @@ public class UIManagerSaving : MonoBehaviour
         otherObject = null;
     }
     
-    // Get the associated UIController from canvasDictionary
-    private void GetDictionaryCanvasController(GameObject keyObject)
+    // Call this in TaskOnPlayerInput
+    private void CheckForKeyPlayerInput(PlayerInputGameState other)
     {
-        if (keyObject == null)
+        if (other.playerInput == null)
         {
-            Debug.LogWarning("UIManagerSaving > GetDictionaryCanvasController called with null object");
+            Debug.LogWarning("UIManagerSaving > CheckForKeyPlayerInput called with null PlayerInput");
             return;
         }
 
-        if (canvasControllerDictionary != null && canvasControllerDictionary.TryGetValue(keyObject, out UIController found))
+        // Try to get the associated UIController from the dictionary safely
+        if (PlayerInputCanvasControllerDictionary != null && PlayerInputCanvasControllerDictionary.TryGetValue(other, out UIController foundController))
         {
-            Debug.Log($"UIManagerSaving > UIController '{found.gameObject?.name ?? found.name}' retrieved from dictionary for '{keyObject.name}'.");
+            Debug.Log($"UIManagerSaving > Key found in dictionary for {other.playerInput} and {other.gameState}! Toggling its UIController.");
+
+            // If the game state is Playing, set to Paused, and vice versa
+            GameStateManager.SetGameState(other.gameState == GameStateManager.GameState.Playing ? GameStateManager.GameState.Paused : GameStateManager.GameState.Playing);
+            
+            // Toggle the associated UI canvas (use the found controller)
+            _ToggleUICanvas(foundController);
+
+            // Keep a reference to the last-interacted object and its controller
+            playerInputGameState = other;
+            return;
         }
-        else
-        {
-            Debug.LogWarning($"UIManagerSaving > No UIController found in dictionary for {keyObject.name}.");
-        }
+
+        // If we get here, we didn't find a match
+        Debug.Log($"UIManagerSaving > Key NOT found in dictionary for {other.playerInput} and {other.gameState}!");
+        otherObject = null;
     }
     // ======================================================
 
@@ -139,7 +196,7 @@ public class UIManagerSaving : MonoBehaviour
             Debug.LogWarning("UIManagerSaving > _ToggleUICanvas called with null canvas. Hiding all dictionary controllers.");
 
             // If canvas is null, just hide all dictionary controllers
-            foreach (var kvp in canvasControllerDictionary)
+            foreach (var kvp in UICanvasControllerDictionary)
             {
                 var c = kvp.Value;
                 if (c == null) continue;
@@ -150,8 +207,7 @@ public class UIManagerSaving : MonoBehaviour
                 }
                 catch (Exception ex) { Debug.LogError($"UIManagerSaving > Error hiding controller '{c.gameObject?.name ?? c.name}': {ex}"); }
             }
-
-            //canvasController = null;
+            
             return;
         }
 
@@ -160,7 +216,7 @@ public class UIManagerSaving : MonoBehaviour
         bool shownTargetFromDictionary = false;
 
         // First, hide all dictionary controllers and mark whether the target was found in the dictionary
-        foreach (var kvp in canvasControllerDictionary)
+        foreach (var kvp in UICanvasControllerDictionary)
         {
             var c = kvp.Value;
             if (c == null) continue;

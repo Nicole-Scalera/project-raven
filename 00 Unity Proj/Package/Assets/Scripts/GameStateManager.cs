@@ -17,12 +17,15 @@ public class GameStateManager : MonoBehaviour
     // the Enum will clearly change when the static event is invoked, so watch out
     // for the Inspector.
     
-    // Static event to notify subscribers of game state changes
-    public static event Action<GameState> gameStateChanged;
-    
     // Available game states
     public enum GameState { Playing, Paused }
+
+    // Static property to get the current game state
+    public static GameState CurrentGameState { get; set; }
     
+    // Static event to notify subscribers of game state changes
+    public static event Action<GameState> gameStateChanged;
+
     private void Awake()
     {
         // Get the value of the enum from the editor

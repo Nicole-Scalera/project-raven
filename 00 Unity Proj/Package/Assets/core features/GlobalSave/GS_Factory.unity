@@ -208,6 +208,32 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: UICanvasControllerDictionary
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[UnityEngine.GameObject, UnityEngine.CoreModule],[UIController,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 3|System.Collections.Generic.ObjectEqualityComparer`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: PlayerInputCanvasControllerDictionary
+      Entry: 6
+      Data: 
+  sceneChangeDictionary: 1
+  UICanvasDictionary: 1
+  PlayerCanvasDictionary: 1
 --- !u!114 &3919077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,7 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8b2236a59c8d24ea4fc08bc57ac4fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameState: 1
+  gameState: 0
 --- !u!1 &149151954
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,7 +2434,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1311334088}
-  - component: {fileID: 1311334089}
+  - component: {fileID: 1311334091}
+  - component: {fileID: 1311334092}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -2431,7 +2458,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1311334089
+--- !u!114 &1311334091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2440,11 +2467,136 @@ MonoBehaviour:
   m_GameObject: {fileID: 1311334087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9b988e2e08edc44bdc96c1ebb0861c, type: 3}
+  m_Script: {fileID: 11500000, guid: 64c193f9615e460e98f76f8bf9919d7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 3919082}
-  gameplayUI: {fileID: 1079899749}
+  defaultCanvasController: {fileID: 1079899749}
+  buttons: []
+  dictionaryComponent: {fileID: 1311334092}
+--- !u!114 &1311334092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311334087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7adf0d48fb0b5c4d9b67447b93ba3ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 3919082}
+    - {fileID: 1079899749}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: SceneChangerDictionary
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.GameObject, UnityEngine.CoreModule],[System.String,
+        mscorlib]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.ObjectEqualityComparer`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: UICanvasControllerDictionary
+      Entry: 7
+      Data: 2|System.Collections.Generic.Dictionary`2[[UnityEngine.GameObject, UnityEngine.CoreModule],[UIController,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 9
+      Data: 1
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: PlayerInputCanvasControllerDictionary
+      Entry: 7
+      Data: 3|System.Collections.Generic.Dictionary`2[[PlayerInputGameState, Assembly-CSharp],[UIController,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 4|System.Collections.Generic.ObjectEqualityComparer`1[[PlayerInputGameState,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 5|PlayerInputGameState, Assembly-CSharp
+    - Name: actionMap
+      Entry: 1
+      Data: GameControls
+    - Name: gameState
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 7
+      Data: 6|PlayerInputGameState, Assembly-CSharp
+    - Name: actionMap
+      Entry: 1
+      Data: GameControls
+    - Name: gameState
+      Entry: 3
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  sceneChangeDictionary: 1
+  UICanvasDictionary: 1
+  PlayerCanvasDictionary: 1
 --- !u!1 &1394681676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,7 +3560,19 @@ MonoBehaviour:
     m_ActionId: bfa17974-6ab4-45b1-8f9d-f892f4475ce5
     m_ActionName: PlayerMove/CameraRotation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1311334091}
+        m_TargetAssemblyTypeName: UIManagerSaving, Assembly-CSharp
+        m_MethodName: OnTogglePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 25babc23-6a6e-446f-a8b1-9be45dc4501f
     m_ActionName: 'GameControls/TogglePause[/Keyboard/t]'
   - m_PersistentCalls:
@@ -3451,6 +3615,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2abbba03-07c0-4690-ab83-4f39ebb29097
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 67754145-a5b3-469c-918b-44b5f811995c
+    m_ActionName: 'UI/TogglePause[/Keyboard/t]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMove

@@ -1,3 +1,4 @@
+using System;
 using UnityCommunity.UnitySingleton;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,7 @@ namespace SceneSwitching_cf
         private string currentScene; // Current Scene Name
         // ^^^ The currentScene variable is called anytime
         // a scene is loaded (including runtime).
+        public static event Action changedActiveScene;
         
         private void OnEnable()
         {
@@ -53,6 +55,8 @@ namespace SceneSwitching_cf
 
             // Debug the scene change
             Debug.Log("GameManager > ChangedActiveScene > Scenes: " + currentName + ", " + next.name);
+            
+            changedActiveScene?.Invoke();
         }
 
         // Ensure that the game is running at a normal speed and is

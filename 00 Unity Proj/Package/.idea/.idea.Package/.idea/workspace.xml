@@ -5,37 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animated Conveyor Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Animated Conveyor Belt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animated Conveyor Belt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Animated Conveyor Belt.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Conveyor Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Conveyor Belt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Conveyor Belt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Conveyor Belt.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Final Conveyor Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Final Conveyor Belt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Final Conveyor Belt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Final Conveyor Belt.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Carboard with Logo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Carboard with Logo.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Carboard with Logo.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Carboard with Logo.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Cardboard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Cardboard.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Cardboard.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Cardboard.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/cardboard texture.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/cardboard texture.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/cardboard texture.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/cardboard texture.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/goat.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/goat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/goat.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/goat.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckModel (1).fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Truck/TruckModel (1).fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckModel (1).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Truck/TruckModel (1).fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/animated conveyor belt component.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/animated conveyor belt component.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/animated conveyor belt component.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/animated conveyor belt component.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box 2 export.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box 2 export.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box 2 export.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box 2 export.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box with logo (1).fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box with logo (1).fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box with logo (1).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box with logo (1).fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/conveyor belt (2).fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/conveyor belt (2).fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/conveyor belt (2).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/conveyor belt (2).fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Saving/SaveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Saving/SaveManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagerSaving.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UIManagerSaving.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,11 +24,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/12/ff80934e/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/41/dd0e4ba0/TextAsset.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ffe351aa6232372f4a3b8c3ff36a636f33de226f60e607acbfe569289d7289d/System.IO.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/b7/280b1f4d/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInputGameState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@2581a6be7421/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputActionMap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -59,19 +41,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "chore/69-project-reorganization",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;issue/67-refactor-uimanagers&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$USER_HOME$/Desktop/Package Build 1\Package.exe" />
@@ -152,12 +134,15 @@
       <workItem from="1761173642792" duration="3706000" />
       <workItem from="1761240400563" duration="2241000" />
       <workItem from="1761494605588" duration="1637000" />
+      <workItem from="1761531876366" duration="2183000" />
+      <workItem from="1761572121499" duration="4736000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />

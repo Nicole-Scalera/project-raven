@@ -6,6 +6,7 @@ using Sirenix.Serialization;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 // This component will serialize dictionaries in the Inspector whilst ensuring that they
 // still inherit from MonoBehaviour. The logic is then passed into the attached Scene Changer
@@ -22,6 +23,7 @@ namespace SceneSwitching_cf
     {
         public bool sceneChangeDictionary = true;
         public bool UICanvasDictionary = true;
+        public bool PlayerCanvasDictionary = true;
 
         // Scene Changer Dictionary
         [ShowIfGroup("sceneChangeDictionary")]
@@ -42,6 +44,9 @@ namespace SceneSwitching_cf
             "These will be passed into the corresponding manager script that is also attached to the object.")]
         [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "UIController")]
         public Dictionary<GameObject, UIController> UICanvasControllerDictionary = new Dictionary<GameObject, UIController>();
+        
+        [ShowIfGroup("PlayerCanvasDictionary")]
+        public Dictionary<PlayerInputGameState, UIController> PlayerInputCanvasControllerDictionary = new Dictionary<PlayerInputGameState, UIController>();
     }
 
 }

@@ -17,14 +17,20 @@ public class GameStateManager : MonoBehaviour
     // the Enum will clearly change when the static event is invoked, so watch out
     // for the Inspector.
     
-    // Static event to notify subscribers of game state changes
-    public static event Action<GameState> gameStateChanged;
-    
     // Available game states
     public enum GameState { Playing, Paused }
+
+    // Static property to get the current game state
+    public static GameState CurrentGameState { get; set; }
     
+    // Static event to notify subscribers of game state changes
+    public static event Action<GameState> gameStateChanged;
+
     private void Awake()
     {
+        // Initialize the static CurrentGameState from the inspector value
+        CurrentGameState = gameState;
+
         // Get the value of the enum from the editor
         Debug.Log("GameStateManager > Selected Game State: " + gameState.ToString());
     }
@@ -42,6 +48,11 @@ public class GameStateManager : MonoBehaviour
     // Static method to set the game state and notify subscribers
     public static void SetGameState(GameState newState)
     {
+        Debug.unityLogger.Log("GameStateManager > SetGameState " + newState.ToString());
+        
+        // Update the static current state
+        CurrentGameState = newState;
+
         // Notify all subscribers (including component instances)
         gameStateChanged?.Invoke(newState);
     }
@@ -51,8 +62,15 @@ public class GameStateManager : MonoBehaviour
     private void OnGameStateChanged(GameState newState)
     {
         gameState = newState;
-        Debug.Log("GameStateManager > Game State changed to: " + newState.ToString());
+        
+        // Set time scale based on game state
+        if (newState == GameState.Paused)
+        {
+            Time.timeScale = 0f; // Pause the game
+        }
+        else
+        {
+            Time.timeScale = 1f; // Resume the game
+        }
     }
-    
-    
 }

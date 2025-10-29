@@ -1,6 +1,8 @@
 using System;
 using Sirenix.OdinInspector;
+using UnityCommunity.UnitySingleton;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 // This is the GameStateManager class, which manages the game's state (e.g., Playing,
 // Paused) and notifies other components of state changes. It uses an enum to define
@@ -28,21 +30,32 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
-        // Initialize the static CurrentGameState from the inspector value
-        CurrentGameState = gameState;
-
         // Get the value of the enum from the editor
         Debug.Log("GameStateManager > Selected Game State: " + gameState.ToString());
+
+        // Ensure the static CurrentGameState reflects the inspector selection as early as possible.
+        // This helps other components (that may be on different GameObjects) read the correct
+        // starting state in their OnEnable/Start.
+        SetGameState(gameState);
     }
     
     private void OnEnable()
     {
         gameStateChanged += OnGameStateChanged;
+        SceneManager.sceneLoaded += SceneDefaults;
     }
     
     private void OnDisable()
     {
         gameStateChanged -= OnGameStateChanged;
+        SceneManager.sceneLoaded -= SceneDefaults;
+    }
+    
+    // By default the scene will load in the selected game state
+    public void SceneDefaults(Scene scene, LoadSceneMode mode)
+    {
+        // Initialize the static CurrentGameState from the inspector value
+        SetGameState(gameState);
     }
     
     // Static method to set the game state and notify subscribers

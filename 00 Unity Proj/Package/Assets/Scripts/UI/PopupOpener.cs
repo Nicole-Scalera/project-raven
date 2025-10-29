@@ -4,10 +4,9 @@ using UnityEngine;
 // given prefab and adding it to the UI canvas of the current scene.
 public class PopupOpener : MonoBehaviour
 {
-    public GameObject popupPrefab;
-
-    protected Canvas m_canvas;
-    protected GameObject m_popup;
+    public GameObject popupPrefab; // Prefab
+    protected Canvas m_canvas; // Canvas Host
+    protected GameObject m_popup; // Popup that contains the prefab
 
     protected void Start()
     {

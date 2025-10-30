@@ -10,13 +10,44 @@ public class PopupOpener : MonoBehaviour
 
     protected void Start()
     {
+        // Get the canvas component
         m_canvas = GetComponentInParent<Canvas>();
     }
 
     public virtual void OpenPopup()
     {
-        m_popup = Instantiate(popupPrefab, m_canvas.transform, false);
+        // Clone the popup prefab
+        // m_popup = Instantiate(popupPrefab, m_canvas.transform, false);
+        m_popup = Instantiate(popupPrefab);
+        m_popup.transform.SetParent(m_canvas.transform, false);
+        // // Set popup to stretch full screen
+        // m_popup.transform.localScale = new Vector3(1, 1, 1);
+        // m_popup.GetComponent<RectTransform>().sizeDelta = m_canvas.GetComponent<RectTransform>().sizeDelta;
+        // m_popup.transform.SetParent(m_canvas.transform, false);
+        // m_popup.transform.SetSiblingIndex(transform.GetSiblingIndex());
+        
+        // var popupCanvas = m_popup.GetComponent<Canvas>();
+        // popupCanvas.renderMode = RenderMode.ScreenSpaceCamera;
+        // popupCanvas.worldCamera = m_canvas.worldCamera;
+        
         m_popup.SetActive(true);
-        // m_popup.GetComponent<Popup>().Open();
+        m_popup.GetComponent<Popup>().Open();
+        
+        //=========================================================
+        
+        // m_popup = Instantiate(popupPrefab, m_canvas.transform, false);
+        // m_popup.SetActive(true);
+        //
+        // var popupRect = m_popup.GetComponent<RectTransform>();
+        // if (popupRect != null)
+        // {
+        //     // Anchor to top-right and set pivot to top-right; adjust offset as needed
+        //     popupRect.anchorMin = popupRect.anchorMax = new Vector2(1f, 1f);
+        //     popupRect.pivot = new Vector2(1f, 1f);
+        //     popupRect.anchoredPosition = new Vector2(-10f, -10f);
+        // }
+        //
+        // var popupComp = m_popup.GetComponent<Popup>();
+        // if (popupComp != null) popupComp.Open();
     }
 }

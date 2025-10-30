@@ -32,11 +32,6 @@ public class GameStateManager : MonoBehaviour
     {
         // Get the value of the enum from the editor
         Debug.Log("GameStateManager > Selected Game State: " + gameState.ToString());
-
-        // Ensure the static CurrentGameState reflects the inspector selection as early as possible.
-        // This helps other components (that may be on different GameObjects) read the correct
-        // starting state in their OnEnable/Start.
-        SetGameState(gameState);
     }
     
     private void OnEnable()

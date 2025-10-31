@@ -25,7 +25,7 @@ public class Popup : MonoBehaviour
             animator.Play("Close");
         }
 
-        // RemoveBackground();
+        RemoveBackground();
         StartCoroutine(RunPopupDestroy());
     }
 

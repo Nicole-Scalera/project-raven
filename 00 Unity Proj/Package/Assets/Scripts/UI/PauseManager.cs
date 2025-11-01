@@ -1,7 +1,6 @@
 using BasicMovement2_cf;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 // This class is responsible for Pause Menu management. Popups follow the traditional behavior of
 // automatically blocking the input on elements behind it and adding a background texture.
@@ -18,12 +17,12 @@ public class PauseManager : MonoBehaviour, PlayerControls.IGameControlsActions
     
     private void OnEnable()
     {
-        GameStateManager.gameStateChanged += SetPauseState;
-        
         // Enable GameControls
         playerControls.GameControls.SetCallbacks(this); // Set this class as listener
         playerControls.GameControls.Enable();
-
+        
+        GameStateManager.gameStateChanged += SetPauseState;
+        
         // Initialize the local pause state from the static current state in case
         // this component is enabled after the GameStateManager has already set it.
         // This ensures PauseManager reflects the current state even when it's on a
@@ -54,7 +53,7 @@ public class PauseManager : MonoBehaviour, PlayerControls.IGameControlsActions
         }
     }
 
-    protected void Start()
+    private void Start()
     {
         // Ensure local pause state reflects the current global state (extra safety).
         SetPauseState(GameStateManager.CurrentGameState);

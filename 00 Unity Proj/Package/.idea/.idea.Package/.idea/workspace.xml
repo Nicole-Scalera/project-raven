@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Easy Save 3/Resources/ES3/ES3GlobalReferences.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Easy Save 3/Resources/ES3/ES3GlobalReferences.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Save Slots.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Save Slots.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PauseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PauseManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,6 +140,7 @@
       <workItem from="1761838296280" duration="2751000" />
       <workItem from="1761842304731" duration="1886000" />
       <workItem from="1761929332373" duration="322000" />
+      <workItem from="1762024911068" duration="1141000" />
     </task>
     <servers />
   </component>

@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 
 namespace SceneSwitching_cf
 {
-    public class GameManager : PersistentMonoSingleton<GameManager>
+    public class GameManager : MonoSingleton<GameManager>
     {
         //public static event Action inputMapSwitched;
         private string currentScene; // Current Scene Name

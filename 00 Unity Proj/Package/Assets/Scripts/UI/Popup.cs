@@ -24,9 +24,12 @@ public class Popup : MonoBehaviour
         {
             animator.Play("Close");
         }
+        
+        Destroy(m_background);
+        Destroy(gameObject);
 
-        RemoveBackground();
-        StartCoroutine(RunPopupDestroy());
+        // RemoveBackground();
+        // StartCoroutine(RunPopupDestroy());
     }
 
     // We destroy the popup automatically 0.5 seconds after closing it.

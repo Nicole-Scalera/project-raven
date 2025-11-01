@@ -30,11 +30,11 @@ public class SaveManager : MonoBehaviour
             // Load from TextAsset text (uses default ES3Settings/encoding)
             sheet.LoadRaw(clueData.text);
             
-            Debug.Log(sheet.ToString());
-            Debug.Log("This is the row count: " + sheet.RowCount);
-            Debug.Log("This is the column count: " + sheet.ColumnCount);
-            
-            Debug.Log("Here is 1,1: " + sheet.GetCell<string>(1, 1));
+            // Debug.Log(sheet.ToString());
+            // Debug.Log("This is the row count: " + sheet.RowCount);
+            // Debug.Log("This is the column count: " + sheet.ColumnCount);
+            //
+            // Debug.Log("Here is 1,1: " + sheet.GetCell<string>(1, 1));
             
             sheet.Save("myClueData.csv");
         }
@@ -48,9 +48,9 @@ public class SaveManager : MonoBehaviour
     {
         var sheet = new ES3Spreadsheet();
         sheet.Load("myClueData.csv");
-        Debug.Log("Loaded saved spreadsheet:");
-        Debug.Log(sheet.ToString());
-        Debug.Log("LoadSavedSpreadsheet > This is the row count: " + sheet.RowCount);
-        Debug.Log("LoadSavedSpreadsheet > This is the column count: " + sheet.ColumnCount);
+        // Debug.Log("Loaded saved spreadsheet:");
+        // Debug.Log(sheet.ToString());
+        // Debug.Log("LoadSavedSpreadsheet > This is the row count: " + sheet.RowCount);
+        // Debug.Log("LoadSavedSpreadsheet > This is the column count: " + sheet.ColumnCount);
     }
 }

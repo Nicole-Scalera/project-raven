@@ -42,7 +42,7 @@ public class Player : MonoSingleton<Player>
     {
         if (_playerInput != null)
         {
-            inputMapSwitched += CurrentActionMap;
+            inputMapSwitched -= CurrentActionMap;
             GameStateManager.gameStateChanged -= SwitchActionMap;
             GameStateManager.gameStateChanged -= SwitchCursorFunctionality;
         }
@@ -66,11 +66,13 @@ public class Player : MonoSingleton<Player>
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            Debug.Log("Player > Switched cursor functionality for Playing state.");
         }
         else if (newState == GameStateManager.GameState.Paused)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+            Debug.Log("Player > Switched cursor functionality for Paused state.");
         }
     }
     
@@ -79,5 +81,4 @@ public class Player : MonoSingleton<Player>
     {
         Debug.Log("Player > CurrentActionMap > Current Action Map: " + _playerInput.currentActionMap.name);
     }
-    
 }

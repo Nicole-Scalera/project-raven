@@ -5,37 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animated Conveyor Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Animated Conveyor Belt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Animated Conveyor Belt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Animated Conveyor Belt.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Box.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Conveyor Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Conveyor Belt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Conveyor Belt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Conveyor Belt.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Final Conveyor Belt.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Final Conveyor Belt.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Final Conveyor Belt.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/Final Conveyor Belt.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Carboard with Logo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Carboard with Logo.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Carboard with Logo.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Carboard with Logo.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Cardboard.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Cardboard.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/Cardboard.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/Cardboard.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/cardboard texture.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/cardboard texture.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/cardboard texture.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/cardboard texture.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/goat.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/goat.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/goat.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/goat.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.mat.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Materials/package with logo.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Materials/package with logo.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckModel (1).fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Truck/TruckModel (1).fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/TruckModel (1).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Truck/TruckModel (1).fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/animated conveyor belt component.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/animated conveyor belt component.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/animated conveyor belt component.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/animated conveyor belt component.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box 2 export.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box 2 export.fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box 2 export.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box 2 export.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box with logo (1).fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box with logo (1).fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/box with logo (1).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/box with logo (1).fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/conveyor belt (2).fbx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/conveyor belt (2).fbx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/conveyor belt (2).fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ConveyorBelt/conveyor belt (2).fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Boxes/Box.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PauseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PauseManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Apartment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Apartment.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,10 +22,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/12/ff80934e/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/41/dd0e4ba0/TextAsset.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ffe351aa6232372f4a3b8c3ff36a636f33de226f60e607acbfe569289d7289d/System.IO.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1a0e1ffbdaaf4e3abb1d2fbd6d6720079800/5e/1399e969/Canvas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/3d/4368590d/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/4c/6b6e8b93/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/a1/226d9ad4/Texture2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/b7/280b1f4d/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/f8/40b0eecd/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fd92018777924fb6af29b372d8ebdf9134600/3d/5a9d1a76/AnimatorStateInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fd92018777924fb6af29b372d8ebdf9134600/d6/21bcbe5c/Animator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInputGameState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@2581a6be7421/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputActionMap.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unitycommunity.unitysingleton@9184522a79ad/Runtime/Scripts/MonoSingleton.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -63,7 +54,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "chore/69-project-reorganization",
+    "git-widget-placeholder": "issue/67-refactor-uimanagers",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,15 +65,11 @@
 }]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Package Build 1\Package.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/UITest\Package.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\nikki\Desktop\Package Build 1" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
@@ -91,10 +78,6 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\nikki\project-raven\00 Unity Proj\Package" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
@@ -103,10 +86,6 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\nikki\project-raven\00 Unity Proj\Package" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -120,7 +99,6 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -134,7 +112,6 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Device" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
@@ -152,12 +129,25 @@
       <workItem from="1761173642792" duration="3706000" />
       <workItem from="1761240400563" duration="2241000" />
       <workItem from="1761494605588" duration="1637000" />
+      <workItem from="1761531876366" duration="2183000" />
+      <workItem from="1761572121499" duration="4736000" />
+      <workItem from="1761704938987" duration="740000" />
+      <workItem from="1761706346901" duration="708000" />
+      <workItem from="1761712933339" duration="2285000" />
+      <workItem from="1761745441766" duration="3600000" />
+      <workItem from="1761749940396" duration="7284000" />
+      <workItem from="1761762641298" duration="9145000" />
+      <workItem from="1761838296280" duration="2751000" />
+      <workItem from="1761842304731" duration="1886000" />
+      <workItem from="1761929332373" duration="322000" />
+      <workItem from="1762024911068" duration="1141000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />

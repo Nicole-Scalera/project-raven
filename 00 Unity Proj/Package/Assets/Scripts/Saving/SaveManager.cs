@@ -14,9 +14,9 @@ public class SaveManager : MonoBehaviour
     {
         // Load the spreadsheets asynchronously and register a callback upon completion
         clueSpreadsheet.LoadAssetAsync().Completed += OnClueSpreadsheetLoaded;
-        LoadClueSpreadsheet();
+        // LoadClueSpreadsheet();
         progressSpreadsheet.LoadAssetAsync().Completed += OnProgressSpreadsheetLoaded;
-        LoadProgressSpreadsheet();
+        // LoadProgressSpreadsheet();
     }
 
     // When clueSpreadsheet is loaded, load the data into an ES3Spreadsheet
@@ -31,7 +31,7 @@ public class SaveManager : MonoBehaviour
             sheet.LoadRaw(clueData.text);
 
             // Save the loaded spreadsheet to disk
-            sheet.Save("myClueData.csv");
+            sheet.Save($"slots/myClueData.csv");
         }
         else
         {
@@ -51,7 +51,7 @@ public class SaveManager : MonoBehaviour
             sheet.LoadRaw(progressData.text);
 
             // Save the loaded spreadsheet to disk
-            sheet.Save("myProgressData.csv");
+            sheet.Save("slots/myProgressData.csv");
         }
         else
         {
@@ -59,16 +59,16 @@ public class SaveManager : MonoBehaviour
         }
     }
     
-    // This will load a previously saved ES3Spreadsheet from disk
-    public void LoadClueSpreadsheet()
-    {
-        var sheet = new ES3Spreadsheet();
-        sheet.Load("myClueData.csv");
-    }
-    
-    public void LoadProgressSpreadsheet()
-    {
-        var sheet = new ES3Spreadsheet();
-        sheet.Load("myProgressData.csv");
-    }
+    // // This will load a previously saved ES3Spreadsheet from disk
+    // public void LoadClueSpreadsheet()
+    // {
+    //     var sheet = new ES3Spreadsheet();
+    //     sheet.Load("myClueData.csv");
+    // }
+    //
+    // public void LoadProgressSpreadsheet()
+    // {
+    //     var sheet = new ES3Spreadsheet();
+    //     sheet.Load("myProgressData.csv");
+    // }
 }

@@ -9,7 +9,7 @@ using BasicMovement2_cf;
 // I plan on making it more dynamic in the future to encompass the switching of other
 // UI canvases, but right now it focuses on just pausing/playing.
 
-public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
+public class UIManager : MonoBehaviour//, PlayerControls.IGameControlsActions
 {
     // UI Controllers for individual UI canvases in the scene.
     // Panels under the canvas object are assigned in the Inspector
@@ -28,9 +28,9 @@ public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
     void Awake()
     {
         // Initialize PlayerControls
-        playerControls = new PlayerControls();
-        playerControls.GameControls.SetCallbacks(this); // Set this class as listener
-        playerControls.GameControls.Enable();
+        //playerControls = new PlayerControls();
+        //playerControls.GameControls.SetCallbacks(this); // Set this class as listener
+        //playerControls.GameControls.Enable();
         
         showMenuCanvas = false; // Hide UI elements
         showGameplayCanvas = true; // Show gameplay UI
@@ -103,6 +103,6 @@ public class UIManager : MonoBehaviour, PlayerControls.IGameControlsActions
 
     void OnDestroy()
     {
-        playerControls.GameControls.Disable();
+        //playerControls.GameControls.Disable();
     }
 }

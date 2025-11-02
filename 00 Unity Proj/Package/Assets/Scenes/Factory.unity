@@ -124,23 +124,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
   m_PrefabInstance: {fileID: 1004249139}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &50169005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50169004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da57e9b1628ebc148895bb467a332fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sortNum: 2
-  sortedBoxes: 0
-  totalBoxes: 0
-  quotaUI: {fileID: 149151956}
-  sortedPosition: {x: -6.69, y: 2.27, z: 13.93}
 --- !u!65 &50169006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -167,23 +150,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
   m_PrefabInstance: {fileID: 561028140}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &77189701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77189700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da57e9b1628ebc148895bb467a332fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sortNum: 1
-  sortedBoxes: 0
-  totalBoxes: 0
-  quotaUI: {fileID: 149151956}
-  sortedPosition: {x: -6.69, y: 2.27, z: 18.13}
 --- !u!65 &77189702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -346,23 +312,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
   m_PrefabInstance: {fileID: 648615005}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &203476246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203476245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da57e9b1628ebc148895bb467a332fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sortNum: 3
-  sortedBoxes: 0
-  totalBoxes: 0
-  quotaUI: {fileID: 149151956}
-  sortedPosition: {x: -6.69, y: 2.27, z: 10.08}
 --- !u!65 &203476247
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -900,7 +849,7 @@ PrefabInstance:
       addedObject: {fileID: 1810363767}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1810363766}
+      addedObject: {fileID: 1810363770}
   m_SourcePrefab: {fileID: 100100000, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
 --- !u!4 &371040499 stripped
 Transform:
@@ -1028,6 +977,11 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &435768051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 730085466777709379, guid: e50c74695c58e334ea2a31ebed04434d, type: 3}
+  m_PrefabInstance: {fileID: 1832784592}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &470464293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1181,13 +1135,28 @@ PrefabInstance:
       addedObject: {fileID: 77189702}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 77189701}
+      addedObject: {fileID: 561028144}
   m_SourcePrefab: {fileID: 100100000, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
 --- !u!4 &561028141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
   m_PrefabInstance: {fileID: 561028140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &561028144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77189700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751cbf4c70132fc4b9147e12955094bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  truckNum: 1
+  positions: []
+  sortedBoxes: 0
 --- !u!1001 &648615005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1265,13 +1234,28 @@ PrefabInstance:
       addedObject: {fileID: 203476247}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 203476246}
+      addedObject: {fileID: 648615009}
   m_SourcePrefab: {fileID: 100100000, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
 --- !u!4 &648615006 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
   m_PrefabInstance: {fileID: 648615005}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &648615009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203476245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751cbf4c70132fc4b9147e12955094bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  truckNum: 3
+  positions: []
+  sortedBoxes: 0
 --- !u!1 &829883948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1281,6 +1265,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 829883949}
+  - component: {fileID: 829883951}
+  - component: {fileID: 829883950}
   m_Layer: 0
   m_Name: Trucks
   m_TagString: Untagged
@@ -1308,6 +1294,39 @@ Transform:
   - {fileID: 561028141}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &829883950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829883948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afa80beba0982ca4fafe2b88b35fa776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numTrucks: 5
+  truckOneSortedPositions: []
+  truckTwoSortedPositions: []
+  truckThreeSortedPositions: []
+  truckFourSortedPositions: []
+  truckFiveSortedPositions: []
+--- !u!114 &829883951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 829883948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da57e9b1628ebc148895bb467a332fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalSorted: 0
+  quotaUI: {fileID: 149151956}
+  bayUI: {fileID: 367352800}
 --- !u!1001 &866766817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1385,7 +1404,7 @@ PrefabInstance:
       addedObject: {fileID: 866766819}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 866766820}
+      addedObject: {fileID: 866766824}
   m_SourcePrefab: {fileID: 100100000, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
 --- !u!1 &866766818 stripped
 GameObject:
@@ -1413,7 +1432,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5003803, y: 0.68846846, z: 0.6821987}
   m_Center: {x: 0.044802427, y: 0, z: -0.00000003973643}
---- !u!114 &866766820
+--- !u!4 &866766821 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
+  m_PrefabInstance: {fileID: 866766817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &866766824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1422,19 +1446,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 866766818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da57e9b1628ebc148895bb467a332fbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 751cbf4c70132fc4b9147e12955094bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sortNum: 5
+  truckNum: 5
+  positions: []
   sortedBoxes: 0
-  totalBoxes: 0
-  quotaUI: {fileID: 149151956}
-  sortedPosition: {x: -6.69, y: 2.27, z: 1.8}
---- !u!4 &866766821 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
-  m_PrefabInstance: {fileID: 866766817}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1004249139
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1512,13 +1529,28 @@ PrefabInstance:
       addedObject: {fileID: 50169006}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 50169005}
+      addedObject: {fileID: 1004249143}
   m_SourcePrefab: {fileID: 100100000, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
 --- !u!4 &1004249140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
   m_PrefabInstance: {fileID: 1004249139}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1004249143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50169004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751cbf4c70132fc4b9147e12955094bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  truckNum: 2
+  positions: []
+  sortedBoxes: 0
 --- !u!1 &1079899744
 GameObject:
   m_ObjectHideFlags: 0
@@ -1808,23 +1840,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ddc16a0bba34204b9c65b53a626bd8e, type: 3}
   m_PrefabInstance: {fileID: 371040498}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1810363766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810363765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da57e9b1628ebc148895bb467a332fbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sortNum: 4
-  sortedBoxes: 0
-  totalBoxes: 0
-  quotaUI: {fileID: 149151956}
-  sortedPosition: {x: -6.69, y: 2.27, z: 6.1}
 --- !u!65 &1810363767
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1846,6 +1861,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5003803, y: 0.68846846, z: 0.6821987}
   m_Center: {x: 0.044802427, y: 0, z: -0.00000003973643}
+--- !u!114 &1810363770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810363765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 751cbf4c70132fc4b9147e12955094bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  truckNum: 4
+  positions: []
+  sortedBoxes: 0
 --- !u!1001 &1832784592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1874,6 +1904,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Path
       objectReference: {fileID: 0}
+    - target: {fileID: 4504315929376482367, guid: e50c74695c58e334ea2a31ebed04434d, type: 3}
+      propertyPath: objectManager
+      value: 
+      objectReference: {fileID: 435768051}
     - target: {fileID: 5875307905439262633, guid: e50c74695c58e334ea2a31ebed04434d, type: 3}
       propertyPath: m_Name
       value: Final Conveyor Belt
@@ -2134,8 +2168,52 @@ MonoBehaviour:
     m_ActionName: PlayerMove/CameraRotation
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: ad0a6bfa-5f33-4d3d-bf9c-11a1e3768265
-    m_ActionName: 'PlayerMove/Use[/Mouse/leftButton]'
+    m_ActionId: 81783854-35ba-4dbb-a40e-553ec0ee0a44
+    m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 67754145-a5b3-469c-918b-44b5f811995c
+    m_ActionName: 'UI/TogglePause[/Keyboard/t]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4b2199e5-c140-42fe-8870-c63362471565
+    m_ActionName: 'UI/Submit[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a31f88e4-7ef2-4951-96b7-69ed7a381e7c
+    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 89444ec5-bd63-4fe1-80a8-cbe207bac964
+    m_ActionName: 'UI/Point[/Mouse/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 406d080f-c8de-4802-88d1-1f2a4e21074d
+    m_ActionName: 'UI/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 50c4389d-c93a-42f1-818a-32962b6463b5
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 651567ec-e32f-4466-9858-5a74bf451f40
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 530ac0ad-ff0a-4c09-a8d5-41dac7a13bdf
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: abe22af1-237a-4b2c-ab31-9a663d7e243e
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2abbba03-07c0-4690-ab83-4f39ebb29097
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 25babc23-6a6e-446f-a8b1-9be45dc4501f
+    m_ActionName: 'GameControls/TogglePause[/Keyboard/t]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMove
@@ -2231,6 +2309,7 @@ MonoBehaviour:
   isHitting: 0
   rayLength: 5
   hasBat: 0
+  activeBat: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

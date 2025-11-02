@@ -72,6 +72,12 @@ public class PlayerRaycastInteraction : MonoBehaviour
                 activeInteractable = raycastHit.collider.gameObject;
 
             }
+            else if (raycastHit.collider.GetComponent<BeatenBox>() != null)
+            {
+
+                activeInteractable = raycastHit.collider.gameObject;
+
+            }
             else if (raycastHit.collider.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)
             {
 
@@ -118,6 +124,12 @@ public class PlayerRaycastInteraction : MonoBehaviour
             {
 
                 activeInteractable.GetComponent<InteractableBox>().Interaction();
+
+            }
+            else if(activeInteractable.GetComponent<BeatenBox>() != null)
+            {
+
+                activeInteractable.GetComponent <BeatenBox>().Interaction();
 
             }
             else if (activeInteractable.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)

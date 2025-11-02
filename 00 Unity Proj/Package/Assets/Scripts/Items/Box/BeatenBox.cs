@@ -5,9 +5,8 @@ using TMPro;
 using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
 
-public class InteractableBox : MonoBehaviour
+public class BeatenBox : MonoBehaviour
 {
-
     public bool interactedWith = false;
 
     public string sortedPosition;
@@ -15,7 +14,7 @@ public class InteractableBox : MonoBehaviour
     public string sortShelf;
     public int sortSpot;
 
-    public bool sortable = true;
+    public bool sortable = false;
     public bool sorted = false;
 
     public GameObject player;
@@ -25,19 +24,24 @@ public class InteractableBox : MonoBehaviour
 
     public TextMeshProUGUI sortedBayUI;
 
+    public Material beatenTexture;
+    private Material[] newMaterials;
+
     private void Start()
     {
 
         player = GameObject.FindGameObjectWithTag("Player");
-        
+
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
         sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
 
+        beatenTexture = Resources.Load<Material>("phong1");
+
         sortTruck = int.Parse(sortedPosition.Substring(0, 1));
-        sortShelf = sortedPosition.Substring(1,3);
-        sortSpot = int.Parse(sortedPosition.Substring(4,1));
+        sortShelf = sortedPosition.Substring(1, 3);
+        sortSpot = int.Parse(sortedPosition.Substring(4, 1));
 
     }
 
@@ -60,22 +64,37 @@ public class InteractableBox : MonoBehaviour
             GetComponent<Rigidbody>().isKinematic = true;
 
         }
-        
+
 
     }
 
     public void Interaction()
     {
+        if (!player.GetComponent<PlayerRaycastInteraction>().hasBat)
+        {
 
-        interactedWith = !interactedWith;
+            interactedWith = !interactedWith;
 
-        sortedBayUI.text = "Bay: " + sortTruck.ToString() + "\n" + "Shelf: " + sortShelf + "\n" + "Spot: " + sortSpot.ToString();
+            sortedBayUI.text = "Bay: " + sortTruck.ToString() + "\n" + "Shelf: " + sortShelf + "\n" + "Spot: " + sortSpot.ToString();
 
-        path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
+            path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
 
-        GetComponent<Rigidbody>().useGravity = !interactedWith;   
-        
+            GetComponent<Rigidbody>().useGravity = !interactedWith;
+
+        }
+        else
+        {
+            newMaterials = GetComponent<MeshRenderer>().materials;
+
+            newMaterials[0] = beatenTexture;
+            newMaterials[1] = beatenTexture;
+
+            GetComponent<MeshRenderer>().materials = newMaterials;
+
+            sortable = true;
+
+        }
+
 
     }
-
 }

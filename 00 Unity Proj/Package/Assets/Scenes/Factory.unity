@@ -2755,7 +2755,6 @@ GameObject:
   - component: {fileID: 2010575559}
   - component: {fileID: 2010575558}
   - component: {fileID: 2010575562}
-  - component: {fileID: 2010575560}
   - component: {fileID: 2010575563}
   - component: {fileID: 2010575557}
   m_Layer: 0
@@ -3039,22 +3038,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &2010575560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010575552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0b133624e011346bd35679cefc2890, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clues: []
-  activeBox: {fileID: 0}
-  interactableObjects: []
-  playerTransform: {fileID: 2010575556}
 --- !u!114 &2010575562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3086,8 +3069,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c261f1dc9255436b8ac52c78ed7021e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  _playerInput: {fileID: 0}
+  rb: {fileID: 2010575559}
+  _playerInput: {fileID: 2010575557}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

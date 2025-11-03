@@ -2,7 +2,6 @@ using System.Runtime.CompilerServices;
 using ConveyorBelt_cf;
 using NUnit.Framework;
 using TMPro;
-using UnityEditor.SpeedTree.Importer;
 using UnityEngine;
 
 public class BeatenBox : MonoBehaviour

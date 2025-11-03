@@ -1,6 +1,6 @@
-using BasicMovement2_cf;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using BasicMovement2_cf;
 
 // This class is responsible for Pause Menu management. Popups follow the traditional behavior of
 // automatically blocking the input on elements behind it and adding a background texture.

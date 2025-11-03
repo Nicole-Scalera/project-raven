@@ -35,18 +35,18 @@ namespace SceneSwitching_cf
         [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "SceneAsset")]
         public Dictionary<GameObject, string> SceneChangerDictionary = new Dictionary<GameObject, string>();
         
-        // UI Canvas Dictionary
-        [ShowIfGroup("UICanvasDictionary")]
-        [DetailedInfoBox("How to Use the UI Canvas Dictionary:",
-            "This Dictionary Component is split into two parts: key & value. The key box should be filled with " +
-            "the Button object that the player will interact with. The value box should be filled with the UI Controller " +
-            "of the Canvas that should be displayed (all other canvas objects will be disabled). Remember to click Add! " +
-            "These will be passed into the corresponding manager script that is also attached to the object.")]
-        [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "UIController")]
-        public Dictionary<GameObject, UIController> UICanvasControllerDictionary = new Dictionary<GameObject, UIController>();
-        
-        [ShowIfGroup("PlayerCanvasDictionary")]
-        public Dictionary<PlayerInputGameState, UIController> PlayerInputCanvasControllerDictionary = new Dictionary<PlayerInputGameState, UIController>();
+        // // UI Canvas Dictionary
+        // [ShowIfGroup("UICanvasDictionary")]
+        // [DetailedInfoBox("How to Use the UI Canvas Dictionary:",
+        //     "This Dictionary Component is split into two parts: key & value. The key box should be filled with " +
+        //     "the Button object that the player will interact with. The value box should be filled with the UI Controller " +
+        //     "of the Canvas that should be displayed (all other canvas objects will be disabled). Remember to click Add! " +
+        //     "These will be passed into the corresponding manager script that is also attached to the object.")]
+        // [DictionaryDrawerSettings(KeyLabel = "GameObject", ValueLabel = "UIController")]
+        // public Dictionary<GameObject, UIController> UICanvasControllerDictionary = new Dictionary<GameObject, UIController>();
+        //
+        // [ShowIfGroup("PlayerCanvasDictionary")]
+        // public Dictionary<PlayerInputGameState, UIController> PlayerInputCanvasControllerDictionary = new Dictionary<PlayerInputGameState, UIController>();
     }
 
 }

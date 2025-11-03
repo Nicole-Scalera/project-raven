@@ -1,4 +1,6 @@
+using System.Runtime.CompilerServices;
 using ConveyorBelt_cf;
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 
@@ -7,26 +9,34 @@ public class InteractableBox : MonoBehaviour
 
     public bool interactedWith = false;
 
-    public int sortNum;
+    public string sortedPosition;
+    public int sortTruck;
+    public string sortShelf;
+    public int sortSpot;
 
+    public bool sortable = true;
     public bool sorted = false;
 
     public GameObject player;
+    public Ray playerRay;
 
     public GameObject path;
 
     public TextMeshProUGUI sortedBayUI;
 
-
     private void Start()
     {
-    
-        sortNum = Random.Range(1,5);
+
         player = GameObject.FindGameObjectWithTag("Player");
+        
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
         sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
+
+        sortTruck = int.Parse(sortedPosition.Substring(0, 1));
+        sortShelf = sortedPosition.Substring(1,3);
+        sortSpot = int.Parse(sortedPosition.Substring(4,1));
 
     }
 
@@ -35,15 +45,17 @@ public class InteractableBox : MonoBehaviour
 
         if (interactedWith)
         {
+            playerRay = player.GetComponent<PlayerRaycastInteraction>().interactionRay;
+            transform.position = playerRay.GetPoint(1.5f);
+            transform.rotation = player.transform.rotation;
 
-            //Debug.Log("Moving Box");
-            transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z);
 
         }
 
         if (sorted)
         {
 
+            transform.rotation = Quaternion.identity;
             GetComponent<Rigidbody>().isKinematic = true;
 
         }
@@ -54,16 +66,14 @@ public class InteractableBox : MonoBehaviour
     public void Interaction()
     {
 
-        //Debug.Log(interactedWith);
         interactedWith = !interactedWith;
 
-        sortedBayUI.text = "Bay: " + sortNum.ToString();
+        sortedBayUI.text = "Bay: " + sortTruck.ToString() + "\n" + "Shelf: " + sortShelf + "\n" + "Spot: " + sortSpot.ToString();
 
         path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
 
-        transform.rotation = Quaternion.identity;
-        GetComponent<Rigidbody>().isKinematic = true;
-
+        GetComponent<Rigidbody>().useGravity = !interactedWith;   
+        
 
     }
 

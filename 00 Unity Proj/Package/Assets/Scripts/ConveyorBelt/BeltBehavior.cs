@@ -26,7 +26,7 @@ namespace ConveyorBelt_cf
 
         public float moveSpeed = 1f;
 
-        static Vector3 currentPosition;
+        public Vector3 currentPosition;
 
         private int currentNode;
 
@@ -46,9 +46,8 @@ namespace ConveyorBelt_cf
         void CheckNode()
         {
 
-            //reset speed temporarily to 0 and assign new node position to current position
-            boxSpeed = 0;
-            currentPosition = pathNodes[currentNode].transform.position;
+            //reset speed temporarily to 0 and assign new node position to current 
+            currentPosition = pathNodes[pathNodes.Length-1].transform.position;
 
         }
 
@@ -66,7 +65,10 @@ namespace ConveyorBelt_cf
                 //if it is the current goal node position the currentNode variable increments and CheckNode() gets called to update
                 //the next goal node position
 
-                if (box.transform.position != currentPosition)
+                float roundedBoxXPosition = Mathf.Round(box.transform.position.x * 100);
+                float roundedCurrentXPosition = Mathf.Round(currentPosition.x * 100);
+
+                if (roundedBoxXPosition >= roundedCurrentXPosition)
                 {
 
                     box.transform.position = Vector3.MoveTowards(box.transform.position, currentPosition, boxSpeed);
@@ -74,6 +76,7 @@ namespace ConveyorBelt_cf
                 }
                 else
                 {
+
                     if (currentNode < pathNodes.Length - 1)
                     {
 
@@ -95,8 +98,6 @@ namespace ConveyorBelt_cf
         {
 
             boxes.Add(newBox);
-
-            Debug.Log("New Box Added: " + newBox.name);
 
         }
 

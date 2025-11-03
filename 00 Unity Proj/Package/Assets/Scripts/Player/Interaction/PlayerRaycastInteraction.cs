@@ -32,6 +32,13 @@ public class PlayerRaycastInteraction : MonoBehaviour
     public bool isHitting;
     public float rayLength = 5f;
 
+    //     ==== Interaction States ====
+
+    public bool hasBat = false;
+    public GameObject activeBat = null;
+
+    //========================================================
+
     /*
      *
      * - Grabs player mouse position then creates a ray starting at the current camera location
@@ -65,7 +72,19 @@ public class PlayerRaycastInteraction : MonoBehaviour
                 activeInteractable = raycastHit.collider.gameObject;
 
             }
+            else if (raycastHit.collider.GetComponent<BeatenBox>() != null)
+            {
+
+                activeInteractable = raycastHit.collider.gameObject;
+
+            }
             else if (raycastHit.collider.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)
+            {
+
+                activeInteractable = raycastHit.collider.gameObject;
+
+            }
+            else if (raycastHit.collider.GetComponent<InteractableBat>() != null)
             {
 
                 activeInteractable = raycastHit.collider.gameObject;
@@ -78,7 +97,12 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
             Debug.DrawRay(origin, direction * rayLength, Color.red);
 
-            activeInteractable = null;
+            if (activeInteractable != null && activeInteractable.GetComponent<InteractableBox>() == null)
+            {
+
+                activeInteractable = null;
+
+            }
 
         }
 
@@ -96,7 +120,40 @@ public class PlayerRaycastInteraction : MonoBehaviour
         if(activeInteractable != null)
         {
 
-            activeInteractable.GetComponent<InteractableBox>().Interaction();
+            if (activeInteractable.GetComponent<InteractableBox>() != null)
+            {
+
+                activeInteractable.GetComponent<InteractableBox>().Interaction();
+
+            }
+            else if(activeInteractable.GetComponent<BeatenBox>() != null)
+            {
+
+                activeInteractable.GetComponent <BeatenBox>().Interaction();
+
+            }
+            else if (activeInteractable.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)
+            {
+
+                activeInteractable.GetComponent<InteractableClue>().Interaction();
+
+            }
+            else if (activeInteractable.GetComponent<InteractableBat>() != null)
+            {
+
+                activeInteractable.GetComponent<InteractableBat>().Interaction();
+                hasBat = activeInteractable.GetComponent<InteractableBat>().interactedWith;
+                activeBat = activeInteractable;
+
+            }
+
+        }
+        else if (activeBat != null)
+        {
+
+            activeBat.GetComponent<InteractableBat>().Interaction();
+            hasBat = activeBat.GetComponent<InteractableBat>().interactedWith;
+            activeBat = null;
 
         }
     }

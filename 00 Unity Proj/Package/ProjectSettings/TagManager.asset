@@ -10,6 +10,8 @@ TagManager:
   - CinemachineTarget
   - Path
   - UIControllerButton
+  - Game UI
+  - PauseUI
   layers:
   - Default
   - TransparentFX

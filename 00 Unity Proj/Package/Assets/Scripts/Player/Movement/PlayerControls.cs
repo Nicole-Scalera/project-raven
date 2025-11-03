@@ -14,7 +14,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-
+/*
 namespace BasicMovement2_cf
 {
     /// <summary>
@@ -607,7 +607,7 @@ namespace BasicMovement2_cf
                 {
                     ""name"": """",
                     ""id"": ""d97a0d3a-61bb-4208-a09a-2c68e5ee46f4"",
-                    ""path"": ""*/{Submit}"",
+                    ""path"": ""*//*{Submit}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse;Gamepad;Touch;Joystick;XR"",
@@ -618,7 +618,7 @@ namespace BasicMovement2_cf
                 {
                     ""name"": """",
                     ""id"": ""f5c23c14-7847-4fde-bf8b-79fa4288dda7"",
-                    ""path"": ""*/{Cancel}"",
+                    ""path"": ""*//*{Cancel}"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse;Gamepad;Touch;Joystick;XR"",
@@ -651,7 +651,8 @@ namespace BasicMovement2_cf
                 {
                     ""name"": """",
                     ""id"": ""a5d2d484-903d-4070-9aca-b5a570f69cb8"",
-                    ""path"": ""<Touchscreen>/touch*/position"",
+                    ""path"": ""<Touchscreen>/touch*//*
+position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touch"",
@@ -684,7 +685,8 @@ namespace BasicMovement2_cf
                 {
                     ""name"": """",
                     ""id"": ""c488c03d-784b-476c-8b96-fc4a11c0b21f"",
-                    ""path"": ""<Touchscreen>/touch*/press"",
+                    ""path"": ""<Touchscreen>/touch*//*
+press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Touch"",
@@ -1440,4 +1442,4 @@ namespace BasicMovement2_cf
             void OnTogglePause(InputAction.CallbackContext context);
         }
     }
-}
+}*/

@@ -12,70 +12,70 @@ namespace ConveyorBelt_cf
 
         //When an collider hits the destruction zone it removes the gameobjct
         //from the boxes array and then destroys the object
-        private void OnCollisionEnter(Collision collision)
+        public void OnTriggerEnter(Collider other)
         {
+            Debug.Log("Entered: " + other.gameObject.name);
 
-            Debug.Log("Entered: " + collision.gameObject.name);
-
-            if (collision.gameObject.GetComponent<InteractableBox>() != null)
+            if (other.gameObject.GetComponent<InteractableBox>() != null)
             {
 
-                path.GetComponent<BeltBehavior>().RemoveBox(collision.gameObject);
+                path.GetComponent<BeltBehavior>().RemoveBox(other.gameObject);
 
-                if (collision.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "1")
+                if (other.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "1")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckOneBoxes.Add(collision.gameObject.GetComponent<InteractableBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckOneBoxes.Add(other.gameObject.GetComponent<InteractableBox>().sortedPosition);
                 }
-                if (collision.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "2")
+                if (other.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "2")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckTwoBoxes.Add(collision.gameObject.GetComponent<InteractableBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckTwoBoxes.Add(other.gameObject.GetComponent<InteractableBox>().sortedPosition);
                 }
-                if (collision.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "3")
+                if (other.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "3")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckThreeBoxes.Add(collision.gameObject.GetComponent<InteractableBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckThreeBoxes.Add(other.gameObject.GetComponent<InteractableBox>().sortedPosition);
                 }
-                if (collision.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "4")
+                if (other.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "4")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckFourBoxes.Add(collision.gameObject.GetComponent<InteractableBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckFourBoxes.Add(other.gameObject.GetComponent<InteractableBox>().sortedPosition);
                 }
-                if (collision.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "5")
+                if (other.gameObject.GetComponent<InteractableBox>().sortedPosition.Substring(0, 1) == "5")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckFiveBoxes.Add(collision.gameObject.GetComponent<InteractableBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckFiveBoxes.Add(other.gameObject.GetComponent<InteractableBox>().sortedPosition);
                 }
 
-                Destroy(collision.gameObject);
+                Destroy(other.gameObject);
 
             }
-            else if(collision.gameObject.GetComponent<BeatenBox>() != null)
+            else if (other.gameObject.GetComponent<BeatenBox>() != null)
             {
 
-                path.GetComponent<BeltBehavior>().RemoveBox(collision.gameObject);
+                path.GetComponent<BeltBehavior>().RemoveBox(other.gameObject);
 
-                if (collision.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "1")
+                if (other.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "1")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckOneBoxes.Add(collision.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckOneBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
                 }
-                if (collision.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "2")
+                if (other.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "2")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckTwoBoxes.Add(collision.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckTwoBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
                 }
-                if (collision.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "3")
+                if (other.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "3")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckThreeBoxes.Add(collision.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckThreeBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
                 }
-                if (collision.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "4")
+                if (other.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "4")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckFourBoxes.Add(collision.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckFourBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
                 }
-                if (collision.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "5")
+                if (other.gameObject.GetComponent<BeatenBox>().sortedPosition.Substring(0, 1) == "5")
                 {
-                    objectManager.GetComponent<ObjectManager>().truckFiveBoxes.Add(collision.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                    objectManager.GetComponent<ObjectManager>().truckFiveBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
                 }
 
-                Destroy(collision.gameObject);
+                Destroy(other.gameObject);
 
             }
-
         }
     }
-}
+
+    
+    }

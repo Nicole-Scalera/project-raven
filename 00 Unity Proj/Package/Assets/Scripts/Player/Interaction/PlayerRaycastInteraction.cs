@@ -26,6 +26,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
     //     ==== Player Raycast ====
 
+    public Vector3 halfDimensions = new(1f,1f,1f);
     public Vector3 mousePos;
     public Ray interactionRay;
     public RaycastHit raycastHit;
@@ -51,7 +52,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
      */
     public void FixedUpdate()
     {
-
+        
         mousePos = Input.mousePosition;
 
         interactionRay = GetComponentInChildren<Camera>().ScreenPointToRay(mousePos);
@@ -61,34 +62,17 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
         isHitting = Physics.Raycast(interactionRay, out raycastHit);
 
+        //isHitting = Physics.BoxCast(origin,halfDimensions,direction, out raycastHit,transform.rotation,rayLength);
+
+
         if (isHitting)
         {
 
             Debug.DrawRay(origin, direction * rayLength, Color.green);
 
-            if (raycastHit.collider.GetComponent<InteractableBox>() != null)
+            if (raycastHit.collider.TryGetComponent<IInteractable>(out IInteractable interactableScript))
             {
-
                 activeInteractable = raycastHit.collider.gameObject;
-
-            }
-            else if (raycastHit.collider.GetComponent<BeatenBox>() != null)
-            {
-
-                activeInteractable = raycastHit.collider.gameObject;
-
-            }
-            else if (raycastHit.collider.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)
-            {
-
-                activeInteractable = raycastHit.collider.gameObject;
-
-            }
-            else if (raycastHit.collider.GetComponent<InteractableBat>() != null)
-            {
-
-                activeInteractable = raycastHit.collider.gameObject;
-
             }
 
         }
@@ -105,6 +89,13 @@ public class PlayerRaycastInteraction : MonoBehaviour
             }
 
         }
+
+    }
+
+    private void OnDrawGizmos()
+    {
+        
+
 
     }
 

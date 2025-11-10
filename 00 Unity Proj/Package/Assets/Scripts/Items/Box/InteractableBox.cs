@@ -4,7 +4,7 @@ using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 
-public class InteractableBox : MonoBehaviour
+public class InteractableBox : MonoBehaviour, IInteractable
 {
 
     public bool interactedWith = false;

@@ -29,7 +29,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
     public Vector3 halfDimensions = new(1f,1f,1f);
     public Vector3 mousePos;
     public Ray interactionRay;
-    public RaycastHit raycastHit;
+    public RaycastHit boxcastHit;
     public bool isHitting;
     public float rayLength = 5f;
 
@@ -42,9 +42,9 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
     /*
      *
-     * - Grabs player mouse position then creates a ray starting at the current camera location
-     * - Emits the ray using Physics.Raycast and uses isHitting to track collision
-     * - If the ray is hitting the ray is emitted green and checks if the colliding
+     * - Grabs player mouse position then creates a ray starting at the current camera location to the mouse position
+     * - Emits the box using Physics.Boxcast using the ray as a template and uses isHitting to track collision
+     * - If the box is hitting the ray is emitted green and checks if the colliding
      *   object is interactable and if so assigns it to the activeInteractable variable
      *      - If its a clue an added check is performed to ensure the clue hasn't already been interactedWith
      * - If it isnt hitting the ray is emitted red and assigns null to activeInteractable
@@ -60,9 +60,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
         Vector3 origin = new (interactionRay.origin.x, interactionRay.origin.y - 0.25f, interactionRay.origin.z);
         Vector3 direction = interactionRay.direction;
 
-        isHitting = Physics.Raycast(interactionRay, out raycastHit);
-
-        //isHitting = Physics.BoxCast(origin,halfDimensions,direction, out raycastHit,transform.rotation,rayLength);
+        isHitting = Physics.BoxCast(origin,halfDimensions,direction, out boxcastHit,transform.rotation,rayLength);
 
 
         if (isHitting)
@@ -70,9 +68,11 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
             Debug.DrawRay(origin, direction * rayLength, Color.green);
 
-            if (raycastHit.collider.TryGetComponent<IInteractable>(out IInteractable interactableScript))
+            Debug.Log(boxcastHit.collider.gameObject.name);
+
+            if (boxcastHit.collider.TryGetComponent<IInteractable>(out _))
             {
-                activeInteractable = raycastHit.collider.gameObject;
+                activeInteractable = boxcastHit.collider.gameObject;
             }
 
         }
@@ -89,13 +89,6 @@ public class PlayerRaycastInteraction : MonoBehaviour
             }
 
         }
-
-    }
-
-    private void OnDrawGizmos()
-    {
-        
-
 
     }
 
@@ -123,7 +116,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
                 activeInteractable.GetComponent <BeatenBox>().Interaction();
 
             }
-            else if (activeInteractable.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)
+            else if (activeInteractable.GetComponent<InteractableClue>() != null && !boxcastHit.collider.GetComponent<InteractableClue>().interactedWith)
             {
 
                 activeInteractable.GetComponent<InteractableClue>().Interaction();

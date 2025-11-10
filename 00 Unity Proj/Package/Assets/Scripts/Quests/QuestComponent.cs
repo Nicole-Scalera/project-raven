@@ -1,35 +1,38 @@
 using System;
 using UnityEngine;
 
-public abstract class QuestComponent
+namespace QuestSystem
 {
-    public enum QuestComponentType
+    public abstract class QuestComponent
     {
-        EnemyKilled,
-        ItemCollected
-        // ADD CUSTOM TYPES BELOW
-    }
-    
-    public event Action<QuestComponent> OnComponentCompleted;
-    protected void TriggerComponentCompleted(QuestComponent questComponent) { OnComponentCompleted?.Invoke(questComponent); }
+        public enum QuestComponentType
+        {
+            EnemyKilled,
+            ItemCollected
+            // ADD CUSTOM TYPES BELOW
+        }
+        
+        public event Action<QuestComponent> OnComponentCompleted;
+        protected void TriggerComponentCompleted(QuestComponent questComponent) { OnComponentCompleted?.Invoke(questComponent); }
 
-    public string ComponentName;
-    public string ComponentDescription;
-    public QuestComponentType ComponentType;
+        public string ComponentName;
+        public string ComponentDescription;
+        public QuestComponentType ComponentType;
 
-    public QuestComponent(string name, string description)
-    {
-        ComponentName = name;
-        ComponentDescription = description;
-    }
+        public QuestComponent(string name, string description)
+        {
+            ComponentName = name;
+            ComponentDescription = description;
+        }
 
-    public virtual void EnableComponent()
-    {
-        Debug.unityLogger.Log($"{ComponentName} has been enabled.");
-    }
+        public virtual void EnableComponent()
+        {
+            Debug.unityLogger.Log($"{ComponentName} has been enabled.");
+        }
 
-    public virtual void MarkCompleted()
-    {
-        Debug.unityLogger.Log($"{ComponentName} has been completed.");
+        public virtual void MarkCompleted()
+        {
+            Debug.unityLogger.Log($"{ComponentName} has been completed.");
+        }
     }
 }

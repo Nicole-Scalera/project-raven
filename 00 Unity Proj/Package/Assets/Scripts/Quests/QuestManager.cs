@@ -41,11 +41,17 @@ namespace QuestSystem
         private void InitializeQuests()
         {
             if (questsToLoad.Count <= 0) return;
-
+            
+            // Create a dictionary to hold the quests
             Quests = new Dictionary<int, Quest>();
+            
+            // Loop through each ScriptableObject and create a Quest instance
             foreach (var so in questsToLoad)
             {
+                // Load the quest data from the ScriptableObject
                 var quest = new Quest(so.questName, so.id, so.components);
+                
+                // Add the quest to the dictionary
                 Quests.Add(quest.QuestID, quest);
                 Debug.unityLogger.Log($"{quest.QuestName} has been initialized");
             }

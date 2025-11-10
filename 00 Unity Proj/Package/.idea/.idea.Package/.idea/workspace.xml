@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Enemy.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Enemy.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QuestComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QuestComponent.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QC_EnemyKilled.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QC_EnemyKilled.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QC_EnemyKilled.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QC_EnemyKilled.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QC_ItemCollected.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QC_ItemCollected.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QC_ItemCollected.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QC_ItemCollected.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/Quest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Quest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/Quest.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/Quest.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestComponent.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestComponent.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestEvents.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/QuestManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QC_EnemyKilled.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QC_EnemyKilled.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QC_EnemyKilled.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QC_EnemyKilled.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QC_ItemCollected.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QC_ItemCollected.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QC_ItemCollected.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_QC_ItemCollected.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_Quest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_Quest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_Quest.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Quests/SO_Quest.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/SQ_QuestComponent.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Quests/SQ_QuestComponent.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +18,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1a0e1ffbdaaf4e3abb1d2fbd6d6720079800/5e/1399e969/Canvas.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/12/ff80934e/GameObject.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/3d/4368590d/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/41/dd0e4ba0/TextAsset.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/4c/6b6e8b93/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/a1/226d9ad4/Texture2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/b7/280b1f4d/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Quests/SO_Quest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/f8/40b0eecd/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fd92018777924fb6af29b372d8ebdf9134600/3d/5a9d1a76/AnimatorStateInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fd92018777924fb6af29b372d8ebdf9134600/d6/21bcbe5c/Animator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ffe351aa6232372f4a3b8c3ff36a636f33de226f60e607acbfe569289d7289d/System.IO.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@2581a6be7421/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputActionMap.cs" root0="SKIP_HIGHLIGHTING" />

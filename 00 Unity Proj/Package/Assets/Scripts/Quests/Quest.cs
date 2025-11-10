@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace QuestSystem
@@ -75,8 +76,12 @@ namespace QuestSystem
             }
             else
             {
+                // If there are more components left,
+                // activate the next component
                 if (QuestComponents.Count > _componentsCompleted)
+                {
                     QuestComponents[_componentsCompleted].EnableComponent();
+                }
             }
         }
 

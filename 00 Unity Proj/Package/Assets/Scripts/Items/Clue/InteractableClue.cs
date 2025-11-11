@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class InteractableClue : MonoBehaviour
+public class InteractableClue : MonoBehaviour, IInteractable
 {
     public string clueName;
     public bool interactedWith = false;

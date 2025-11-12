@@ -14,7 +14,7 @@ using Sirenix.Utilities;
 
 namespace SceneSwitching_cf
 {
-    public abstract class SceneChanger : MonoSingleton<SceneChanger>, ISceneChanger, ICollidable, IClickable
+    public abstract class SceneChanger2 : MonoSingleton<SceneChanger2>, ISceneChanger, ICollidable, IClickable
     {
 
         // ===== Variables/Components =====

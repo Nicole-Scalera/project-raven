@@ -1412,6 +1412,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 2425862765038420064, guid: 4e7fd24088705844885b16cfdbc0910a, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -763499357971667627, guid: 4e7fd24088705844885b16cfdbc0910a, type: 2}
+    value: {fileID: 1870393825}
   m_ExposedReferences:
     m_References:
     - b2485049a59933241a9a8d31f09d9ec7: {fileID: 1289358909}
@@ -2134,6 +2136,8 @@ GameObject:
   - component: {fileID: 1870393822}
   - component: {fileID: 1870393821}
   - component: {fileID: 1870393820}
+  - component: {fileID: 1870393824}
+  - component: {fileID: 1870393825}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2181,6 +2185,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1870393824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870393819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938d236bac514df595849bfad1545916, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scene: GS_Apartment
+--- !u!114 &1870393825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870393819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 29fa2a647d0ea2344949edf4d3bbefe9, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1870393824}
+          m_TargetAssemblyTypeName: SceneSwitching_cf.SceneChangeIndividualButton,
+            Assembly-CSharp
+          m_MethodName: LoadScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2010575552
 GameObject:
   m_ObjectHideFlags: 0

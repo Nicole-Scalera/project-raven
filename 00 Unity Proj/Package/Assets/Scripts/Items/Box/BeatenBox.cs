@@ -4,7 +4,7 @@ using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 
-public class BeatenBox : MonoBehaviour
+public class BeatenBox : MonoBehaviour, IInteractable
 {
     public bool interactedWith = false;
 

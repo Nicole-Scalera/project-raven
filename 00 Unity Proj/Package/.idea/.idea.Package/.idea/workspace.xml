@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneChanger/SceneChangeIndividualButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneChanger/SceneChangeSimple.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneChanger/SceneChangeIndividualButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneChanger/SceneChangeSimple.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/OpeningSceneTimeline.playable" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/OpeningSceneTimeline.playable" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,18 +25,23 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/3d/4368590d/SceneManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/41/dd0e4ba0/TextAsset.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/4c/6b6e8b93/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/89/29ba2fda/Material.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/a1/226d9ad4/Texture2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/b7/280b1f4d/SceneManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2f565d214ab4e3d9e060571ada8f3d91df800/f8/40b0eecd/Object.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f4d6578e4b844a19a1484e244e4ada1f18800/22/a580a405/AudioMixer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fd92018777924fb6af29b372d8ebdf9134600/3d/5a9d1a76/AnimatorStateInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fd92018777924fb6af29b372d8ebdf9134600/d6/21bcbe5c/Animator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ffe351aa6232372f4a3b8c3ff36a636f33de226f60e607acbfe569289d7289d/System.IO.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/PlayerInputGameState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/VFX/FadeScreen.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.addressables@2581a6be7421/Runtime/ResourceManager/AsyncOperations/AsyncOperationHandle.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputAction.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Actions/InputActionMap.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Plugins/PlayerInput/PlayerInput.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@be6c4fd0abf5/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@6b9e48457ddb/Editor/Manipulators/Move/MoveItemModeMix.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.timeline@6b9e48457ddb/Runtime/Events/Signals/SignalAsset.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unitycommunity.unitysingleton@9184522a79ad/Runtime/Scripts/MonoSingleton.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -47,22 +56,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "issue/44-day-cycle-global-save",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;issue/79-quest-line-system&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Milestone2\Package.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Package Build 1\Package.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\nikki\Desktop\Package Build 1" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -139,6 +148,10 @@
       <workItem from="1761929332373" duration="322000" />
       <workItem from="1762024911068" duration="1141000" />
       <workItem from="1762104594498" duration="7893000" />
+      <workItem from="1762735108442" duration="1912000" />
+      <workItem from="1762960698694" duration="9789000" />
+      <workItem from="1763144793913" duration="1116000" />
+      <workItem from="1763242858147" duration="575000" />
     </task>
     <servers />
   </component>

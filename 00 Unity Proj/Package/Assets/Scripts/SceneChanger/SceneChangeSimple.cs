@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 namespace SceneSwitching_cf
 {
-    public class SceneChangeIndividualButton :  MonoBehaviour
+    public class SceneChangeSimple :  MonoBehaviour
     {
         public string scene = "<Insert scene name>";
 

@@ -6,9 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddressableAssetsData/AddressableAssetSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneChanger/SceneChangeIndividualButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneChanger/SceneChangeSimple.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SceneChanger/SceneChangeIndividualButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SceneChanger/SceneChangeSimple.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/OpeningSceneTimeline.playable" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/OpeningSceneTimeline.playable" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/OpeningSequence.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/OpeningSequence.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,6 +151,7 @@
       <workItem from="1762735108442" duration="1912000" />
       <workItem from="1762960698694" duration="9789000" />
       <workItem from="1763144793913" duration="1116000" />
+      <workItem from="1763242858147" duration="575000" />
     </task>
     <servers />
   </component>

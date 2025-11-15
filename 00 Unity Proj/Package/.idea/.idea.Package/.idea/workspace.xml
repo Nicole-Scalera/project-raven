@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ff1446c4-c84e-4fa9-bebc-5442cda15b9a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Package/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PC_Renderer.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VFX/FadeScreen.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VFX/FadeScreen.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VFX/FadeScreen.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VFX/FadeScreen.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/VFX/FadeScreenMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/VFX/FadeScreenMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/core features/GlobalSave/GS_Factory.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

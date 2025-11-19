@@ -2,7 +2,7 @@ using ConveyorBelt_cf;
 using TMPro;
 using UnityEngine;
 
-public class InteractableBat : MonoBehaviour
+public class InteractableBat : MonoBehaviour, IInteractable
 {
 
     public bool interactedWith = false;

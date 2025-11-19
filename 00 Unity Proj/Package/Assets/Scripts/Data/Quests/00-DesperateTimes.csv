@@ -1,0 +1,5 @@
+questStage,questDescription,questInfo,status
+0,Answer the phone call.,"Player must answer the phone. After this, trigger dialogue sequence.",0
+1,Investigate the strange flyer.,Player must read the flyer.,0
+2,Leave your apartment.,Player must interact with the apartment door. Transport to Parking Lot scene.,0
+3,Head inside the warehouse.,Player must walk from the parking lot to the warehouse.,0

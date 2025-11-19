@@ -12,16 +12,6 @@ public class FadeScreen : MonoBehaviour
 	public Material Screen;
 	public AudioMixer Audio;
 	
-	// Set the FadeTime float to the value from the shader editor
-	private float FadeTime
-	{
-		set
-		{
-			Screen.SetFloat("_FadeTime", value);
-			Audio.SetFloat("_MasterVolume", Mathf.Lerp(0, -80, value));
-		}
-	}
-	
 	private void Awake()
 	{
 		instance = this;
@@ -51,7 +41,7 @@ public class FadeScreen : MonoBehaviour
 		{
 			// Using smoothstep for a smoother transition
 			currentValue = Mathf.Clamp01(Mathf.SmoothStep(from, to, time));
-			FadeTime = currentValue;
+			Screen.SetFloat("_FadeTime", currentValue);
 			yield return null;
 		}
 		FadeCompleted = true; // Set the fade as completed

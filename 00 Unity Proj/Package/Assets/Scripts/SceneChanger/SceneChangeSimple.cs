@@ -5,9 +5,7 @@ namespace SceneSwitching_cf
 {
     public class SceneChangeSimple :  MonoBehaviour
     {
-        public string scene = "<Insert scene name>";
-
-        public void LoadScene()
+        public void LoadScene(string scene)
         {
             SceneManager.LoadScene(scene);
         }

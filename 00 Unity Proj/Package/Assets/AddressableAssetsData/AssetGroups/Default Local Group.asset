@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cfc0b496106190a4699ffd99d8fc9d0e
+    m_Address: Assets/Scripts/Data/Quests/00-DesperateTimes.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: dd2ab6da36457e5438da12a29b6311e0
     m_Address: Assets/Scripts/Data/CluesSpreadsheet1.csv
     m_ReadOnly: 0

@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PlayerRaycastInteraction : MonoBehaviour
 {
@@ -36,9 +38,17 @@ public class PlayerRaycastInteraction : MonoBehaviour
     //     ==== Interaction States ====
 
     public bool hasBat = false;
+    public bool hasTape = false;
     public GameObject activeBat = null;
+    public GameObject activeTape = null;
 
     //========================================================
+
+    //      ==== Game UI ====
+
+    public GameObject uiDot;
+    public Sprite interactableSprite;
+    public Sprite defaultDotSprite;
 
     /*
      *
@@ -72,6 +82,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
             if (boxcastHit.collider.TryGetComponent<IInteractable>(out _))
             {
+                uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.yellow;
                 activeInteractable = boxcastHit.collider.gameObject;
             }
 
@@ -80,8 +91,21 @@ public class PlayerRaycastInteraction : MonoBehaviour
         {
 
             Debug.DrawRay(origin, direction * rayLength, Color.red);
+            uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.white;
 
-            if (activeInteractable != null && activeInteractable.GetComponent<InteractableBox>() == null)
+            
+            if (activeBat != null)
+            {
+                
+                if (activeInteractable.GetComponent<BeatenBox>() == null)
+                {
+
+                    activeInteractable = null;
+
+                }
+
+            }
+            else
             {
 
                 activeInteractable = null;
@@ -116,6 +140,12 @@ public class PlayerRaycastInteraction : MonoBehaviour
                 activeInteractable.GetComponent <BeatenBox>().Interaction();
 
             }
+            else if(activeInteractable.GetComponent<TapedBox>() != null)
+            {
+
+                activeInteractable.GetComponent<TapedBox>().Interaction();
+
+            }
             else if (activeInteractable.GetComponent<InteractableClue>() != null && !boxcastHit.collider.GetComponent<InteractableClue>().interactedWith)
             {
 
@@ -130,6 +160,14 @@ public class PlayerRaycastInteraction : MonoBehaviour
                 activeBat = activeInteractable;
 
             }
+            else if (activeInteractable.GetComponent<InteractableTape>() != null)
+            {
+
+                activeInteractable.GetComponent<InteractableTape>().Interaction();
+                hasTape = activeInteractable.GetComponent<InteractableTape>().interactedWith;
+                activeTape = activeInteractable;
+
+            }
 
         }
         else if (activeBat != null)
@@ -138,6 +176,14 @@ public class PlayerRaycastInteraction : MonoBehaviour
             activeBat.GetComponent<InteractableBat>().Interaction();
             hasBat = activeBat.GetComponent<InteractableBat>().interactedWith;
             activeBat = null;
+
+        }
+        else if (activeTape != null)
+        {
+
+            activeTape.GetComponent<InteractableTape>().Interaction();
+            hasTape = activeTape.GetComponent<InteractableTape>().interactedWith;
+            activeTape = null;
 
         }
     }

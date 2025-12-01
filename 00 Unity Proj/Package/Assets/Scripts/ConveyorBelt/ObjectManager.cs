@@ -140,7 +140,7 @@ namespace ConveyorBelt_cf
             {
 
                 newBox.transform.localScale = new(50f, 50f, 50f);
-                newBox.AddComponent<InteractableBox>().sortedPosition = sortingPosition;
+                newBox.AddComponent<TapedBox>().sortedPosition = sortingPosition;
 
             }
             else if (newBox.name.Contains("Bloated Box"))
@@ -155,6 +155,7 @@ namespace ConveyorBelt_cf
 
             newBox.AddComponent<Rigidbody>();
             newBox.GetComponent<Rigidbody>().useGravity = true;
+            newBox.GetComponent<Rigidbody>().angularDamping = 10;
 
             path.GetComponent<BeltBehavior>().AddBox(newBox);
 

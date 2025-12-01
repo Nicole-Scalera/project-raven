@@ -159,6 +159,61 @@ public class TruckSort : MonoBehaviour
             }
 
         }
+        else if(other.GetComponent<TapedBox>() != null)
+        {
+
+            TapedBox box = other.GetComponent<TapedBox>();
+
+            if (box.sortable && !box.sorted && box.sortTruck == truckNum)
+            {
+
+                if (box.sortShelf == "Top")
+                {
+
+                    if (box.sortSpot < 5)
+                    {
+                        box.gameObject.transform.position = positions[box.sortSpot]; //Left Boxes
+                    }
+                    else
+                    {
+                        box.gameObject.transform.position = positions[(box.sortSpot + 10)]; //Right Boxes
+                    }
+
+                }
+                else if (box.sortShelf == "Mid")
+                {
+
+                    if (box.sortSpot < 5)
+                    {
+                        box.gameObject.transform.position = positions[box.sortSpot + 5]; //Left Boxes
+                    }
+                    else
+                    {
+                        box.gameObject.transform.position = positions[box.sortSpot + 15]; //Right Boxes
+                    }
+
+                }
+                else if (box.sortShelf == "Bot")
+                {
+
+                    if (box.sortSpot < 5)
+                    {
+                        box.gameObject.transform.position = positions[box.sortSpot + 10]; //Left Boxes
+                    }
+                    else
+                    {
+                        box.gameObject.transform.position = positions[box.sortSpot + 20]; //Right Boxes
+                    }
+
+                }
+
+                sortedBoxes += 1;
+                GetComponentInParent<SortManager>().totalSorted += 1;
+                box.gameObject.GetComponent<TapedBox>().interactedWith = false;
+                box.gameObject.GetComponent<TapedBox>().sorted = true;
+            }
+
+        }
 
     }
 }

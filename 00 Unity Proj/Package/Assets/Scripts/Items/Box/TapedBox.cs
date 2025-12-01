@@ -4,9 +4,8 @@ using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 
-public class InteractableBox : MonoBehaviour, IInteractable
+public class TapedBox : MonoBehaviour, IInteractable
 {
-
     public bool interactedWith = false;
 
     public string sortedPosition;
@@ -14,7 +13,7 @@ public class InteractableBox : MonoBehaviour, IInteractable
     public string sortShelf;
     public int sortSpot;
 
-    public bool sortable = true;
+    public bool sortable = false;
     public bool sorted = false;
 
     public GameObject player;
@@ -24,19 +23,24 @@ public class InteractableBox : MonoBehaviour, IInteractable
 
     public TextMeshProUGUI sortedBayUI;
 
+    public Material tapedTexture;
+    private Material[] newMaterials;
+
     private void Start()
     {
 
         player = GameObject.FindGameObjectWithTag("Player");
-        
+
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
         sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
 
+        tapedTexture = Resources.Load<Material>("lambert1");
+
         sortTruck = int.Parse(sortedPosition.Substring(0, 1));
-        sortShelf = sortedPosition.Substring(1,3);
-        sortSpot = int.Parse(sortedPosition.Substring(4,1));
+        sortShelf = sortedPosition.Substring(1, 3);
+        sortSpot = int.Parse(sortedPosition.Substring(4, 1));
 
     }
 
@@ -59,23 +63,37 @@ public class InteractableBox : MonoBehaviour, IInteractable
             GetComponent<Rigidbody>().isKinematic = true;
 
         }
-        
+
 
     }
 
     public void Interaction()
     {
+        if (!player.GetComponent<PlayerRaycastInteraction>().hasTape)
+        {
 
-        interactedWith = !interactedWith;
+            interactedWith = !interactedWith;
 
-        sortedBayUI.text = "Bay: " + sortTruck.ToString() + "\n" + "Shelf: " + sortShelf + "\n" + "Spot: " + sortSpot.ToString();
+            sortedBayUI.text = "Bay: " + sortTruck.ToString() + "\n" + "Shelf: " + sortShelf + "\n" + "Spot: " + sortSpot.ToString();
 
-        path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
+            path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
 
-        GetComponent<Rigidbody>().useGravity = !interactedWith;
-        GetComponent<Rigidbody>().freezeRotation = interactedWith;
-        
+            GetComponent<Rigidbody>().useGravity = !interactedWith;
+
+        }
+        else
+        {
+            newMaterials = GetComponent<MeshRenderer>().materials;
+
+            newMaterials[0] = tapedTexture;
+            newMaterials[1] = tapedTexture;
+
+            GetComponent<MeshRenderer>().materials = newMaterials;
+
+            sortable = true;
+
+        }
+
 
     }
-
 }

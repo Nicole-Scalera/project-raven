@@ -17,6 +17,11 @@ public class SaveSlotsManager : ES3SlotManager
         // Load the spreadsheets asynchronously and register a callback upon completion
         clueSpreadsheet.LoadAssetAsync().Completed += OnClueSpreadsheetLoaded;
         progressSpreadsheet.LoadAssetAsync().Completed += OnProgressSpreadsheetLoaded;
+        
+        // Set the current save directory to the custom slot directory.
+        // This is a static variable that will be used throughout this
+        // play session to save and load data.
+        CurrentSaveDirectory.CurrentDirectory = customSlotDirectory;
     }
 
     // When clueSpreadsheet is loaded, load the data into an ES3Spreadsheet
@@ -83,7 +88,9 @@ public class SaveSlotsManager : ES3SlotManager
         
         // Select the slot if necessary.
         if (selectSlotAfterCreation)
+        {
             slot.SelectSlot();
+        }
 
         // Scroll the scroll view to the top of the list.
         ScrollToTop();

@@ -16,4 +16,10 @@ public class LoadManager : MonoBehaviour
         var sheet = new ES3Spreadsheet();
         sheet.Load("myProgressData.csv");
     }
+    
+    public void LoadQuestSpreadsheet()
+    {
+        var sheet = new ES3Spreadsheet();
+        sheet.Load("myQuestData.csv");
+    }
 }

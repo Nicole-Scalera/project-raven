@@ -34,7 +34,7 @@ public class BeatenBox : MonoBehaviour, IInteractable
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
-        sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
+        //sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
 
         beatenTexture = Resources.Load<Material>("phong1");
 

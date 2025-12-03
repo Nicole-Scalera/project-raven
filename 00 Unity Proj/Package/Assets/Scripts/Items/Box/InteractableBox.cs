@@ -32,7 +32,7 @@ public class InteractableBox : MonoBehaviour, IInteractable
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
-        sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
+        //sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
 
         sortTruck = int.Parse(sortedPosition.Substring(0, 1));
         sortShelf = sortedPosition.Substring(1,3);

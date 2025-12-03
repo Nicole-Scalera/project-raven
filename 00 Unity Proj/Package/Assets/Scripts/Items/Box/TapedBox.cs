@@ -34,7 +34,7 @@ public class TapedBox : MonoBehaviour, IInteractable
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
-        sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
+        //sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
 
         tapedTexture = Resources.Load<Material>("lambert1");
 

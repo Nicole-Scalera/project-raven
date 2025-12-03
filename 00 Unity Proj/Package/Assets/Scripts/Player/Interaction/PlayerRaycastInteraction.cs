@@ -82,7 +82,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
             if (boxcastHit.collider.TryGetComponent<IInteractable>(out _))
             {
-                uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.yellow;
+                //uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.yellow;
                 activeInteractable = boxcastHit.collider.gameObject;
             }
 
@@ -91,7 +91,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
         {
 
             Debug.DrawRay(origin, direction * rayLength, Color.red);
-            uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            //uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.white;
 
             
             if (activeBat != null)

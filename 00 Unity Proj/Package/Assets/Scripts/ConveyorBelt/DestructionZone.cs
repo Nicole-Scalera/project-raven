@@ -74,6 +74,35 @@ namespace ConveyorBelt_cf
                 Destroy(other.gameObject);
 
             }
+            else if (other.gameObject.GetComponent<TapedBox>() != null)
+            {
+
+                path.GetComponent<BeltBehavior>().RemoveBox(other.gameObject);
+
+                if (other.gameObject.GetComponent<TapedBox>().sortedPosition.Substring(0, 1) == "1")
+                {
+                    objectManager.GetComponent<ObjectManager>().truckOneBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                }
+                if (other.gameObject.GetComponent<TapedBox>().sortedPosition.Substring(0, 1) == "2")
+                {
+                    objectManager.GetComponent<ObjectManager>().truckTwoBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                }
+                if (other.gameObject.GetComponent<TapedBox>().sortedPosition.Substring(0, 1) == "3")
+                {
+                    objectManager.GetComponent<ObjectManager>().truckThreeBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                }
+                if (other.gameObject.GetComponent<TapedBox>().sortedPosition.Substring(0, 1) == "4")
+                {
+                    objectManager.GetComponent<ObjectManager>().truckFourBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                }
+                if (other.gameObject.GetComponent<TapedBox>().sortedPosition.Substring(0, 1) == "5")
+                {
+                    objectManager.GetComponent<ObjectManager>().truckFiveBoxes.Add(other.gameObject.GetComponent<BeatenBox>().sortedPosition);
+                }
+
+                Destroy(other.gameObject);
+
+            }
         }
     }
 

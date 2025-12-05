@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class TapedBox : MonoBehaviour, IInteractable
 {
+
+    public Vector3 goalPosition = Vector3.zero;
+    public int goalPositionIndex = 0;
+    private float boxSpeed = 1f;
+
     public bool interactedWith = false;
 
     public string sortedPosition;
@@ -34,7 +39,7 @@ public class TapedBox : MonoBehaviour, IInteractable
         path = GameObject.FindGameObjectWithTag("Path");
 
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
-        //sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
+        sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
 
         tapedTexture = Resources.Load<Material>("lambert1");
 
@@ -42,28 +47,49 @@ public class TapedBox : MonoBehaviour, IInteractable
         sortShelf = sortedPosition.Substring(1, 3);
         sortSpot = int.Parse(sortedPosition.Substring(4, 1));
 
+        goalPosition = path.GetComponent<BeltBehavior>().NextPosition(goalPositionIndex);
     }
 
     private void FixedUpdate()
     {
 
-        if (interactedWith)
+        if (this.interactedWith)
         {
             playerRay = player.GetComponent<PlayerRaycastInteraction>().interactionRay;
             transform.position = playerRay.GetPoint(1.5f);
             transform.rotation = player.transform.rotation;
-
+            goalPosition = this.transform.position;
+            path = null;
 
         }
-
-        if (sorted)
+        else if (this.sorted)
         {
 
-            transform.rotation = Quaternion.identity;
+            Quaternion sortedRotation = Quaternion.Euler(new Vector3(0f, 90f, 0f));
+            transform.rotation = sortedRotation;
             GetComponent<Rigidbody>().isKinematic = true;
 
         }
+        else
+        {
+            Vector3 roundedBoxPosition = RoundVector3(this.transform.position);
+            Vector3 roundedGoalPosition = RoundVector3(goalPosition);
 
+            if (roundedBoxPosition.x != roundedGoalPosition.x && roundedBoxPosition.z != roundedGoalPosition.z)
+            {
+                this.transform.position = Vector3.MoveTowards(this.transform.position, goalPosition, boxSpeed * Time.deltaTime);
+            }
+            else
+            {
+                if (path != null)
+                {
+                    goalPosition = path.GetComponent<BeltBehavior>().NextPosition(goalPositionIndex);
+                    goalPositionIndex += 1;
+                }
+
+            }
+
+        }
 
     }
 
@@ -76,7 +102,10 @@ public class TapedBox : MonoBehaviour, IInteractable
 
             sortedBayUI.text = "Bay: " + sortTruck.ToString() + "\n" + "Shelf: " + sortShelf + "\n" + "Spot: " + sortSpot.ToString();
 
-            path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
+            if (path != null)
+            {
+                path.GetComponent<BeltBehavior>().RemoveBox(this.gameObject);
+            }
 
             GetComponent<Rigidbody>().useGravity = !interactedWith;
 
@@ -96,4 +125,16 @@ public class TapedBox : MonoBehaviour, IInteractable
 
 
     }
+
+    private Vector3 RoundVector3(Vector3 unroundedVector3)
+    {
+
+        float roundedX = Mathf.Round(unroundedVector3.x * 100);
+        float roundedY = Mathf.Round(unroundedVector3.y * 100);
+        float roundedZ = Mathf.Round(unroundedVector3.z * 100);
+
+        return new Vector3(roundedX, roundedY, roundedZ);
+
+    }
+
 }

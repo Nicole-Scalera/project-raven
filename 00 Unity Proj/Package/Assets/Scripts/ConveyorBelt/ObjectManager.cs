@@ -17,7 +17,6 @@ namespace ConveyorBelt_cf
     {
 
         private Vector3 spawnPosition;
-        private int interactableLayer = 7;
 
         [Header("Prefabs")] 
         public GameObject[] boxPrefabs;

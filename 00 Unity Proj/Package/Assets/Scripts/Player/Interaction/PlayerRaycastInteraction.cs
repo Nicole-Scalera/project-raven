@@ -52,10 +52,14 @@ public class PlayerRaycastInteraction : MonoBehaviour
     public Sprite interactableSprite;
     public Sprite defaultDotSprite;
 
+    //      ==== Global ====
+    public GameObject global;
+
     public void Start()
     {
         
         directions = GameObject.FindGameObjectWithTag("Game UI").GetComponent<TextMeshProUGUI>();
+        global = GameObject.FindGameObjectWithTag("Global");
 
     }
 
@@ -159,7 +163,8 @@ public class PlayerRaycastInteraction : MonoBehaviour
             else if (activeInteractable.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)
             {
 
-                activeInteractable.GetComponent<InteractableClue>().Interaction();
+                string clueName = activeInteractable.GetComponent<InteractableClue>().Interaction();
+                global.GetComponent<InterSceneData>().clues.Add(clueName);
 
             }
             else if (activeInteractable.GetComponent<InteractableBat>() != null)
@@ -182,6 +187,18 @@ public class PlayerRaycastInteraction : MonoBehaviour
             {
                 activeInteractable.GetComponent<InteractableClueBoard>().Interaction();
                 directions.text = "Let's see what we found out ...";
+            }
+            else if(activeInteractable.GetComponent<InteractableBed>() != null)
+            {
+                activeInteractable.GetComponent<InteractableBed>().Interaction();
+            }
+            else if(activeInteractable.GetComponent<InteractableApartmentDoor>() != null)
+            {
+                activeInteractable.GetComponent<InteractableApartmentDoor>().Interaction();
+            }
+            else if (activeInteractable.GetComponent<InteractableFactoryDoor>() != null)
+            {
+                activeInteractable.GetComponent <InteractableFactoryDoor>().Interaction();
             }
 
         }

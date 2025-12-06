@@ -12,6 +12,7 @@ TagManager:
   - UIControllerButton
   - Game UI
   - PauseUI
+  - Global
   layers:
   - Default
   - TransparentFX

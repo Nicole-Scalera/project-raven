@@ -5,7 +5,7 @@ using UnityEngine;
 public class InterSceneData : MonoBehaviour
 {
 
-    public List<string> clues = new List<string>();
+    public List<InteractableClue> clues = new List<InteractableClue>();
 
     private void Awake()
     {
@@ -14,11 +14,12 @@ public class InterSceneData : MonoBehaviour
 
     }
 
-    private void Update()
+    public void AddClue(InteractableClue newClue)
     {
-        
 
+        clues.Add(newClue);
 
     }
+
 
 }

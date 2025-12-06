@@ -13,6 +13,8 @@ TagManager:
   - Game UI
   - PauseUI
   - Global
+  - ClueUI
+  - UI
   layers:
   - Default
   - TransparentFX

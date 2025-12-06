@@ -163,8 +163,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
             else if (activeInteractable.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)
             {
 
-                string clueName = activeInteractable.GetComponent<InteractableClue>().Interaction();
-                global.GetComponent<InterSceneData>().clues.Add(clueName);
+                activeInteractable.GetComponent<InteractableClue>().Interaction();
 
             }
             else if (activeInteractable.GetComponent<InteractableBat>() != null)

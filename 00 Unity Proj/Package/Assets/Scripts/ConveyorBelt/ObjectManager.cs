@@ -131,7 +131,6 @@ namespace ConveyorBelt_cf
             if (newBox.name.Contains("Standard Box"))
             {
 
-                newBox.transform.localScale = new(100f, 100f, 100f);
                 newBox.AddComponent<InteractableBox>().sortedPosition = sortingPosition;
 
             }

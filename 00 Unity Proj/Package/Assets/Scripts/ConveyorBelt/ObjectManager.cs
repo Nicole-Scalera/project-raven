@@ -134,10 +134,9 @@ namespace ConveyorBelt_cf
                 newBox.AddComponent<InteractableBox>().sortedPosition = sortingPosition;
 
             }
-            else if (newBox.name.Contains("Square Box"))
+            else if (newBox.name.Contains("Tapeable Box"))
             {
 
-                newBox.transform.localScale = new(50f, 50f, 50f);
                 newBox.AddComponent<TapedBox>().sortedPosition = sortingPosition;
 
             }

@@ -28,8 +28,7 @@ public class TapedBox : MonoBehaviour, IInteractable
 
     public TextMeshProUGUI sortedBayUI;
 
-    public Material tapedTexture;
-    private Material[] newMaterials;
+    public GameObject tapedChild;
 
     private void Start()
     {
@@ -41,7 +40,8 @@ public class TapedBox : MonoBehaviour, IInteractable
         GameObject quotaUI = GameObject.FindGameObjectWithTag("Game UI");
         sortedBayUI = quotaUI.GetComponent<TextMeshProUGUI>();
 
-        tapedTexture = Resources.Load<Material>("lambert1");
+        tapedChild = transform.GetChild(0).gameObject;
+        tapedChild.SetActive(false);
 
         sortTruck = int.Parse(sortedPosition.Substring(0, 1));
         sortShelf = sortedPosition.Substring(1, 3);
@@ -112,13 +112,8 @@ public class TapedBox : MonoBehaviour, IInteractable
         }
         else
         {
-            newMaterials = GetComponent<MeshRenderer>().materials;
 
-            newMaterials[0] = tapedTexture;
-            newMaterials[1] = tapedTexture;
-
-            GetComponent<MeshRenderer>().materials = newMaterials;
-
+            tapedChild.SetActive(true);
             sortable = true;
 
         }

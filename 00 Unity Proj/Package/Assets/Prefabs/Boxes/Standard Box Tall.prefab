@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1606172589551925689}
   - component: {fileID: 3579994725415308659}
   m_Layer: 0
-  m_Name: Standard Box T
+  m_Name: Standard Box Tall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

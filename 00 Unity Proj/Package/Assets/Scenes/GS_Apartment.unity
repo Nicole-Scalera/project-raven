@@ -1583,6 +1583,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6631146190901206015, guid: 7a62c62f9314ef7448137bae230f06ba, type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
     - target: {fileID: 6665344423276013741, guid: 7a62c62f9314ef7448137bae230f06ba, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -3838,7 +3842,7 @@ GameObject:
   - component: {fileID: 850650129}
   m_Layer: 0
   m_Name: GameObject
-  m_TagString: Global
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3875,6 +3879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d58e0cf31981e5f41849714af9539344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlocked: 0
 --- !u!65 &888702085
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4358,6 +4363,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2900939b7461b4b8ee564d98d4e6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frontDoor: {fileID: 0}
+  global: {fileID: 0}
 --- !u!1 &1060636954
 GameObject:
   m_ObjectHideFlags: 0
@@ -4388,6 +4395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clues: []
+  factoryCompleted: 0
+  factoryDay: 0
 --- !u!4 &1060636956
 Transform:
   m_ObjectHideFlags: 0

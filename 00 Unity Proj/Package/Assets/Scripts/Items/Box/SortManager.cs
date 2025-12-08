@@ -12,10 +12,32 @@ public class SortManager : MonoBehaviour
     public TextMeshProUGUI quotaUI;
     public TextMeshProUGUI bayUI;
 
+    public GameObject frontDoor;
+    public GameObject global;
+
+    private void Start()
+    {
+
+        frontDoor = GameObject.FindGameObjectWithTag("Door");
+        global = GameObject.FindGameObjectWithTag("Global");
+
+        totalNeeded *= global.GetComponent<InterSceneData>().factoryDay;
+
+    }
+
     private void Update()
     { 
 
         quotaUI.text = totalSorted.ToString() + "/" + totalNeeded.ToString();
+
+        if (!frontDoor.GetComponent<InteractableFactoryDoor>().unlocked && totalSorted >= totalNeeded)
+        {
+
+            frontDoor.GetComponent<InteractableFactoryDoor>().unlocked = true;
+            global.GetComponent<InterSceneData>().factoryCompleted = true;
+
+
+        }
 
     }
 

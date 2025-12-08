@@ -43,23 +43,23 @@ public class SortPositions : MonoBehaviour
 
                     if (i == 1)
                     {
-                        truckOneSortedPositions.Add(new Vector3(-8.885f + (k * 1.1223f), 4.181f - ((j % 3) * 1.0375f), 16.859f + ((j % 2) * 2.386f)));
+                        truckOneSortedPositions.Add(new Vector3(8.54f + ((j % 2) * 2.033f), 2.004f - ((j % 3) * .897f), 7.983f + (k * 0.919f)));
                     }
                     else if (i == 2)
                     {
-                        truckTwoSortedPositions.Add(new Vector3(-8.885f + (k * 1.1223f), 4.181f - (j % 3 * 1.0375f), 12.71f + ((j % 2) * 2.386f)));
+                        truckTwoSortedPositions.Add(new Vector3(11.546f + ((j % 2) * 2.033f), 2.004f - ((j % 3) * .897f), 7.983f + (k * 0.919f)));
                     }
                     else if (i == 3)
                     {
-                        truckThreeSortedPositions.Add(new Vector3(-8.885f + (k * 1.1223f), 4.181f - (j % 3 * 1.0375f), 8.848f + ((j % 2) * 2.386f)));
+                        truckThreeSortedPositions.Add(new Vector3(14.481f + ((j % 2) * 2.033f), 2.004f - ((j % 3) * .897f), 7.983f + (k * 0.919f)));
                     }
                     else if (i == 4)
                     {
-                        truckFourSortedPositions.Add(new Vector3(-8.885f + (k * 1.1223f), 4.181f - (j % 3 * 1.0375f), 4.88f + ((j % 2) * 2.386f)));
+                        truckFourSortedPositions.Add(new Vector3(17.53f + ((j % 2) * 2.033f), 2.004f - ((j % 3) * .897f), 7.983f + (k * 0.919f)));
                     }
                     else if (i == 5)
                     {
-                        truckFiveSortedPositions.Add(new Vector3(-8.885f + (k * 1.1223f), 4.181f - (j % 3 * 1.0375f), 0.714f + ((j % 2) * 2.386f)));
+                        truckFiveSortedPositions.Add(new Vector3(20.46f + ((j % 2) * 2.033f), 2.004f - ((j % 3) * .897f), 7.983f + (k * 0.919f)));
                     }
 
                 }
@@ -78,8 +78,9 @@ public class SortPositions : MonoBehaviour
 
             GameObject newBox = Instantiate(GameObject.Find("Standard Box"));
             newBox.transform.position = truckOneSortedPositions[i];
-            newBox.transform.rotation = Quaternion.identity;
-            newBox.transform.localScale = new(100f, 100f, 100f);
+            newBox.transform.Rotate(0, 90, 0);
+            //newBox.transform.rotation = Quaternion.identity;
+            newBox.transform.localScale = new(74.395f, 74.395f, 74.395f);
 
         }
         for (int i = 0; i < truckTwoSortedPositions.Count; i++)
@@ -87,7 +88,8 @@ public class SortPositions : MonoBehaviour
 
             GameObject newBox = Instantiate(GameObject.Find("Standard Box"));
             newBox.transform.position = truckTwoSortedPositions[i];
-            newBox.transform.rotation = Quaternion.identity;
+            newBox.transform.Rotate(0, 90, 0);
+            //newBox.transform.rotation = Quaternion.identity;
             newBox.transform.localScale = new(100f, 100f, 100f);
 
         }
@@ -96,7 +98,8 @@ public class SortPositions : MonoBehaviour
 
             GameObject newBox = Instantiate(GameObject.Find("Standard Box"));
             newBox.transform.position = truckThreeSortedPositions[i];
-            newBox.transform.rotation = Quaternion.identity;
+            newBox.transform.Rotate(0, 90, 0);
+            //newBox.transform.rotation = Quaternion.identity;
             newBox.transform.localScale = new(100f, 100f, 100f);
 
         }
@@ -105,7 +108,8 @@ public class SortPositions : MonoBehaviour
 
             GameObject newBox = Instantiate(GameObject.Find("Standard Box"));
             newBox.transform.position = truckFourSortedPositions[i];
-            newBox.transform.rotation = Quaternion.identity;
+            newBox.transform.Rotate(0, 90, 0);
+            //newBox.transform.rotation = Quaternion.identity;
             newBox.transform.localScale = new(100f, 100f, 100f);
 
         }
@@ -114,7 +118,8 @@ public class SortPositions : MonoBehaviour
             Debug.Log(truckFiveSortedPositions[i]);
             GameObject newBox = Instantiate(GameObject.Find("Standard Box"));
             newBox.transform.position = truckFiveSortedPositions[i];
-            newBox.transform.rotation = Quaternion.identity;
+            newBox.transform.Rotate(0, 90, 0);
+            //newBox.transform.rotation = Quaternion.identity;
             newBox.transform.localScale = new(100f, 100f, 100f);
 
         }

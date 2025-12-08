@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using NUnit.Framework;
 using Sirenix.Utilities;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -31,7 +32,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
     public Vector3 halfDimensions = new(1f,1f,1f);
     public Vector3 mousePos;
     public Ray interactionRay;
-    public RaycastHit boxcastHit;
+    public RaycastHit raycastHit;
     public bool isHitting;
     public float rayLength = 5f;
 
@@ -47,8 +48,20 @@ public class PlayerRaycastInteraction : MonoBehaviour
     //      ==== Game UI ====
 
     public GameObject uiDot;
+    public TextMeshProUGUI directions;
     public Sprite interactableSprite;
     public Sprite defaultDotSprite;
+
+    //      ==== Global ====
+    public GameObject global;
+
+    public void Start()
+    {
+        
+        directions = GameObject.FindGameObjectWithTag("Game UI").GetComponent<TextMeshProUGUI>();
+        global = GameObject.FindGameObjectWithTag("Global");
+
+    }
 
     /*
      *
@@ -70,7 +83,8 @@ public class PlayerRaycastInteraction : MonoBehaviour
         Vector3 origin = new (interactionRay.origin.x, interactionRay.origin.y - 0.25f, interactionRay.origin.z);
         Vector3 direction = interactionRay.direction;
 
-        isHitting = Physics.BoxCast(origin,halfDimensions,direction, out boxcastHit,transform.rotation,rayLength);
+        isHitting = Physics.Raycast(interactionRay, out raycastHit);
+        //isHitting = Physics.BoxCast(origin,halfDimensions,direction, out boxcastHit,transform.rotation,rayLength);
 
 
         if (isHitting)
@@ -78,12 +92,12 @@ public class PlayerRaycastInteraction : MonoBehaviour
 
             Debug.DrawRay(origin, direction * rayLength, Color.green);
 
-            Debug.Log(boxcastHit.collider.gameObject.name);
+            Debug.Log(raycastHit.collider.gameObject.name);
 
-            if (boxcastHit.collider.TryGetComponent<IInteractable>(out _))
+            if (raycastHit.collider.TryGetComponent<IInteractable>(out _))
             {
-                uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.yellow;
-                activeInteractable = boxcastHit.collider.gameObject;
+                //uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.yellow;
+                activeInteractable = raycastHit.collider.gameObject;
             }
 
         }
@@ -91,7 +105,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
         {
 
             Debug.DrawRay(origin, direction * rayLength, Color.red);
-            uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.white;
+            //uiDot.GetComponent<UnityEngine.UI.Image>().color = Color.white;
 
             
             if (activeBat != null)
@@ -146,7 +160,7 @@ public class PlayerRaycastInteraction : MonoBehaviour
                 activeInteractable.GetComponent<TapedBox>().Interaction();
 
             }
-            else if (activeInteractable.GetComponent<InteractableClue>() != null && !boxcastHit.collider.GetComponent<InteractableClue>().interactedWith)
+            else if (activeInteractable.GetComponent<InteractableClue>() != null && !raycastHit.collider.GetComponent<InteractableClue>().interactedWith)
             {
 
                 activeInteractable.GetComponent<InteractableClue>().Interaction();
@@ -167,6 +181,23 @@ public class PlayerRaycastInteraction : MonoBehaviour
                 hasTape = activeInteractable.GetComponent<InteractableTape>().interactedWith;
                 activeTape = activeInteractable;
 
+            }
+            else if (activeInteractable.GetComponent<InteractableClueBoard>() != null)
+            {
+                activeInteractable.GetComponent<InteractableClueBoard>().Interaction();
+                directions.text = "Let's see what we found out ...";
+            }
+            else if(activeInteractable.GetComponent<InteractableBed>() != null)
+            {
+                activeInteractable.GetComponent<InteractableBed>().Interaction();
+            }
+            else if(activeInteractable.GetComponent<InteractableApartmentDoor>() != null)
+            {
+                activeInteractable.GetComponent<InteractableApartmentDoor>().Interaction();
+            }
+            else if (activeInteractable.GetComponent<InteractableFactoryDoor>() != null)
+            {
+                activeInteractable.GetComponent <InteractableFactoryDoor>().Interaction();
             }
 
         }

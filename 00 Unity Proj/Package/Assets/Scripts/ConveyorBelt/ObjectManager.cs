@@ -17,7 +17,6 @@ namespace ConveyorBelt_cf
     {
 
         private Vector3 spawnPosition;
-        private int interactableLayer = 7;
 
         [Header("Prefabs")] 
         public GameObject[] boxPrefabs;
@@ -132,14 +131,12 @@ namespace ConveyorBelt_cf
             if (newBox.name.Contains("Standard Box"))
             {
 
-                newBox.transform.localScale = new(100f, 100f, 100f);
                 newBox.AddComponent<InteractableBox>().sortedPosition = sortingPosition;
 
             }
-            else if (newBox.name.Contains("Square Box"))
+            else if (newBox.name.Contains("Tapeable Box"))
             {
 
-                newBox.transform.localScale = new(50f, 50f, 50f);
                 newBox.AddComponent<TapedBox>().sortedPosition = sortingPosition;
 
             }

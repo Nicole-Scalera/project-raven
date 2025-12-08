@@ -28,10 +28,6 @@ namespace ConveyorBelt_cf
 
         public Vector3 currentPosition;
 
-        private int currentNode;
-
-        private float boxSpeed;
-
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -39,65 +35,37 @@ namespace ConveyorBelt_cf
             //Fills the array with the current node children of the path
             pathNodes = GetComponentsInChildren<Node>();
 
-            CheckNode();
-
-        }
-
-        void CheckNode()
-        {
-
-            //reset speed temporarily to 0 and assign new node position to current 
-            currentPosition = pathNodes[pathNodes.Length-1].transform.position;
-
-        }
-
-        // Update is called once per frame
-        void FixedUpdate()
-        {
-
-            foreach (GameObject box in boxes)
+            for (int i = 0; i < pathNodes.Length; i++)
             {
 
-                //boxSpeed is assigned to the time between frame updates and moveSpeed
-                boxSpeed = Time.deltaTime * moveSpeed;
-
-                //if the box position is not at the current goal node position the box moves closer towards the goal node position
-                //if it is the current goal node position the currentNode variable increments and CheckNode() gets called to update
-                //the next goal node position
-
-                float roundedBoxXPosition = Mathf.Round(box.transform.position.x * 100);
-                float roundedCurrentXPosition = Mathf.Round(currentPosition.x * 100);
-
-                if (roundedBoxXPosition >= roundedCurrentXPosition)
-                {
-
-                    box.transform.position = Vector3.MoveTowards(box.transform.position, currentPosition, boxSpeed);
-
-                }
-                else
-                {
-
-                    if (currentNode < pathNodes.Length - 1)
-                    {
-
-                        currentNode++;
-                        CheckNode();
-
-                    }
-
-                }
+                Debug.Log(pathNodes[i].name + " Global Pos: " + pathNodes[i].transform.position);
+                Debug.Log(pathNodes[i].name + " Local Pos: " + pathNodes[i].transform.localPosition);
 
             }
 
         }
 
 
+        public Vector3 NextPosition(int currentNodePosition)
+        {
+            if (currentNodePosition < pathNodes.Length - 1)
+            {
+                return pathNodes[currentNodePosition].transform.position;
+            }
+            else
+            {
+                return pathNodes[pathNodes.Length - 1].transform.position;
+            }
+            
+        }
+
         //Takes in a gameobject and adds it to the boxes array
-        // TODO: Check for tag to confirm its a box
         public void AddBox(GameObject newBox)
         {
 
             boxes.Add(newBox);
+            Debug.Log("Added Box Global: " + newBox.transform.position);
+            Debug.Log("Added Box Local: " + newBox.transform.localPosition);
 
         }
 

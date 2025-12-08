@@ -6,6 +6,8 @@ public class InteractableBat : MonoBehaviour, IInteractable
 {
 
     public bool interactedWith = false;
+    public bool onWall = false;
+    public Vector3 wall;
 
     public GameObject player;
     public Ray playerRay;
@@ -14,6 +16,8 @@ public class InteractableBat : MonoBehaviour, IInteractable
     {
 
         player = GameObject.FindGameObjectWithTag("Player");
+        onWall = true;
+        wall = transform.position;
 
     }
 
@@ -25,6 +29,12 @@ public class InteractableBat : MonoBehaviour, IInteractable
                 
             GetComponent<Rigidbody>().useGravity = false;
             Use();
+
+        }
+        else if(onWall)
+        {
+
+            GetComponent<Rigidbody>().useGravity = false;
 
         }
         else
@@ -40,6 +50,13 @@ public class InteractableBat : MonoBehaviour, IInteractable
     {
 
         interactedWith = !interactedWith;
+
+        if (!interactedWith && (this.transform.position.x == wall.x && this.transform.position.z == wall.z))
+        {
+
+            onWall = true;
+
+        }
 
     }
 

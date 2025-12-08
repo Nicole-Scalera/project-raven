@@ -3393,8 +3393,10 @@ MonoBehaviour:
   - {fileID: 6397915557280112099, guid: cb694eb8fefe6c246884264644343e37, type: 3}
   - {fileID: 6224673857749860708, guid: a2841a959480fe64a9cda585a4f7e3ad, type: 3}
   - {fileID: 3075481683941223590, guid: 94f0346b7e57fcc4a8ee9b415602993c, type: 3}
+  - {fileID: 6711759154853840597, guid: f2b5120992c21ad40ad0b0594c148972, type: 3}
   - {fileID: 549481664113843759, guid: 9075deb0512bed34d895bd701172a0db, type: 3}
   - {fileID: 6291645256196845242, guid: edea21074c82209499598f49d0940122, type: 3}
+  activeBoxPrefabs: []
   timer: 0
   maxTime: 5
   path: {fileID: 494500573}
@@ -3403,6 +3405,7 @@ MonoBehaviour:
   truckThreeBoxes: []
   truckFourBoxes: []
   truckFiveBoxes: []
+  global: {fileID: 0}
 --- !u!4 &551858524
 Transform:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /*
@@ -20,6 +21,7 @@ namespace ConveyorBelt_cf
 
         [Header("Prefabs")] 
         public GameObject[] boxPrefabs;
+        public List<GameObject> activeBoxPrefabs = new List<GameObject>();
 
         [Header("Box Spawning")] 
         public float timer = 0;
@@ -36,6 +38,8 @@ namespace ConveyorBelt_cf
         public List<string> truckThreeBoxes = new List<string>();
         public List<string> truckFourBoxes = new List<string>();
         public List<string> truckFiveBoxes = new List<string>();
+
+        public GameObject global;
 
         private void Awake()
         {
@@ -71,6 +75,34 @@ namespace ConveyorBelt_cf
                 }
                 
 
+            }
+
+        }
+
+        private void Start()
+        {
+            global = GameObject.FindGameObjectWithTag("Global");
+
+            if (global.GetComponent<InterSceneData>().factoryDay == 1)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    activeBoxPrefabs.Add(boxPrefabs[i]);
+                }
+            }
+            else if (global.GetComponent<InterSceneData>().factoryDay == 2)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    activeBoxPrefabs.Add(boxPrefabs[i]);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < boxPrefabs.Length; i++)
+                {
+                    activeBoxPrefabs.Add(boxPrefabs[i]);
+                }
             }
 
         }
@@ -126,7 +158,7 @@ namespace ConveyorBelt_cf
                 truckFiveBoxes.Remove(sortingPosition);
             }
 
-            GameObject newBox = Instantiate(boxPrefabs[UnityEngine.Random.Range(0, boxPrefabs.Length)], spawnPosition, Quaternion.identity);
+            GameObject newBox = Instantiate(activeBoxPrefabs[UnityEngine.Random.Range(0, activeBoxPrefabs.Count)], spawnPosition, Quaternion.identity);
 
             if (newBox.name.Contains("Standard Box"))
             {

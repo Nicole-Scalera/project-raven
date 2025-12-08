@@ -15,16 +15,14 @@ public class InteractableClue : MonoBehaviour, IInteractable
 
         global = GameObject.FindGameObjectWithTag("Global");
 
-        global.GetComponent<InterSceneData>().AddClue(this);
-
     }
 
-    public string Interaction()
+    public void Interaction()
     {
 
         interactedWith = true;
         uiPanel.SetActive(true);
-        return clueName;
+        global.GetComponent<InterSceneData>().AddClue(this);
 
     }
 

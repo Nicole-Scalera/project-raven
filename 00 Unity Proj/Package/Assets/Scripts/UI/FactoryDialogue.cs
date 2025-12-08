@@ -63,7 +63,6 @@ public class FactoryDialogue : MonoBehaviour
         if (fadeIn)
         {
             ShowText();
-            Debug.Log(dialogueBox.color.a);
 
             if (dialogueBox.color.a <= maxBackgroundA)
             {
@@ -90,7 +89,6 @@ public class FactoryDialogue : MonoBehaviour
                 {
                     HideBackground();
                 }
-                Debug.Log(dialogueBox.color.a);
             }
             else if (dialogueBox.color.a <= 0f && !introductionCompleted)
             {

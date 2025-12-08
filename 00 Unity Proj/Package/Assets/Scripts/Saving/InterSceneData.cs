@@ -1,11 +1,14 @@
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InterSceneData : MonoBehaviour
 {
 
-    public List<InteractableClue> clues = new List<InteractableClue>();
+    public HashSet<string> clues = new HashSet<string>();
+    public List<string> cluesList = new List<string>();
+    public HashSet<GameObject> clueObjects = new HashSet<GameObject>();
 
     public bool factoryCompleted = false;
     public int factoryDay = 0;
@@ -17,10 +20,24 @@ public class InterSceneData : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+
+        for (int i = 0; i < cluesList.Count; i++)
+        {
+
+            GameObject.Find(cluesList[i] + " UI").SetActive(true);
+
+        }
+
+    }
+
     public void AddClue(InteractableClue newClue)
     {
 
-        clues.Add(newClue);
+        clues.Add(newClue.name);
+        clueObjects.Add(newClue.gameObject);
+        cluesList = clues.ToList();
 
     }
 

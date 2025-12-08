@@ -21,6 +21,8 @@ public class SortManager : MonoBehaviour
         frontDoor = GameObject.FindGameObjectWithTag("Door");
         global = GameObject.FindGameObjectWithTag("Global");
 
+        totalNeeded *= global.GetComponent<InterSceneData>().factoryDay;
+
     }
 
     private void Update()

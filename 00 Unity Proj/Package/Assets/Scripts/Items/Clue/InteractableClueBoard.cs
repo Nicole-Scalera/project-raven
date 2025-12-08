@@ -19,7 +19,5 @@ public class InteractableClueBoard : MonoBehaviour, IInteractable
     {
         gameUI.SetActive(false);
         clueBoardUI.SetActive(true);
-        Debug.Log( "Interacting With The Clue Board");
-
     }
 }

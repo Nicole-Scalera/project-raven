@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OpeningSequence/OpeningSequence.unity
     guid: bd9624b809ecfcb469578c5cc4400083
-  - enabled: 1
+  - enabled: 0
     path: Assets/core features/GlobalSave/GS_Factory.unity
     guid: 5d4813c291584c34e8f4ec75315d8156
   - enabled: 1
     path: Assets/Scenes/GS_Apartment.unity
     guid: 2fc3db460f4d09448a60526e582c8658
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Factory.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
